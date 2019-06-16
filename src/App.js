@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import getCookie from './cookies';
-import Home from './Home';
-import Header from './Header';
-import Footer from './Footer';
-import Splash from './Splash';
-import Login from './Login';
-import SignUp from './SignUp';
+import getCookie from './Components/cookies/cookies';
+import Home from './Components/Home/Home';
+import Header from './Components/Header/Header';
+import Footer from './Components/Footer/Footer';
+import Splash from './Components/Splash/Splash';
+import Login from './Components/Login/Login';
+import SignUp from './Components/SignUp/SignUp';
 import './App.css';
 
 function App() {
