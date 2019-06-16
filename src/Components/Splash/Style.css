@@ -1,0 +1,7 @@
+#splash {
+    font-family: 'Cormorant SC', serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
