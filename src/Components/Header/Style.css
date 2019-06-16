@@ -4,19 +4,24 @@
     align-items: center;
     background-color: #49494B;
     color: #D1BFA7;
+    height: 3vh;
+    font-family: 'Montserrat', sans-serif;
   }
   
-  .add-btn {
-    text-align: center; 
-    background-color: #BD8C7D;
-    color: #49494B;
-    width: 1.5em;
-    height: 1.5em;
-    border: none;
-    border-radius: 50%;
+  #newshelfbtn {
+    color: #bd8c7d;
   }
   
   .Header-text {
     width: 40%;
-    margin: 0.5em;
+    margin: 0px 5px 0px 5px;
+  }
+
+  button {
+    background: #49494B;
+  }
+
+  h3 {
+    margin: 0px 5px 0px 5px;
+    font-family: 'Cormorant SC', serif;
   }

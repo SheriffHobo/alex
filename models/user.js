@@ -29,18 +29,18 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  following: {
-    type: [ObjectId],
-  },
-  followers: {
-    type: [ObjectId],
-  },
-  lastActivity: {
-    type: Date,
-  },
-  wishList: {
-    type: [ObjectId],
-  },
+  // following: {
+  //   type: [ObjectId],
+  // },
+  // followers: {
+  //   type: [ObjectId],
+  // },
+  // lastActivity: {
+  //   type: Date,
+  // },
+  // wishList: {
+  //   type: [ObjectId],
+  // },
   flagged: {
     type: Boolean,
     default: false,
@@ -55,12 +55,12 @@ const userSchema = new mongoose.Schema({
     minlength: 2,
     maxlength: 127,
   },
-  shelfLikes: {
-    type: [ObjectId],
-  },
-  itemLikes: {
-    type: [ObjectId],
-  },
+  // shelfLikes: {
+  //   type: [ObjectId],
+  // },
+  // itemLikes: {
+  //   type: [ObjectId],
+  // },
   active: {
     type: Boolean,
     default: true,

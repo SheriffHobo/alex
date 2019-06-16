@@ -1,8 +1,4 @@
 /* Styling up here should be global to app, can move to index.css */
-h1, h2, h3, h4 {
-  margin: 0;
-}
-
 .Link {
   text-decoration: none;
   color: #D1BFA7;
