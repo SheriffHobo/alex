@@ -3,7 +3,12 @@ const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
-  name: {
+  first: {
+    type: String,
+    minlength: 2,
+    maxlength: 127,
+  },
+  last: {
     type: String,
     minlength: 2,
     maxlength: 127,
@@ -13,7 +18,7 @@ const userSchema = new mongoose.Schema({
     required: true,
     minlength: 5,
     maxlength: 255,
-    unique: true,
+    unique: true,   // NOT A VALIDATOR!!! check manually
   },
   password: {
     type: String,
@@ -23,6 +28,42 @@ const userSchema = new mongoose.Schema({
   isAdmin: {
     type: Boolean,
     default: false,
+  },
+  following: {
+    type: [ObjectId],
+  },
+  followers: {
+    type: [ObjectId],
+  },
+  lastActivity: {
+    type: Date,
+  },
+  wishList: {
+    type: [ObjectId],
+  },
+  flagged: {
+    type: Boolean,
+    default: false,
+  },
+  profileImg: {
+    type: String,     // URL
+    minlength: 2,
+    maxlength: 127,
+  },
+  thumbnail: {
+    type: String,     // URL
+    minlength: 2,
+    maxlength: 127,
+  },
+  shelfLikes: {
+    type: [ObjectId],
+  },
+  itemLikes: {
+    type: [ObjectId],
+  },
+  active: {
+    type: Boolean,
+    default: true,
   },
 });
 
@@ -42,7 +83,7 @@ function validate(user) {
   const regex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*]).{8,1024}$");
 
   const schema = {
-    name: Joi.string().alphanum.min(2).max(127).required(),
+    name: Joi.string().alphanum().min(2).max(127).required(),
     email: Joi.string().min(5).max(255).required().email(),
     password: Joi.string().regex(regex).required(),
   };
