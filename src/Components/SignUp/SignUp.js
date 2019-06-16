@@ -1,4 +1,5 @@
 import React from 'react';
+import "./Style.css";
 
 const SignUp = React.memo(props => {
 	return (
