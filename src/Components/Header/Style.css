@@ -1,0 +1,27 @@
+.Header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #49494B;
+    color: #D1BFA7;
+    height: 3vh;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  #newshelfbtn {
+    color: #bd8c7d;
+  }
+  
+  .Header-text {
+    width: 40%;
+    margin: 0px 5px 0px 5px;
+  }
+
+  button {
+    background: #49494B;
+  }
+
+  h3 {
+    margin: 0px 5px 0px 5px;
+    font-family: 'Cormorant SC', serif;
+  }

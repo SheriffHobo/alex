@@ -1,9 +1,4 @@
-
 /* Styling up here should be global to app, can move to index.css */
-h1, h2, h3, h4 {
-  margin: 0;
-}
-
 .Link {
   text-decoration: none;
   color: #D1BFA7;
@@ -29,46 +24,4 @@ h1, h2, h3, h4 {
 
 .content {
   flex: 1 0 auto;
-}
-
-/* Header component styling */
-.Header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #49494B;
-  color: #D1BFA7;
-}
-
-.add-btn {
-  text-align: center; 
-  background-color: #BD8C7D;
-  color: #49494B;
-  width: 1.5em;
-  height: 1.5em;
-  border: none;
-  border-radius: 50%;
-}
-
-.Header-text {
-  width: 40%;
-  margin: 0.5em;
-}
-
-/* Footer components styling */
-.Footer-sticky {
-  flex-shrink: 0;
-  /* this padding needs to push the sticky footer above the fixed footer */
-  padding: 0.5em 1em 3em 1em;
-  background-color: #8e8e90;
-}
-
-/* is there a better name for this, like 'bottom menu' or something? */
-.Footer-fixed {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  padding: 0.75em;
-  background-color: #49494B;
-  color: #D1BFA7;
 }

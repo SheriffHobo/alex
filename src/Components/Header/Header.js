@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import "./Style.css";
 
 const Header = React.memo(props => {
   return (
@@ -11,12 +12,9 @@ const Header = React.memo(props => {
         </Link>
       </div>
 
-      <button
-        className="add-btn noselect"
-        onClick={() => alert('add a thing')}
-      >
-        +
-      </button>
+    <div className="add-btn noselect" onClick={() => alert('add a thing')}>
+          <i id="newshelfbtn" class="small material-icons">add_circle</i>
+    </div>
 
       <div className="Header-text" style={{ textAlign: 'right' }} >
         {
