@@ -1,35 +1,13 @@
-import React, { Component } from 'react';
-import { Link } from "react-router-dom";
+import React from 'react';
 
-class Home extends Component {
-  constructor() {
-    super();
+const Home = React.memo(props => {
+  return(
+    <div className="Home">
 
-    this.state = {
-      message: 'Oh hai yall',
-    };
-  }
+      {'my shelves component'}
 
-  componentDidMount() {
-    // API call for login
-    // if token present, login automatically
-    // populate state with user's shelves, send down as prop(s)
-    // otherwise, go to login page
-
-  }
-  
-  render() {
-    return(
-      <div className="Home">
-        <header>
-          <h1>{this.state.message}</h1>
-          <Link to={'/'}>
-            <h3>Home</h3>
-          </Link>
-        </header>
-      </div>
-    );
-  }  
-};
+    </div>
+  );
+});
 
 export default Home;
