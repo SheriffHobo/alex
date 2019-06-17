@@ -13,15 +13,3 @@
   -ms-user-select: none;
   user-select: none;
 }
-
-/* App component styling */
-.App {
-  height: 100vh;
-  background-color: #e8e8e6;
-  display: flex;
-  flex-direction: column;
-}
-
-.content {
-  flex: 1 0 auto;
-}
