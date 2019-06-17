@@ -8,13 +8,17 @@ const Header = React.memo(props => {
       
       <div className="Header-text">
         <Link to={'/'} className="Link">
-          <h3 className="Header-appName">Alexandria</h3>
+          <h5 className="Header-appName">Alexandria</h5>
         </Link>
       </div>
 
-    <div className="add-btn noselect" onClick={() => alert('add a thing')}>
-          <i id="newshelfbtn" class="small material-icons">add_circle</i>
-    </div>
+    {
+      props.username
+        ? <div className="add-btn noselect">
+                <i id="newshelfbtn" class="small material-icons">add_circle</i>
+          </div>
+        : <div /> 
+    }
 
       <div className="Header-text" style={{ textAlign: 'right' }} >
         {

@@ -4,4 +4,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+}
+
+img {
+    max-width:30vw; 
+    /* height:auto; */
+}
+
+p {
+    font-size: 2rem;
 }

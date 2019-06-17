@@ -18,7 +18,7 @@ function App() {
     // API call for login
     M.AutoInit();
 
-    setTimeout(() => setUsername('jack'), 2000);
+    setTimeout(() => setUsername(''), 2000);
 
     if (document.cookie) {
       // if token present in cookies, try to GET my shelves
@@ -49,7 +49,11 @@ function App() {
           </Switch>
         </div>
 
-        <Footer />
+        {
+          username
+            ? <Footer />
+            : <div className="Footer-fixed" />
+        }
 
       </div>
 

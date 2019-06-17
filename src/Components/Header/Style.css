@@ -4,8 +4,12 @@
     align-items: center;
     background-color: #49494B;
     color: #D1BFA7;
-    height: 3vh;
+    height: 5vh;
     font-family: 'Montserrat', sans-serif;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
   }
   
   #newshelfbtn {
@@ -21,7 +25,7 @@
     background: #49494B;
   }
 
-  h3 {
+  h5 {
     margin: 0px 5px 0px 5px;
     font-family: 'Cormorant SC', serif;
   }
