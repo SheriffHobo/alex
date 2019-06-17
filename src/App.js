@@ -8,13 +8,17 @@ import Splash from './Components/Splash/Splash';
 import Login from './Components/Login/Login';
 import SignUp from './Components/SignUp/SignUp';
 import './App.css';
+import 'materialize-css/dist/css/materialize.min.css';
+import M from "materialize-css";
 
 function App() {
   const [ username, setUsername ] = useState('');
 
   useEffect(() => {
     // API call for login
-    setTimeout(() => setUsername('jack'), 2000)
+    M.AutoInit();
+
+    setTimeout(() => setUsername('jack'), 2000);
 
     if (document.cookie) {
       // if token present in cookies, try to GET my shelves
@@ -47,14 +51,6 @@ function App() {
 
         <Footer />
 
-      </div>
-
-      <div className="Footer-fixed">
-        {
-          username
-            ? 'search and stuff'
-            : 'empty since ur not logged in'
-        }
       </div>
 
     </BrowserRouter>
