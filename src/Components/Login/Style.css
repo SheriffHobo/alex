@@ -1,0 +1,36 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  main {
+    max-width: 300px;
+    min-width: 300px;
+  }
+
+  form {
+    max-height: 375px;
+    min-height: 375px;
+    background-color: silver;
+    padding-top: 25px;
+  }
+  .input-field {
+    width: 275px;
+    margin: 0 auto;
+  }
+
+  .btn_login, .btn_create, .btn_forgot {
+    width: 170px;
+    background-color: #49494b!important;
+    margin: 10px auto;
+  }
+
+  .input-field>label, .input-field>label.active {
+    color: #49494b!important;
+    margin-left: 10px;
+  }
+
+  input {
+    background-color: #e8e8e6!important;
+  }
