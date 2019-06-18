@@ -1,11 +1,11 @@
 const Joi = require('joi');
 const bcrypt = require('bcrypt');
-const { User, validate } = require("../models/user");
+const { User, validateLogin } = require("../models/user");
 const express = require('express');
 const router = express.Router();
 
-router.post('/login', async (req, res) => {
-  const { error } = validate(req.body);
+router.post('/', async (req, res) => {
+  const { error } = validateLogin(req.body);
   if (error) return res.status(400).json(error.details[0].message);
 
   let user = await User.findOne({ email: req.body.email });
@@ -15,7 +15,7 @@ router.post('/login', async (req, res) => {
   if (!validPass) return res.status(400).json('Invalid email or password.');
 
 	const token = user.generateAuthToken();
-  res.json(token);
+  res.status(200).json(token);
 });
 
 module.exports = router;

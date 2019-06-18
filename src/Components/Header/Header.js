@@ -13,7 +13,7 @@ const Header = React.memo(props => {
       </div>
 
     {
-      props.username
+      props.loggedIn
         ? <div className="add-btn noselect">
                 <i id="newshelfbtn" class="small material-icons">add_circle</i>
           </div>
@@ -22,7 +22,7 @@ const Header = React.memo(props => {
 
       <div className="Header-text" style={{ textAlign: 'right' }} >
         {
-          props.username
+          props.loggedIn
             ? 'Hi, ' + props.username
             : <div>
                 <Link to={'/login'} className="Link">Login | </Link>

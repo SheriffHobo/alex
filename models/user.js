@@ -28,6 +28,7 @@ const userSchema = new mongoose.Schema({
   },
   password: {
     type: String,
+    required: true,
     minlength: 5,
     maxlength: 255,
   },
@@ -53,12 +54,10 @@ const userSchema = new mongoose.Schema({
   },
   profileImg: {
     type: String,     // URL
-    minlength: 2,
     maxlength: 127,
   },
   thumbnail: {
     type: String,     // URL
-    minlength: 2,
     maxlength: 127,
   },
   shelfLikes: {       // list of liked shelves
@@ -102,7 +101,7 @@ userSchema.methods.generateAuthToken = function() {
 const User = mongoose.model('User', userSchema);
 
 function validate(user) {
-  // mirror this password validation on the front end
+  // mirror this password validation on the login and signup pages
   const regex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*]).{8,1024}$");
 
   const schema = {
@@ -116,5 +115,18 @@ function validate(user) {
   return Joi.validate(user, schema);
 }
 
+function validateLogin(user) {
+  // mirror this password validation on the login and signup pages
+  const regex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*]).{8,1024}$");
+
+  const schema = {
+    email: Joi.string().min(5).max(255).required().email(),
+    password: Joi.string().regex(regex).required(),
+  };
+
+  return Joi.validate(user, schema);
+}
+
 exports.User = User;
 exports.validate = validate;
+exports.validateLogin = validateLogin;
