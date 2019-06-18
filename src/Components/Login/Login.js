@@ -23,7 +23,7 @@ const Login = React.memo(props => {
                     value={email}
                     onChange={e => setEmail(e.target.value)}
                   />
-                  <label for='email'>Enter your email</label>
+                  <label for='email'>Enter your Email</label>
                 </div>
 
                 <div className='input-field'>
@@ -35,7 +35,7 @@ const Login = React.memo(props => {
                     value={password}
                     onChange={e => setPassword(e.target.value)}
                   />
-                  <label for='password'>Enter your password</label>
+                  <label for='password'>Enter your Password</label>
                 </div>
 
                 <button
