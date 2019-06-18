@@ -1,0 +1,54 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #main {
+    width: 330px;
+    height: 270px;
+    background-color: #49494b!important;
+  }
+
+  form {
+    max-width: 300px;
+    min-width: 300px;
+    background-color: silver;
+    margin: 0px;
+    padding:0px;
+    float: left;
+    width:100%;
+    position:absolute;
+    top: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    left:50%;
+  }
+  
+  .input-field {
+    width: 250px;
+  }
+
+  .btn_login, .btn_create, .btn_forgot {
+    width: 170px;
+    background-color: #49494b!important;
+    margin: 10px auto;
+  }
+
+  .input-field>label, .input-field>label.active {
+    color: #49494b!important;
+    margin-left: 10px;
+  }
+
+  input {
+    background-color: #e8e8e6!important;
+    min-height: 25px;
+    max-height: 25px;
+  }
+
+  a {
+    color: #d1bfa7!important;
+  }
+
+  label.label1 {
+    margin-left: 10px !important;
+  }
