@@ -1,13 +1,24 @@
 import React from 'react';
+import { Link } from "react-router-dom";
+import {Component} from 'react';
+import ShelfButton from '../ShelfButton/ShelfButton';
 
-const Home = React.memo(props => {
-  return(
-    <div className="Home">
+class Home extends Component {
 
-      {'my shelves component'}
+//  const Home = React.memo(props => {
+    render() {
+    return(
+      <div className="Home">
 
-    </div>
-  );
-});
+        <ShelfButton />
+        <ShelfButton />
+        <ShelfButton />
+        <ShelfButton />
+        
+      </div>
+    );
+  };
+
+};
 
 export default Home;
