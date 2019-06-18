@@ -1,35 +1,37 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import "./Style.css";
+import "./HeaderStyle.css";
 
 const Header = React.memo(props => {
   return (
     <header className="Header">
       
-      <div className="Header-text">
-        <Link to={'/'} className="Link">
-          <h5 className="Header-appName">Alexandria</h5>
-        </Link>
-      </div>
+      <row id="headnav">
 
-    {
-      props.username
-        ? <div className="add-btn noselect">
-                <i id="newshelfbtn" class="small material-icons">add_circle</i>
-          </div>
-        : <div /> 
-    }
+        <div className="Header-text">
+          <Link to={'/'} className="Link">
+            <h5>Alexandria</h5>
+          </Link>
+        </div>
 
-      <div className="Header-text" style={{ textAlign: 'right' }} >
         {
           props.username
-            ? 'Hi, ' + props.username
-            : <div>
-                <Link to={'/login'} className="Link">Login | </Link>
-                <Link to={'/signup'} className="Link">Sign Up</Link>
+            ? <div className="add-btn noselect">
+                    <i id="newshelfbtn" class="small material-icons">add_circle</i>
               </div>
+            : <div /> 
         }
-      </div>
+
+            {
+              props.username
+                ? <div className="Header-text">Hi, ' + props.username</div>
+                : <div className="Header-text">
+                    <Link to={'/login'} className="Link">Login | </Link>
+                    <Link to={'/signup'} className="Link">Sign Up</Link>
+                  </div>
+            }
+
+      </row>
 
     </header>
   )

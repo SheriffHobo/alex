@@ -1,24 +1,31 @@
 .Header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
     background-color: #49494B;
-    color: #D1BFA7;
     height: 5vh;
     font-family: 'Montserrat', sans-serif;
     position: fixed;
     left: 0;
     top: 0;
     width: 100%;
+    justify-content: center;
   }
-  
+
   #newshelfbtn {
     color: #bd8c7d;
   }
   
   .Header-text {
-    width: 40%;
-    margin: 0px 5px 0px 5px;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  #headnav {
+    display: flex;
+    width: 700px;
+    min-width: 310px;
+    color: #D1BFA7;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px 10px 0px 10px!important;
   }
 
   button {
@@ -26,6 +33,5 @@
   }
 
   h5 {
-    margin: 0px 5px 0px 5px;
     font-family: 'Cormorant SC', serif;
   }
