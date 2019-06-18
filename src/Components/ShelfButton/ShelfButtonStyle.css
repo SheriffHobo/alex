@@ -1,0 +1,30 @@
+.shelfbutton {
+    display: flex;
+    justify-content: space-between;
+    background-color: #49494b;
+    color: #d1bfa7;
+    max-height: 40px;
+    min-height: 40px;
+    max-width: 310px;
+    min-width: 310px;
+    margin: 1px 0px 1px 0px;
+}
+
+.defaulticon {
+    color: #bd8c7d;
+    margin: 0px 3px 0px 3px;
+    font-size: 39px;
+}
+
+.hearticonnotliked {
+    color: #bd8c7d;
+    margin: 5px 3px 0px 0px;
+    font-size: 30px;
+}
+
+.hearticonliked {
+    /* favorite */
+    color: #bd8c7d;
+    margin: 5px 3px 0px 0px;
+    font-size: 30px;
+}
