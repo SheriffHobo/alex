@@ -23,7 +23,7 @@ const Login = React.memo(props => {
                     value={email}
                     onChange={e => setEmail(e.target.value)}
                   />
-                  <label className='lable1' for='email'>Enter your email</label>
+                  <label for='email'>Enter your email</label>
                 </div>
 
                 <div className='input-field'>
