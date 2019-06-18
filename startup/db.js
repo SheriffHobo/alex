@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const seed = require('./seeds');
 const { User } = require('../models/user');
 
-const dbName = 'alexandria-dev-db'
+const dbName = process.env.DB_NAME;
 
 module.exports = function() {
   mongoose.connect('mongodb://localhost:27017/' + dbName, { useNewUrlParser: true })
