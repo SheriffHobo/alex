@@ -6,7 +6,7 @@ body {
 
   #main {
     max-width: 330px;
-    height: 270px;
+    height: 220px;
     background-color: #49494b!important;
   }
 
@@ -35,33 +35,8 @@ body {
     color: #d1bfa7!important;
   }
 
-  /* .input-field>label, .input-field>label.active {
-    color: #49494b!important;
-    margin-left: 10px;
-  }
-
   input {
-    background-color: #e8e8e6!important;
-    min-height: 25px;
-    max-height: 25px;
-  }
-
-  label.label1 {
-    margin-left: 10px !important;
-  } */
-
-  label {
-    position: absolute;
-    top: 0;
-    left: 0;
-    cursor: text;
-    color: #9e9e9e;
-    transform: translateY(18px);
-    transition: transform .25s ease-in-out;
-    transform-origin: 0% 100%;
-  }
-
-  input {
+    margin: 0px 0px 0px 0px!important;
     width: 100%;
     height: 46px;
     border: 0px;
@@ -70,28 +45,26 @@ body {
   }
 
   input:focus {
-    border-bottom: 1px solid #26a96a;
-    box-shadow: 0 1px 0 0 #26a96a;
+    border-bottom: 1px solid #49494b;
+    box-shadow: 0 1px 0 0 #49494b;
     outline: 1px solid transparent;
   }
 
-  input:focus + label {
-    transform: translateY(-14px) scale(.8);
+  .input-field>label {
+    color: #49494b!important;
+    line-height: .1!important;
   }
 
-  input::-webkit-input-placeholder,
-  input::-moz-input-placeholder {
-    color: transparent;
+  .input-field>label.active {
+    color: #49494b!important;
+    line-height: 1!important;
   }
 
-  input::placeholder {
-    color: transparent;
+  button {
+    margin: 0px 0px 0px 0px!important;
+    height: 30px!important;
   }
 
-  input:not(:placeholder-shown) {
-    border-bottom: 1px solid #9e9e9e;
-  }
-
-  input:not(:placeholder-shown) + label {
-    transform: translateY(-14px) scale(.8);
+  .btn_login {
+    margin: 0px 0px 10px 0px!important;
   }

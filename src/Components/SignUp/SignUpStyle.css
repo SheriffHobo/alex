@@ -6,7 +6,7 @@ body {
 
   main {
     width: 330px;
-    height: 565px;
+    height: 475px;
     background-color: #49494b!important;
 }
 
@@ -37,10 +37,20 @@ body {
     margin: 10px auto;
   }
 
-  .input-field>label, .input-field>label.active {
+  .input-field>label {
     color: #49494b!important;
-    margin-left: 10px;
-    transform: translateY(1px)!important;
+    line-height: .1!important;
+  }
+
+  .input-field>label.active {
+    color: #49494b!important;
+    line-height: 1!important;
+  }
+
+  input:focus {
+    border-bottom: 1px solid #49494b;
+    box-shadow: 0 1px 0 0 #49494b;
+    outline: 1px solid transparent;
   }
 
   input {
@@ -51,8 +61,4 @@ body {
 
   a {
     color: #d1bfa7!important;
-  }
-
-  label.label1 {
-    margin-left: 10px !important;
   }
