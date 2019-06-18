@@ -8,6 +8,7 @@ class Footer extends Component {
   render() {
     return (
       <div className="Footer-fixed">
+        <div>
           <i id="menubtn" className="menu-btn noselect small material-icons dropdown-trigger" href='#' data-target='dropdown1'>menu</i>
             <ul id='dropdown1' className='dropdown-content'>
               <li><Link to="/#">Activity Feed</Link></li>
@@ -21,6 +22,16 @@ class Footer extends Component {
             </ul>
           <i id="homebtn" className="home-btn noselect small material-icons"><Link to="/#">home</Link></i>
           <i id="chatbtn" className="chat-btn noselect small material-icons"><Link to="/#">chat</Link></i>
+        </div>
+        <div className="nav-wrapper">
+          <form>
+            <div className="input-field">
+              <input id="search" type="search" required></input>
+              <label className="label-icon" for="search"><i class="material-icons">search</i></label>
+              <i className="material-icons">close</i>
+            </div>
+          </form>
+        </div>
       </div>
     );
   };
