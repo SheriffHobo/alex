@@ -7,6 +7,7 @@ import Footer from './Components/Footer/Footer';
 import Splash from './Components/Splash/Splash';
 import Login from './Components/Login/Login';
 import SignUp from './Components/SignUp/SignUp';
+import NewShelf from './Components/NewShelf/NewShelf';
 import './App.css';
 import 'materialize-css/dist/css/materialize.min.css';
 import M from "materialize-css";

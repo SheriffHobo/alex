@@ -1,5 +1,5 @@
 import React from 'react';
-import "./Style.css";
+import "./SplashStyle.css";
 
 const Splash = React.memo(props => {
 	return (

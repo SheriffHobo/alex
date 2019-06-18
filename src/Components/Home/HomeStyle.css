@@ -1,0 +1,8 @@
+.Home {
+    max-height: 100vh;
+    position: fixed;
+    top: 5vh;
+    bottom: 5vh;
+    margin-left: -155px;
+    overflow: auto;
+}

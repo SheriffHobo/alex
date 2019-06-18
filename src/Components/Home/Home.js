@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import {Component} from 'react';
 import ShelfButton from '../ShelfButton/ShelfButton';
+import "./HomeStyle.css"
 
 class Home extends Component {
 
@@ -9,12 +10,32 @@ class Home extends Component {
     render() {
     return(
       <div className="Home">
-
-        <ShelfButton />
-        <ShelfButton />
-        <ShelfButton />
-        <ShelfButton />
-        
+        <div className="shelfbtnlist">
+          <ShelfButton />
+          <ShelfButton />
+          <ShelfButton />
+          <ShelfButton />
+          <ShelfButton />
+          <ShelfButton />
+          <ShelfButton />
+          <ShelfButton />
+          <ShelfButton />
+          <ShelfButton />
+          <ShelfButton />
+          <ShelfButton />
+          <ShelfButton />
+          <ShelfButton />
+          <ShelfButton />
+          <ShelfButton />
+          <ShelfButton />
+          <ShelfButton />
+          <ShelfButton />
+          <ShelfButton />
+          <ShelfButton />
+          <ShelfButton />
+          <ShelfButton />
+          <ShelfButton />
+        </div>
       </div>
     );
   };
