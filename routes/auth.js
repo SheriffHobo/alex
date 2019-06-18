@@ -5,6 +5,7 @@ const express = require('express');
 const router = express.Router();
 
 router.post('/', async (req, res) => {
+  console.log('auth POST')
   const { error } = validateLogin(req.body);
   if (error) return res.status(400).json(error.details[0].message);
 

@@ -5,7 +5,7 @@ body {
   }
 
   #main {
-    width: 330px;
+    max-width: 330px;
     height: 270px;
     background-color: #49494b!important;
   }
@@ -28,16 +28,16 @@ body {
     width: 250px;
   }
 
-  .btn_login, .btn_create, .btn_forgot {
+  .btn_login, .btn_forgot {
     width: 170px;
     background-color: #49494b!important;
     margin: 10px auto;
+    color: #d1bfa7!important;
   }
 
-  .input-field>label, .input-field>label.active {
+  /* .input-field>label, .input-field>label.active {
     color: #49494b!important;
     margin-left: 10px;
-    transform: translateY(1px);
   }
 
   input {
@@ -46,10 +46,52 @@ body {
     max-height: 25px;
   }
 
-  a {
-    color: #d1bfa7!important;
-  }
-
   label.label1 {
     margin-left: 10px !important;
+  } */
+
+  label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: text;
+    color: #9e9e9e;
+    transform: translateY(18px);
+    transition: transform .25s ease-in-out;
+    transform-origin: 0% 100%;
+  }
+
+  input {
+    width: 100%;
+    height: 46px;
+    border: 0px;
+    border-bottom: 1px solid #9e9e9e;
+    transition: border-bottom, box-shadow .25s ease-in-out;
+  }
+
+  input:focus {
+    border-bottom: 1px solid #26a96a;
+    box-shadow: 0 1px 0 0 #26a96a;
+    outline: 1px solid transparent;
+  }
+
+  input:focus + label {
+    transform: translateY(-14px) scale(.8);
+  }
+
+  input::-webkit-input-placeholder,
+  input::-moz-input-placeholder {
+    color: transparent;
+  }
+
+  input::placeholder {
+    color: transparent;
+  }
+
+  input:not(:placeholder-shown) {
+    border-bottom: 1px solid #9e9e9e;
+  }
+
+  input:not(:placeholder-shown) + label {
+    transform: translateY(-14px) scale(.8);
   }

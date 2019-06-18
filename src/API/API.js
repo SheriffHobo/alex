@@ -30,7 +30,8 @@ export default {
 						throw new Error(res.status + ' ' + await res.text());
 					}
 					return res.json();
-				});
+				})
+				.catch(err => console.error('ERROR ERROR ERROR'));
 	},
 	// getMyShelves: filter => getMyShelves(filter),
 
@@ -40,12 +41,7 @@ export default {
 }
 
 
-
-// .then(
-// 	result => {
 // 	  document.cookie = `token=${result.token};`
 // 	  document.cookie = `username=${result.user.username};`;
-// 	  window.location.href = "index.html";
-// 	},
 
 // const token = getCookie('token');
