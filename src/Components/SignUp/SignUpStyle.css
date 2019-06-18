@@ -40,6 +40,7 @@ body {
   .input-field>label, .input-field>label.active {
     color: #49494b!important;
     margin-left: 10px;
+    transform: translateY(1px)!important;
   }
 
   input {
