@@ -8,15 +8,17 @@ class ShelfButton extends Component {
   render() {
     return (
         <div className="shelfbutton">
-            <div>
-                {/* Thumbnail of first image on shelf 39x39 size OR... */}
-                <i className="material-icons col defaulticon">photo_album</i>
-            </div>
-            <div>
-                <h6 className="shelftitle col">Limit Titles to 30 _Characters</h6>
-            </div>
-            <div>
-                <i className="material-icons hearticonnotliked col">favorite_border</i>
+            <div className="row">
+                <div className="col xl2">
+                    {/* Thumbnail of first image on shelf 39x39 size OR... */}
+                    <i className="material-icons defaulticon">photo_album</i>
+                </div>
+                <div className="col xl8">
+                    <h6 className="shelftitle">-25- Character Titles</h6>
+                </div>
+                <div className="col xl2">
+                    <i className="material-icons hearticonnotliked">favorite_border</i>
+                </div>
             </div>
         </div>
     );
