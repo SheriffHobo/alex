@@ -12,13 +12,13 @@ const SignUp = React.memo(props => {
 				<div className='row'>
 
 					<div className='input-field'>
-						<input className='validate' type='text' name='firstname' id='firstname' />
-						<label className='lablel' for='email'>First Name</label>
+						<input  type='text' name='firstname' id='firstname' />
+						<label className='lablel' for='firstname'>First Name</label>
 					</div>
 
 					<div className='input-field'>
 						<input className='validate' type='text' name='lasttname' id='lastname' />
-						<label className='lablel' for='email'>Last Name</label>
+						<label className='lablel' for='lastname'>Last Name</label>
 					</div>
 
 					<div className='input-field'>
@@ -27,33 +27,33 @@ const SignUp = React.memo(props => {
 					</div>
 					
 					<div className='input-field'>
-						<input className='validate' type='email' name='lasttname' id='lastname' />
-						<label className='lablel' for='email'>Confirm Email</label>
+						<input className='validate' type='email' name='confemail' id='confemail' />
+						<label className='lablel' for='confemail'>Confirm Email</label>
 					</div>
 
 					<div className='input-field'>
 						<input className='validate' type='password' name='password' id='password' />
-						<label for='password'>Enter your password</label>
+						<label className='lablel' for='password'>Enter your password</label>
 					</div>
 
 					<div className='input-field'>
-						<input className='validate' type='password' name='password' id='password' />
-						<label for='password'>Confirm password</label>
+						<input className='validate' type='password' name='confpassword' id='confpassword' />
+						<label for='confpassword'>Confirm password</label>
 					</div>
 
 					<div className='input-field'>
 						<input className='validate' type='text' name='country' id='country' />
-						<label for='country'>Country</label>
+						<label className='lablel' for='country'>Country</label>
 					</div>
 
 					<div className='input-field'>
 						<input className='validate' type='text' name='providencestate' id='providencestate' />
-						<label for='couprovidencestatentry'>Providence / State</label>
+						<label className='lablel' for='providencestate'>Provence / State</label>
 					</div>
 
 					<div className='input-field'>
 						<input className='validate' type='text' name='city' id='city' />
-						<label for='city'>City</label>
+						<label className='lablel' for='city'>City</label>
 					</div>
 
 					<button type='submit' name='btn_create' className='btn_login btn-small'><Link to="/me">Create Account</Link></button>
