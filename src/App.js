@@ -10,15 +10,36 @@ import SignUp from './Components/SignUp/SignUp';
 import './App.css';
 import 'materialize-css/dist/css/materialize.min.css';
 import M from "materialize-css";
+import API from './API/API';
 
 function App() {
   const [ username, setUsername ] = useState('');
+  const [ loggedIn, setLoggedIn ] = useState(false);
+
+  // example credentials
+	// 	email: 'jack@email.com'
+	// 	password: '4RGYLE$sw3ater'
+  
+  const logIn = (credentials = {}) => {
+    if (!(credentials.email && credentials.password)) return alert('please enter your email and password');
+    
+    API.login(credentials)
+      .then(result => console.log(result))
+      .catch(err => console.error(err));
+  };
+
+  const signUp = (user) => {
+    API.signUp(user)
+      .then(result => console.log(result))
+      .catch(err => console.error(err));
+  }
 
   useEffect(() => {
     // API call for login
+    
     M.AutoInit();
 
-    setTimeout(() => setUsername(''), 2000);
+    // setTimeout(() => setLoggedIn(true), 2000);
 
     if (document.cookie) {
       // if token present in cookies, try to GET my shelves
@@ -33,15 +54,23 @@ function App() {
 
       <div className="App">
         <div className="content">
-          <Header username={username} />
+          <Header loggedIn={loggedIn} username={username} />
 
           <Switch>
-            <Route path="/me" exact component={Home}/>
-            <Route path="/login" exact component={Login}/>
-            <Route path="/signup" exact component={SignUp}/>
+            <Route path="/me" exact component={Home} />
+            <Route
+              path="/login"
+              exact
+              render={() => <Login logIn={logIn} />}
+            />
+            <Route
+              path="/signup"
+              exact
+              render={() => <SignUp signUp={signUp} />}
+            />
             <Route
               component={
-                username
+                loggedIn
                   ? Home
                   : Splash
               }
@@ -50,7 +79,7 @@ function App() {
         </div>
 
         {
-          username
+          loggedIn
             ? <Footer />
             : <div className="Footer-fixed" />
         }
