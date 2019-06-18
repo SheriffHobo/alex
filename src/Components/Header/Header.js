@@ -15,21 +15,21 @@ const Header = React.memo(props => {
         </div>
 
         {
-          props.username
+          props.loggedIn
             ? <div className="add-btn noselect">
                     <i id="newshelfbtn" class="small material-icons">add_circle</i>
               </div>
             : <div /> 
         }
 
-            {
-              props.username
-                ? <div className="Header-text">Hi, ' + props.username</div>
-                : <div className="Header-text">
-                    <Link to={'/login'} className="Link">Login | </Link>
-                    <Link to={'/signup'} className="Link">Sign Up</Link>
-                  </div>
-            }
+        {
+          props.username
+            ? <div className="Header-text">Hi, ' + props.username</div>
+            : <div className="Header-text">
+                <Link to={'/login'} className="Link">Login | </Link>
+                <Link to={'/signup'} className="Link">Sign Up</Link>
+              </div>
+        }
 
       </row>
 
