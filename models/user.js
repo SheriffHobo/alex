@@ -75,6 +75,18 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: true,
   },
+  country: {
+    type: String,
+    maxlength: 1024,
+  },
+  state: {
+    type: String,     // or province, prefecture, etc
+    maxlength: 1024,
+  },
+  city: {
+    type: String,
+    maxlength: 1024,
+  },
 });
 
 userSchema.methods.generateAuthToken = function() { 
