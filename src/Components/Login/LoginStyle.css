@@ -7,7 +7,7 @@ body {
   #main {
     max-width: 330px;
     height: 220px;
-    background-color: #49494b!important;
+    background-color: #49494b !important;
   }
 
   form {
@@ -27,14 +27,14 @@ body {
   .input-field {
     width: 250px;
   }
-
+  
   .btn_login, .btn_forgot {
     width: 170px;
     background-color: #49494b!important;
     margin: 10px auto;
     color: #d1bfa7!important;
   }
-
+  
   input {
     margin: 0px 0px 0px 0px!important;
     width: 100%;
@@ -42,29 +42,33 @@ body {
     border: 0px;
     border-bottom: 1px solid #9e9e9e;
     transition: border-bottom, box-shadow .25s ease-in-out;
+    padding-left: .5rem !important;
   }
 
   input:focus {
-    border-bottom: 1px solid #49494b;
-    box-shadow: 0 1px 0 0 #49494b;
+    border-bottom: 1px solid #49494b !important;
+    box-shadow: 0 1px 0 0 #49494b !important;
     outline: 1px solid transparent;
+
   }
 
   .input-field>label {
-    color: #49494b!important;
-    line-height: .1!important;
+    color: #49494b !important;
+    line-height: .1 !important;
+    padding-left: .5rem !important;
+
   }
 
   .input-field>label.active {
-    color: #49494b!important;
-    line-height: 1!important;
+    color: #49494b !important;
+    line-height: 1 !important;
   }
 
   button {
-    margin: 0px 0px 0px 0px!important;
-    height: 30px!important;
+    margin: 0px 0px 0px 0px !important;
+    height: 30px !important;
   }
 
   .btn_login {
-    margin: 0px 0px 10px 0px!important;
+    margin: 0px 0px 10px 0px !important;
   }
