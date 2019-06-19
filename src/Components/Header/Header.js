@@ -17,7 +17,7 @@ const Header = React.memo(props => {
         {
           props.loggedIn
             ? <div className="add-btn noselect">
-                    <i id="newshelfbtn" class="small material-icons">add_circle</i>
+                    <i id="newshelfbtn" className="small material-icons">add_circle</i>
               </div>
             : <div /> 
         }
