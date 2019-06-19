@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import getCookie from './Components/cookies/cookies';
+import getCookie from './API/cookies';
 import Home from './Components/Home/Home';
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
@@ -16,40 +16,57 @@ import API from './API/API';
 function App() {
   const [ username, setUsername ] = useState('');
   const [ loggedIn, setLoggedIn ] = useState(false);
+  const [ showSplash, setShowSplash ] = useState(true);
 
   // example credentials
 	// 	email: 'jack@email.com'
 	// 	password: '4RGYLE$sw3ater'
   
+
   const logIn = (credentials = {}) => {
-    if (!(credentials.email && credentials.password)) return alert('please enter your email and password');
+    if (!(credentials.email && credentials.password)) {
+      return alert('please enter your email and password');
+    };
     
     API.login(credentials)
-      .then(result => console.log(result))
+      .then(result => {
+        setUsername(result.username);
+        setLoggedIn(true);
+      })
       .catch(err => console.error(err));
   };
 
+
   const signUp = (user) => {
     API.signUp(user)
-      .then(result => console.log(result))
+      .then(result => {
+        setUsername(result.username);
+        setLoggedIn(true);
+      })
       .catch(err => console.error(err));
   }
 
+
   useEffect(() => {
-    // API call for login
-    
     M.AutoInit();
+    setTimeout(() => setShowSplash(true), 2750);
 
-    // setTimeout(() => setLoggedIn(true), 2000);
+    // any other pre-login startup code goes here
 
-    if (document.cookie) {
-      // if token present in cookies, try to GET my shelves
-      // if that's successful, setLoggedIn(true)
-      // populate state with user's shelves, send down as prop(s)
-    }
+    // log in if there's a valid token
+    const token = getCookie('token');
+    if (!token) return;
 
+    API.loginWithToken(token)
+      .then(result => {
+        setUsername(result.username);
+        setLoggedIn(true);
+      })
+      .catch(err => console.error(err));
   }, []);
 
+  const leaveSplash = loggedIn && showSplash;
+  
   return (
     <BrowserRouter>
 
@@ -71,7 +88,7 @@ function App() {
             />
             <Route
               component={
-                loggedIn
+                leaveSplash
                   ? Home
                   : Splash
               }
@@ -80,7 +97,7 @@ function App() {
         </div>
 
         {
-          loggedIn
+          leaveSplash
             ? <Footer />
             : <div className="Footer-fixed" />
         }

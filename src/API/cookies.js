@@ -1,4 +1,6 @@
-function getCookie(cname) {
+export default cname => {
+	if (!document.cookie) return;
+
   const name = cname + "=";
   const decodedCookie = decodeURIComponent(document.cookie);
   const ca = decodedCookie.split(';');

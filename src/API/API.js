@@ -3,6 +3,8 @@
 // 	email and password
 // id:
 // 	the mongodb ObjectId
+// info:
+// 	user signup info
 // filter:
 // 	object containing fields and search terms; example:
 // 	{ name: 'treasure island', categoryName: 'movies' }
@@ -13,8 +15,7 @@ export default {
 	// USER
 	login: credentials => {
 		if (document.cookie) {
-			// !!! CHECK to be sure it's an Alexandria cookie
-			throw new Error('You are already logged in.');
+			return Promise.resolve('You are already logged in.');
 		}
 	
 		return fetch('http://localhost:8080/api/auth', {
@@ -29,19 +30,37 @@ export default {
 					if (res.status !== 200) {
 						throw new Error(res.status + ' ' + await res.text());
 					}
+					const result = res.json();
+
+					document.cookie = `token=${result.token};`;
+					document.cookie = `username=${result.user.username};`;
+
+					return result;
+				})
+	},
+	loginWithToken: token => {
+		return fetch('http://localhost:8080/api/auth', {
+			method: 'GET',
+			mode: 'cors',
+			headers: {
+				'Content-Type': 'application/json',
+				'x-auth-token': token,
+			},
+			})
+				.then(async res => {
+					if (res.status !== 200) {
+						throw new Error(res.status + ' ' + await res.text());
+					};
+
 					return res.json();
 				})
-				.catch(err => console.error('ERROR ERROR ERROR'));
 	},
-	// getMyShelves: filter => getMyShelves(filter),
+	signUp: info => {
+
+	},
+	// getMyShelves: filter => {},
 
 	// PUBLIC
-	// searchShelves: filter => getShelves(filter),
-	// searchItems: filter => searchItems(filter),
+	// searchShelves: filter => {},
+	// searchItems: filter => {},
 }
-
-
-// 	  document.cookie = `token=${result.token};`
-// 	  document.cookie = `username=${result.user.username};`;
-
-// const token = getCookie('token');
