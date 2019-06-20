@@ -1,22 +1,55 @@
-  .Footer-fixed {
-    display: flex;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 5vh;
-    background-color: #49494B;
-    color: #D1BFA7;
-    margin-top: auto;
-    font-family: 'Montserrat', sans-serif; 
-  }
+html {
+  line-height: 0 !important;
+}
 
-  #menu-btn, #home-btn, #chat-btn {
-    margin: 0px 5px 0px 5px;
-    color: #bd8c7d;
-  }
+.Footer-fixed {
+  display: flex;
+  background-color: #49494B;
+  height: 5vh;
+  font-family: 'Montserrat', sans-serif;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  justify-content: center;
+}
 
-  #dropdown1 {
-    background-color: #49494B;
-    color: #D1BFA7;
-  }
+#dropdown1 {
+  background-color: #49494B;
+  color: #D1BFA7;
+}
+
+#footnav {
+  display: flex;
+  width: 700px;
+  min-width: 310px;
+  align-items: center;
+  margin: 0px 5px 0px 10px !important;
+  justify-content: space-between;
+}
+
+input#search {
+  align-self: center;
+  margin-bottom: 10px!important;
+}
+
+#search {
+  width: 175px;
+}
+
+#search::placeholder {
+  color: #49494B;
+}
+
+i {
+  color: #bd8c7d;
+}
+
+.input-field>label {
+  transform: translateY(0px) !important;
+}
+
+div.input-field {
+  max-width: 200px;
+  min-width: 200px;
+}
