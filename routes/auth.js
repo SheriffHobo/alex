@@ -5,6 +5,7 @@ const { User, validateLogin } = require("../models/user");
 const express = require('express');
 const router = express.Router();
 
+// LOGIN
 router.post('/', async (req, res) => {
   const { error } = validateLogin(req.body);
   if (error) return res.status(400).json(error.details[0].message);
@@ -16,7 +17,7 @@ router.post('/', async (req, res) => {
   if (!validPass) return res.status(400).json({ message: 'Invalid email or password.'});
 
 	const token = user.generateAuthToken();
-  res.status(200).json(token);
+  res.status(200).json({ token, firstName: user.firstName});
 });
 
 router.get('/', auth, async (req, res) => {

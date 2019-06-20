@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import getCookie from './API/cookies';
 import Home from './Components/Home/Home';
 import Header from './Components/Header/Header';
@@ -14,14 +14,9 @@ import M from "materialize-css";
 import API from './API/API';
 
 function App() {
-  const [ username, setUsername ] = useState('');
+  const [ firstName, setFirstName ] = useState('');
   const [ loggedIn, setLoggedIn ] = useState(false);
   const [ showSplash, setShowSplash ] = useState(true);
-
-  // example credentials
-	// 	email: 'jack@email.com'
-	// 	password: '4RGYLE$sw3ater'
-  
 
   const logIn = (credentials = {}) => {
     if (!(credentials.email && credentials.password)) {
@@ -30,49 +25,66 @@ function App() {
     
     API.login(credentials)
       .then(result => {
-        setUsername(result.username);
-        setLoggedIn(true);
+        if (result.token && result.firstName) {
+          document.cookie = `token=${result.token};`;
+          document.cookie = `firstName=${result.firstName};`;
+        };
+
+        completeLogIn(result);
       })
       .catch(err => console.error(err));
   };
 
-
-  const signUp = (user) => {
+  const signUp = user => {
     API.signUp(user)
-      .then(result => {
-        setUsername(result.username);
-        setLoggedIn(true);
-      })
+      .then(result => completeLogIn(result))
       .catch(err => console.error(err));
-  }
+  };
 
+  const logOut = () => {
+    document.cookie = "token=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;";
+    document.cookie = "firstName=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;"
+    document.location.reload(false);
+  };
 
-  useEffect(() => {
+  useEffect(() => {    
+    setTimeout(() => {
+      setShowSplash(false);
+    }, 1500);
+
     M.AutoInit();
-    setTimeout(() => setShowSplash(true), 2750);
 
     // any other pre-login startup code goes here
 
     // log in if there's a valid token
     const token = getCookie('token');
-    if (!token) return;
+    if (!token || token === 'undefined') return;
+
+    const firstName = getCookie('firstName');
+    if (!firstName || firstName === 'undefined') return;
 
     API.loginWithToken(token)
       .then(result => {
-        setUsername(result.username);
-        setLoggedIn(true);
+        completeLogIn({ firstName, message: result.message });
       })
       .catch(err => console.error(err));
   }, []);
 
-  const leaveSplash = loggedIn && showSplash;
-  
+  function completeLogIn(result) {
+    if (result.message) alert(result.message);
+
+    setFirstName(result.firstName);
+    setLoggedIn(true);
+  }
+
+  const leaveSplash = loggedIn && !showSplash;
+
   return (
     <BrowserRouter>
 
       <div className="App">
         <div className="content">
-          <Header loggedIn={loggedIn} username={username} />
+          <Header loggedIn={loggedIn} logOut={logOut} firstName={firstName} />
 
           <Switch>
             <Route path="/me" exact component={Home} />

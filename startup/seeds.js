@@ -6,8 +6,8 @@ module.exports = async () => {
   
   const users = [
     {
-      first: 'Travis',
-      last: 'Williamson',
+      firstName: 'Travis',
+      lastName: 'Williamson',
       username: 'jobberwokker',
       email: 'travis@email.com',
       password: await bcrypt.hash('123@ertDFG', salt),
@@ -18,8 +18,8 @@ module.exports = async () => {
       city: 'Portland',
     },
     {
-      first: 'Jack',
-      last: 'Younger',
+      firstName: 'Jack',
+      lastName: 'Younger',
       username: 'jackwade',
       email: 'jack@email.com',
       password: await bcrypt.hash('4RGYLE$sw3ater', salt),
@@ -30,8 +30,8 @@ module.exports = async () => {
       city: 'Houston',
     },
     {
-      first: 'Erik',
-      last: 'Plaza',
+      firstName: 'Erik',
+      lastName: 'Plaza',
       username: 'bearGrylls',
       email: 'erik@emial.com',
       password: await bcrypt.hash('w0keA$F^^^', salt),
@@ -42,8 +42,8 @@ module.exports = async () => {
       city: 'Bend',
     },
     {
-      first: 'Damon',
-      last: 'Gregory',
+      firstName: 'Damon',
+      lastName: 'Gregory',
       username: 'satansSpawn',
       email: 'damong@emial.com',
       password: await bcrypt.hash('wa#%4dai3', salt),

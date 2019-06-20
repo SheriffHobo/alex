@@ -7,7 +7,10 @@ const itemSchema = new mongoose.Schema({
     required: true,
     maxLength: 127,
   },
-  description: {},
+  description: {
+    type: String,
+    maxLength: 4095,
+  },
   paid: {
     type: Number,
   },
@@ -47,12 +50,12 @@ const itemSchema = new mongoose.Schema({
   },
   image: {                // url
     type: String,
-    maxLength: 1024,
+    maxLength: 1023,
     // default: '',
   },
   thumbnail: {
     type: String,         // same as above
-    maxLength: 1024,
+    maxLength: 1023,
     // default: '',
   },
   tags: [{

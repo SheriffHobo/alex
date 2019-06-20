@@ -7,6 +7,10 @@ const shelfSchema = new mongoose.Schema({
     required: true,
     maxLength: 127,
   },
+  description: {
+    type: String,
+    maxLength: 4095,
+  },
   categoryName: {         // name of custom or preset category (whichever exists, prefer preset)
     type: String,
     maxLength: 127,
@@ -30,12 +34,14 @@ const shelfSchema = new mongoose.Schema({
     type: String,
     maxLength: 127,
   }],
-  // image: {             // MVP ignore this and use a default shelf image
-  //   type: String,
-  // },
-  // thumbnail: {
-  //   type: String,      // same as above
-  // },
+  image: {             // MVP ignore this and use a default shelf image
+    type: String,
+    maxLength: 1023,
+  },
+  thumbnail: {
+    type: String,      // same as above
+    maxLength: 1023,
+  },
   deleted: {              // hides item, marks for deletion
     type: Boolean,
     required: true,

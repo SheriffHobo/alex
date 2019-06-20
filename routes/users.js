@@ -10,6 +10,7 @@ router.get('/me', auth, async (req, res) => {
   res.send(user);
 });
 
+// SIGN UP
 router.post('/', async (req, res) => {
   const { error } = validate(req.body); 
   if (error) return res.status(400).send(error.details[0].message);
@@ -18,7 +19,7 @@ router.post('/', async (req, res) => {
   if (user) return res.status(400).send('User already registered.');
 
   user = new User({
-  	name: req.body.name,
+  	firstName: req.body.firstName,
   	email: req.body.email,
   	password: req.body.password,
   });
@@ -28,7 +29,7 @@ router.post('/', async (req, res) => {
   await user.save();
 
   const token = user.generateAuthToken();
-  res.header('x-auth-token', token).send({ first: user.first });
+  res.header('x-auth-token', token).send({ firstName: user.firstName });
 });
 
 module.exports = router; 
