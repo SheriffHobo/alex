@@ -6,10 +6,10 @@ const Login = React.memo(props => {
   const [ email, setEmail ] = useState('jack@email.com');
   const [ password, setPassword ] = useState('4RGYLE$sw3ater');
 
-	return (
-		<main id="main" className="valign-wrapper">
-			<div className="container align-center">
-				<div className="row">
+  return (
+    <main id="main" className="valign-wrapper">
+      <div className="container align-center">
+        <div className="row">
           <center>
             <form className="valign-wrapper" method="post">
               <div className='row'>
@@ -61,12 +61,12 @@ const Login = React.memo(props => {
                 </button>
 
               </div>
-            </form> 
+            </form>
           </center>
-				</div>
-			</div>
-		</main>
-	);
+        </div>
+      </div>
+    </main>
+  );
 });
 
 export default Login;

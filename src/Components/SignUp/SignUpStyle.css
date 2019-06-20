@@ -40,6 +40,7 @@ body {
   .input-field>label {
     color: #49494b!important;
     line-height: .1!important;
+    padding-left: .5rem !important;
   }
 
   .input-field>label.active {
@@ -51,6 +52,7 @@ body {
     border-bottom: 1px solid #49494b;
     box-shadow: 0 1px 0 0 #49494b;
     outline: 1px solid transparent;
+    padding-left: .5rem !important;
   }
 
   input {
