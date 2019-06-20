@@ -9,8 +9,8 @@ module.exports = function() {
     .then(async () => {
       console.log(`Connected to ${dbName}...`);
 
-      const jack = await User.findOne({ email: 'jack@email.com' });
-      if (!jack) seed();
+      const users = await User.find();
+      if (!users.length) seed();
     })
     .catch((err) => console.error('DB CONNECTION ERROR', err));
 }

@@ -15,7 +15,7 @@ export default {
 	// USER
 	login: credentials => {
 		if (document.cookie) {
-			return Promise.resolve('You are already logged in.');
+			return Promise.resolve({ message: 'You are already logged in.'});
 		}
 	
 		return fetch('http://localhost:8080/api/auth', {
@@ -30,12 +30,7 @@ export default {
 					if (res.status !== 200) {
 						throw new Error(res.status + ' ' + await res.text());
 					}
-					const result = res.json();
-
-					document.cookie = `token=${result.token};`;
-					document.cookie = `username=${result.user.username};`;
-
-					return result;
+					return res.json();
 				})
 	},
 	loginWithToken: token => {

@@ -8,8 +8,8 @@ const categorySchema = new mongoose.Schema({
     maxLength: 127,
   },
   description: {
-    type: Boolean,
-    default: false,
+    type: String,
+    maxLength: 4095,
   },
   nsfw: {
     type: Boolean,
@@ -17,9 +17,11 @@ const categorySchema = new mongoose.Schema({
   },
   image: {
     type: String,       // URL !!!just use image from first object
+    maxLength: 1023,
   },
   thumbnail: {
     type: String,       // URL
+    maxLength: 1023,
   },
 });
 

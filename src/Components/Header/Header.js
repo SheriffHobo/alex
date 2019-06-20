@@ -6,7 +6,7 @@ const Header = React.memo(props => {
   return (
     <header className="Header">
       
-      <row id="headnav">
+      <div id="headnav">
 
         <div className="Header-text">
           <Link to={'/'} className="Link">
@@ -23,15 +23,19 @@ const Header = React.memo(props => {
         }
 
         {
-          props.username
-            ? <div className="Header-text">Hi, ' + props.username</div>
+          props.firstName
+            ? <>
+                <div className="Header-text">{'Hi, ' + props.firstName + ' '}</div>
+                <span onClick={props.logOut}>| Logout</span>
+              </>
             : <div className="Header-text">
                 <Link to={'/login'} className="Link">Login | </Link>
                 <Link to={'/signup'} className="Link">Sign Up</Link>
+                <span onClick={props.logOut}>| Logout</span>
               </div>
         }
 
-      </row>
+      </div>
 
     </header>
   )

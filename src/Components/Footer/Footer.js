@@ -14,9 +14,9 @@ class Footer extends Component {
               <li><Link to="/#">Activity Feed</Link></li>
               <li><Link to="/#">Liked Shelves</Link></li>
               <li><Link to="/#">Discover</Link></li>
-              <li className="divider" tabindex="-1"></li>
+              <li className="divider" tabIndex="-1"></li>
               <li><Link to="/#">Account</Link></li>
-              <li className="divider" tabindex="-1"></li>
+              <li className="divider" tabIndex="-1"></li>
               <li><Link to="/#">Terms</Link></li>
               <li><Link to="/#">About</Link></li>
             </ul>
@@ -27,7 +27,7 @@ class Footer extends Component {
           <form>
             <div className="input-field">
               <input id="search" type="search" required></input>
-              <label className="label-icon" for="search"><i class="material-icons">search</i></label>
+              <label className="label-icon" htmlFor="search"><i className="material-icons">search</i></label>
               <i className="material-icons">close</i>
             </div>
           </form>

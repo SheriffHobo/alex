@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import "./LoginStyle.css"
 
 const Login = React.memo(props => {
-  const [ email, setEmail ] = useState('');
-  const [ password, setPassword ] = useState('');
+  const [ email, setEmail ] = useState('jack@email.com');
+  const [ password, setPassword ] = useState('4RGYLE$sw3ater');
 
 	return (
 		<main id="main" className="valign-wrapper">
@@ -23,7 +23,7 @@ const Login = React.memo(props => {
                     value={email}
                     onChange={e => setEmail(e.target.value)}
                   />
-                  <label for='email'>Enter your Email</label>
+                  <label htmlFor='email'>Enter your Email</label>
                 </div>
 
                 <div className='input-field'>
@@ -35,20 +35,22 @@ const Login = React.memo(props => {
                     value={password}
                     onChange={e => setPassword(e.target.value)}
                   />
-                  <label for='password'>Enter your Password</label>
+                  <label htmlFor='password'>Enter your Password</label>
                 </div>
 
-                <button
-                  type='submit'
-                  name='btn_login'
-                  className='btn_login btn-small'
-                  onClick={e => {
-                    e.preventDefault();
-                    props.logIn({ email, password });
-                  }}
-                >
-                  Login
-                </button>
+                <Link to="/me">
+                  <button
+                    type='submit'
+                    name='btn_login'
+                    className='btn_login btn-small'
+                    onClick={e => {
+                      e.preventDefault();
+                      props.logIn({ email, password });
+                    }}
+                  >
+                    Login
+                  </button>
+                </Link>
 
                 <button
                   type='submit'
