@@ -16,7 +16,7 @@ export default {
 	login: credentials => {
 		if (document.cookie) {
 			return Promise.resolve({ message: 'You are already logged in.'});
-		}
+		};
 	
 		return fetch('http://localhost:8080/api/auth', {
 			method: 'POST',
@@ -29,7 +29,8 @@ export default {
 				.then(async res => {
 					if (res.status !== 200) {
 						throw new Error(res.status + ' ' + await res.text());
-					}
+					};
+					
 					return res.json();
 				})
 	},
@@ -50,10 +51,28 @@ export default {
 					return res.json();
 				})
 	},
-	signUp: info => {
+	signUp: user => {
+		if (document.cookie) {
+			return Promise.resolve({ message: 'You are already logged in.'});
+		};
+	
+		return fetch('http://localhost:8080/api/users', {
+			method: 'POST',
+			mode: 'cors',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(user),
+			})
+				.then(async res => {
+					if (res.status !== 200) {
+						throw new Error(res.status + ' ' + await res.text());
+					};
 
+					return res.json();
+				})
 	},
-	// getMyShelves: filter => {},
+	// getMyShelves: filter => { 'http://localhost:8080/api/users/me' },
 
 	// PUBLIC
 	// searchShelves: filter => {},
