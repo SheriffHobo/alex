@@ -1,4 +1,4 @@
-export default cname => {
+function getCookie(cname) {
 	if (!document.cookie) return;
 
   const name = cname + "=";
@@ -13,3 +13,11 @@ export default cname => {
 
   return values[0].trim().slice(name.length);
 }
+
+function setCookies(cookies) {
+	for (let cname in cookies) {
+		document.cookie = `${cname}=${cookies[cname]};`;
+	};
+}
+
+export { getCookie, setCookies };

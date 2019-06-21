@@ -27,13 +27,13 @@ const categorySchema = new mongoose.Schema({
 
 const Category = mongoose.model('Category', categorySchema);
 
-// function validate(category) {
-//   const schema = {
+function validate(category) {
+  const schema = {
 
-//   };
+  };
 
-//   return Joi.validate(category, schema);
-// }
+  return Joi.validate(category, schema);
+}
 
 exports.Category = Category;
-// exports.validate = validate;
+exports.validate = validate;

@@ -14,11 +14,6 @@ const userSchema = new mongoose.Schema({
     required: true,
     maxlength: 127,
   },
-  // username: {
-  //   type: String,
-  //   required: true,
-  //   maxlength: 64,
-  // },
   email: {
     type: String,
     required: true,
@@ -76,15 +71,15 @@ const userSchema = new mongoose.Schema({
   },
   country: {
     type: String,
-    maxlength: 1023,
+    maxlength: 255,
   },
-  state: {
-    type: String,     // or province, prefecture, etc
-    maxlength: 1023,
+  province: {
+    type: String,     // or state, prefecture, etc
+    maxlength: 255,
   },
   city: {
     type: String,
-    maxlength: 1023,
+    maxlength: 255,
   },
 });
 
@@ -103,14 +98,17 @@ const User = mongoose.model('User', userSchema);
 
 function validate(user) {
   // mirror this password validation on the login and signup pages
-  const regex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*]).{8,1024}$");
+  // const regex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*]).{8,1024}$");
 
   const schema = {
     firstName: Joi.string().alphanum().max(127).required(),
     lastName: Joi.string().alphanum().max(127).required(),
-    username: Joi.string().max(64).required(),
     email: Joi.string().min(5).max(255).required().email(),
-    password: Joi.string().regex(regex).required(),
+    password: Joi.string().required(),
+    // password: Joi.string().regex(regex).required(),
+    country: Joi.string().max(255),
+    province: Joi.string().max(255),
+    city: Joi.string().max(255),
   };
 
   return Joi.validate(user, schema);
@@ -118,11 +116,12 @@ function validate(user) {
 
 function validateLogin(user) {
   // mirror this password validation on the login and signup pages
-  const regex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*]).{8,1024}$");
+  // const regex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*]).{8,1024}$");
 
   const schema = {
     email: Joi.string().min(5).max(255).required().email(),
-    password: Joi.string().regex(regex).required(),
+    password: Joi.string().required(),
+    // password: Joi.string().regex(regex).required(),
   };
 
   return Joi.validate(user, schema);

@@ -20,6 +20,7 @@ router.post('/', async (req, res) => {
   res.status(200).json({ token, firstName: user.firstName});
 });
 
+// LOGIN W TOKEN (prevents the splash page from disappearing if invalid token)
 router.get('/', auth, async (req, res) => {
   res.status(200).json({ message: 'Welcome back!'});
 });

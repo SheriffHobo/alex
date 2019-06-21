@@ -4,6 +4,7 @@ const { User, validate } = require('../models/user');
 const express = require('express');
 const router = express.Router();
 
+// USER PROFILE
 router.get('/me', auth, async (req, res) => {
   const user = await User.findById(req.user._id).select('-password');
   
@@ -19,9 +20,13 @@ router.post('/', async (req, res) => {
   if (user) return res.status(400).send('User already registered.');
 
   user = new User({
-  	firstName: req.body.firstName,
-  	email: req.body.email,
-  	password: req.body.password,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.body.email,
+    password: req.body.password,
+    country: req.body.country,
+    province: req.body.province,
+    city: req.body.city,
   });
 
   const salt = await bcrypt.genSalt(10);
@@ -32,4 +37,4 @@ router.post('/', async (req, res) => {
   res.header('x-auth-token', token).send({ firstName: user.firstName });
 });
 
-module.exports = router; 
+module.exports = router;

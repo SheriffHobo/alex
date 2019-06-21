@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
-import getCookie from './API/cookies';
+import { getCookie, setCookies } from './API/cookies';
 import Home from './Components/Home/Home';
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
@@ -18,20 +18,34 @@ function App() {
   const [ loggedIn, setLoggedIn ] = useState(false);
   const [ showSplash, setShowSplash ] = useState(true);
 
+  useEffect(() => {    
+    setTimeout(() => {
+      setShowSplash(false);
+    }, 1500);
+
+    M.AutoInit();
+
+    // any other pre-login startup code goes here
+
+    // need valid token to make splash go away
+    const token = getCookie('token');
+    if (!token || token === 'undefined') return;
+
+    const firstName = getCookie('firstName');
+    if (!firstName || firstName === 'undefined') return;
+
+    API.loginWithToken(token)
+      .then(result => completeLogIn({ firstName, message: result.message }))
+      .catch(err => console.error(err));
+  }, []);
+
   const logIn = (credentials = {}) => {
     if (!(credentials.email && credentials.password)) {
-      return alert('please enter your email and password');
+      return alert('Please enter your email and password');
     };
     
     API.login(credentials)
-      .then(result => {
-        if (result.token && result.firstName) {
-          document.cookie = `token=${result.token};`;
-          document.cookie = `firstName=${result.firstName};`;
-        };
-
-        completeLogIn(result);
-      })
+      .then(result => completeLogIn(result))
       .catch(err => console.error(err));
   };
 
@@ -47,37 +61,25 @@ function App() {
     document.location.reload(false);
   };
 
-  useEffect(() => {    
-    setTimeout(() => {
-      setShowSplash(false);
-    }, 1500);
-
-    M.AutoInit();
-
-    // any other pre-login startup code goes here
-
-    // log in if there's a valid token
-    const token = getCookie('token');
-    if (!token || token === 'undefined') return;
-
-    const firstName = getCookie('firstName');
-    if (!firstName || firstName === 'undefined') return;
-
-    API.loginWithToken(token)
-      .then(result => {
-        completeLogIn({ firstName, message: result.message });
-      })
-      .catch(err => console.error(err));
-  }, []);
-
   function completeLogIn(result) {
     if (result.message) alert(result.message);
+
+    if (result.token && result.firstName) {
+      const cookies = {
+        token: result.token,
+        firstName: result.firstName,
+      };
+
+      setCookies(cookies);
+    };
 
     setFirstName(result.firstName);
     setLoggedIn(true);
   }
 
   const leaveSplash = loggedIn && !showSplash;
+  // REDIRECT WOULD GO HERE if leaveSplash, redirect to /me
+  // except App wouldn't render
 
   return (
     <BrowserRouter>

@@ -55,13 +55,20 @@ const shelfSchema = new mongoose.Schema({
 
 const Shelf = mongoose.model('Shelf', shelfSchema);
 
-// function validate(shelf) {
-//   const schema = {
+function validate(shelf) {
+  const schema = {
+    name: Joi.string().max(127).required(),
+    description: Joi.string().max(4095),
+    categoryName: Joi.string().max(127),
+    categoryId: Joi.objectId(),
+    customCategory: Joi.string().max(127),
+    private: Joi.boolean(),
+    nsfw: Joi.boolean(),
+    image: Joi.string().max(1023),
+  };
 
-//   };
-
-//   return Joi.validate(shelf, schema);
-// }
+  return Joi.validate(shelf, schema);
+}
 
 exports.Shelf = Shelf;
-// exports.validate = validate;
+exports.validate = validate;
