@@ -14,11 +14,6 @@ const userSchema = new mongoose.Schema({
     required: true,
     maxlength: 127,
   },
-  // username: {
-  //   type: String,
-  //   required: true,
-  //   maxlength: 64,
-  // },
   email: {
     type: String,
     required: true,
@@ -76,15 +71,15 @@ const userSchema = new mongoose.Schema({
   },
   country: {
     type: String,
-    maxlength: 1023,
+    maxlength: 255,
   },
   province: {
     type: String,     // or state, prefecture, etc
-    maxlength: 1023,
+    maxlength: 255,
   },
   city: {
     type: String,
-    maxlength: 1023,
+    maxlength: 255,
   },
 });
 
@@ -109,8 +104,11 @@ function validate(user) {
     firstName: Joi.string().alphanum().max(127).required(),
     lastName: Joi.string().alphanum().max(127).required(),
     email: Joi.string().min(5).max(255).required().email(),
-    // password: Joi.string().regex(regex).required(),
     password: Joi.string().required(),
+    // password: Joi.string().regex(regex).required(),
+    country: Joi.string().max(255),
+    province: Joi.string().max(255),
+    city: Joi.string().max(255),
   };
 
   return Joi.validate(user, schema);
@@ -122,8 +120,8 @@ function validateLogin(user) {
 
   const schema = {
     email: Joi.string().min(5).max(255).required().email(),
-    // password: Joi.string().regex(regex).required(),
     password: Joi.string().required(),
+    // password: Joi.string().regex(regex).required(),
   };
 
   return Joi.validate(user, schema);

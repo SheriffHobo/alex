@@ -48,6 +48,11 @@ const itemSchema = new mongoose.Schema({
     min: 1,
     default: 1,
   },
+  currentlyOwn: {
+    type: Boolean,
+    required: true,
+    default: true,
+  },
   image: {                // url
     type: String,
     maxLength: 1023,
@@ -86,13 +91,30 @@ const itemSchema = new mongoose.Schema({
 
 const Item = mongoose.model('Item', itemSchema);
 
-// function validate(item) {
-//   const schema = {
+function validate(item) {
+  const schema = {
+    name: Joi.string().max(127).required(),
+    description: Joi.string().max(4095),
+    paid: Joi.number(),
+    shelf: Joi.objectId(),
+    categoryName: Joi.string().max(127),
+    categoryId: Joi.objectId(),
+    customCategory: Joi.string().max(127),
+    private: Joi.boolean(),
+    nsfw: Joi.boolean(),
+    image: Joi.string().max(127),
+    specs: Joi.object(), // https://github.com/hapijs/joi/blob/v16.0.0-rc2/API.md#joiobjectschema-notation
+    quantity: Joi.number(),
+    currentlyOwn: Joi.boolean(),
+    image: Joi.string().max(1023),
+    tags: Joi.array().items(Joi.string().max(127)),
+    masterItemId: Joi.string().max(1023),
+    masterItemSource: Joi.string().max(1023),
+    masterItemLink: Joi.string().max(1023),
+  };
 
-//   };
-
-//   return Joi.validate(item, schema);
-// }
+  return Joi.validate(item, schema);
+}
 
 exports.Item = Item;
-// exports.validate = validate;
+exports.validate = validate;
