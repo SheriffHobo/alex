@@ -58,7 +58,6 @@ function App() {
   };
 
   function completeLogIn(result) {
-    console.log(result)
     if (result.message) alert(result.message);
 
     if (result.token && result.firstName) {

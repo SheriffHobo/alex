@@ -28,14 +28,14 @@ export default {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify(credentials),
-			})
-				.then(async res => {
-					if (res.status !== 200) {
-						throw new Error(res.status + ' ' + await res.text());
-					};
-					
-					return res.json();
-				});
+		})
+			.then(async res => {
+				if (res.status !== 200) {
+					throw new Error(res.status + ' ' + await res.text());
+				};
+				
+				return res.json();
+			});
 	},
 	loginWithToken: () => {
 		const token = getCookie('token');
@@ -48,14 +48,14 @@ export default {
 				'Content-Type': 'application/json',
 				'x-auth-token': token,
 			},
-			})
-				.then(async res => {
-					if (res.status !== 200) {
-						throw new Error(res.status + ' ' + await res.text());
-					};
+		})
+			.then(async res => {
+				if (res.status !== 200) {
+					throw new Error(res.status + ' ' + await res.text());
+				};
 
-					return res.json();
-				});
+				return res.json();
+			});
 	},
 	signUp: user => {
 		if (document.cookie) {
@@ -69,14 +69,14 @@ export default {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify(user),
-			})
-				.then(async res => {
-					if (res.status !== 200) {
-						throw new Error(res.status + ' ' + await res.text());
-					};
+		})
+			.then(async res => {
+				if (res.status !== 200) {
+					throw new Error(res.status + ' ' + await res.text());
+				};
 
-					return res.json();
-				});
+				return res.json();
+			});
 	},
 	newItem: (item, itemType) => {
 		const token = getCookie('token');
@@ -92,14 +92,40 @@ export default {
 				'x-auth-token': token,
 			},
 			body: JSON.stringify(item),
-			})
-				.then(async res => {
-					if (res.status !== 200) {
-						throw new Error(res.status + ' ' + await res.text());
-					};
+		})
+			.then(async res => {
+				if (res.status !== 200) {
+					throw new Error(res.status + ' ' + await res.text());
+				};
 
-					return res.json();
-				});
+				return res.json();
+			});
+	},
+	searchByName: name => {
+		if (!name) {
+    	return Promise.resolve({ message: 'Please enter a search term.' });
+    };
+
+    const token = getCookie('token');
+    if (!token || token === 'undefined') {
+    	return Promise.resolve({ message: 'You are not logged in.'});
+    };
+
+		return fetch(baseUrl + '/users/search?name=' + name, {
+			method: 'GET',
+			mode: 'cors',
+			headers: {
+				'Content-Type': 'application/json',
+				'x-auth-token': token,
+			},
+		})
+			.then(async res => {
+				if (res.status !== 200) {
+					throw new Error(res.status + ' ' + await res.text());
+				};
+
+				return res.json();
+			});
 	},
 	// getMyShelves: filter => { 'http://localhost:8080/api/users/me' },
 

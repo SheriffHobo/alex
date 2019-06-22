@@ -1,45 +1,20 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { Link } from "react-router-dom";
-import {Component} from 'react';
 import ShelfButton from '../ShelfButton/ShelfButton';
+import UserSearchTest from '../UserSearchTest';
 import "./HomeStyle.css"
 
 class Home extends Component {
-
-//  const Home = React.memo(props => {
-    render() {
+  render() {
     return(
       <div className="Home">
         <div className="shelfbtnlist">
           <ShelfButton />
-          <ShelfButton />
-          <ShelfButton />
-          <ShelfButton />
-          <ShelfButton />
-          <ShelfButton />
-          <ShelfButton />
-          <ShelfButton />
-          <ShelfButton />
-          <ShelfButton />
-          <ShelfButton />
-          <ShelfButton />
-          <ShelfButton />
-          <ShelfButton />
-          <ShelfButton />
-          <ShelfButton />
-          <ShelfButton />
-          <ShelfButton />
-          <ShelfButton />
-          <ShelfButton />
-          <ShelfButton />
-          <ShelfButton />
-          <ShelfButton />
-          <ShelfButton />
+          <UserSearchTest />
         </div>
       </div>
     );
   };
-
 };
 
 export default Home;

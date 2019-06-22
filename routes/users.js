@@ -4,20 +4,39 @@ const { User, validate } = require('../models/user');
 const express = require('express');
 const router = express.Router();
 
+// mutual following should make users friends?
+
 // USER PROFILE
 router.get('/me', auth, async (req, res) => {
   const user = await User.findById(req.user._id).select('-password');
   
-  res.send(user);
+  res.json(user);
+});
+
+// SEARCH USERS
+router.get('/search', auth, async (req, res) => {
+  if (!req.query.name) return res.status(400).json({ message: 'Please enter a search term' });
+  
+  const name = new RegExp(req.query.name, 'i');
+  const users = await User
+    .find({
+      '$or': [
+        {firstName: name},
+        {lastName: name},
+      ],
+    })
+    .select('firstName thumbnail _id');
+
+  res.status(200).json(users);
 });
 
 // SIGN UP
 router.post('/', async (req, res) => {
   const { error } = validate(req.body); 
-  if (error) return res.status(400).send(error.details[0].message);
+  if (error) return res.status(400).json(error.details[0].message);
 
   let user = await User.findOne({ email: req.body.email });
-  if (user) return res.status(400).send('User already registered.');
+  if (user) return res.status(400).json({ message: 'User already registered.' });
 
   user = new User({
     firstName: req.body.firstName,
@@ -34,7 +53,7 @@ router.post('/', async (req, res) => {
   await user.save();
 
   const token = user.generateAuthToken();
-  res.header('x-auth-token', token).send({ firstName: user.firstName });
+  res.header('x-auth-token', token).status(200).json({ firstName: user.firstName });
 });
 
 module.exports = router;
