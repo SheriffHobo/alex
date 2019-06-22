@@ -1,3 +1,6 @@
+import { getCookie } from '../API/cookies';
+const baseUrl = 'http://localhost:8080/api';
+
 // == DOCUMENTATION ==
 // credentials:
 // 	email and password
@@ -18,7 +21,7 @@ export default {
 			return Promise.resolve({ message: 'You are already logged in.'});
 		};
 	
-		return fetch('http://localhost:8080/api/auth', {
+		return fetch(baseUrl + '/auth', {
 			method: 'POST',
 			mode: 'cors',
 			headers: {
@@ -32,10 +35,13 @@ export default {
 					};
 					
 					return res.json();
-				})
+				});
 	},
-	loginWithToken: token => {
-		return fetch('http://localhost:8080/api/auth', {
+	loginWithToken: () => {
+		const token = getCookie('token');
+    if (!token || token === 'undefined') return Promise.resolve();
+
+		return fetch(baseUrl + '/auth', {
 			method: 'GET',
 			mode: 'cors',
 			headers: {
@@ -49,14 +55,14 @@ export default {
 					};
 
 					return res.json();
-				})
+				});
 	},
 	signUp: user => {
 		if (document.cookie) {
 			return Promise.resolve({ message: 'You are already logged in.'});
 		};
 	
-		return fetch('http://localhost:8080/api/users', {
+		return fetch(baseUrl + '/users', {
 			method: 'POST',
 			mode: 'cors',
 			headers: {
@@ -70,7 +76,30 @@ export default {
 					};
 
 					return res.json();
-				})
+				});
+	},
+	newItem: (item, itemType) => {
+		const token = getCookie('token');
+    if (!token || token === 'undefined') {
+    	return Promise.resolve({ message: 'You are not logged in.'});
+    };
+	
+		return fetch(baseUrl + '/' + itemType, {
+			method: 'POST',
+			mode: 'cors',
+			headers: {
+				'Content-Type': 'application/json',
+				'x-auth-token': token,
+			},
+			body: JSON.stringify(item),
+			})
+				.then(async res => {
+					if (res.status !== 200) {
+						throw new Error(res.status + ' ' + await res.text());
+					};
+
+					return res.json();
+				});
 	},
 	// getMyShelves: filter => { 'http://localhost:8080/api/users/me' },
 

@@ -11,18 +11,25 @@ router.post('/', async (req, res) => {
   if (error) return res.status(400).json(error.details[0].message);
 
   let user = await User.findOne({ email: req.body.email });
-  if (!user) return res.status(400).json({ message: 'Invalid email or password.'});
+  if (!user) return res.status(400).json({ message: 'Invalid email or password.' });
 
   const validPass = await bcrypt.compare(req.body.password, user.password);
-  if (!validPass) return res.status(400).json({ message: 'Invalid email or password.'});
+  if (!validPass) return res.status(400).json({ message: 'Invalid email or password.' });
 
 	const token = user.generateAuthToken();
-  res.status(200).json({ token, firstName: user.firstName});
+  res.status(200).json({ token, firstName: user.firstName });
 });
 
 // LOGIN W TOKEN (prevents the splash page from disappearing if invalid token)
 router.get('/', auth, async (req, res) => {
-  res.status(200).json({ message: 'Welcome back!'});
+	const token = req.headers['x-auth-token'];
+	const firstName = req.user.firstName;
+
+	res.status(200).json({
+		token,
+		firstName,
+		message: 'Welcome back!',
+	});
 });
 
 module.exports = router;
