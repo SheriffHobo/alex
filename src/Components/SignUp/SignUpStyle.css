@@ -41,11 +41,13 @@ body {
     color: #49494b!important;
     line-height: .1!important;
     padding-left: .5rem !important;
+    transform: translateY(10px) !important;
   }
 
   .input-field>label.active {
     color: #49494b!important;
     line-height: 1!important;
+    transform: translateY(-14px) !important;
   }
 
   input:focus {

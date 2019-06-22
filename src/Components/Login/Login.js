@@ -48,7 +48,7 @@ const Login = React.memo(props => {
                       props.logIn({ email, password });
                     }}
                   >
-                    Login
+                    <Link to="/me">Login</Link>
                   </button>
                 </Link>
 

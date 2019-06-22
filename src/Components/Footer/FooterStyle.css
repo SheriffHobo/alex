@@ -17,6 +17,8 @@ html {
 #dropdown1 {
   background-color: #49494B;
   color: #D1BFA7;
+  min-height: 260px;
+  max-height: 260px;
 }
 
 #footnav {
@@ -28,28 +30,28 @@ html {
   justify-content: space-between;
 }
 
-input#search {
-  align-self: center;
-  margin-bottom: 10px!important;
-}
-
-#search {
-  width: 175px;
-}
-
-#search::placeholder {
-  color: #49494B;
-}
-
-i {
+.material-icons {
   color: #bd8c7d;
-}
-
-.input-field>label {
-  transform: translateY(0px) !important;
 }
 
 div.input-field {
   max-width: 200px;
   min-width: 200px;
+}
+
+.dropdown-content {
+  min-width: 200px!important;
+  max-width: 200px!important;
+}
+
+li {
+  min-height: 30px!important;
+  max-height: 30px!important;
+  padding: 5px 0px 0px 5px!important;
+}
+
+a {
+  min-height: 30px!important;
+  max-height: 30px!important;
+  padding: 0px 0px 0px 0px!important;
 }

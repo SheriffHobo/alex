@@ -10,10 +10,6 @@
     justify-content: center;
   }
 
-  #newshelfbtn {
-    color: #bd8c7d;
-  }
-
   #headnav {
     display: flex;
     width: 700px;
@@ -31,4 +27,15 @@
   h5 {
     font-family: 'Cormorant SC', serif;
     margin: 0 auto!important;
-  }         
+  }
+
+  #logouticon {
+    min-width: 20px;
+    margin-left: 5px;
+  }
+
+  .Header-text2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
