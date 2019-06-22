@@ -13,9 +13,15 @@ class Card extends Component {
 
                         <div className="card-image">
                         <img src="THIS IS WHAT IS PULLED IN FROM THE API CALL"></img>
+                        {/* OR */}
+                        {/* DIV that holds the user uploaded picture */}
+
+                        {/* maybe an overlay? */}
                         <span className="card-title">THIS SHOULD BE THE ITEM NAME</span>
+
                         {/* THIS ICON IS A BUTTON TO ADD TO YOUR PERSONAL SHELF */}
                         <a className="btn-floating halfway-fab waves-effect waves-light red"><i className="material-icons">add</i></a>
+
                         {/* THIS BUTTON IS THE LIKE BUTTON */}
                         <a className="btn-floating halfway-fab waves-effect waves-light red"><i className="material-icons">add</i></a>
                         </div>

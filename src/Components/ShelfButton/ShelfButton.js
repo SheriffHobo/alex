@@ -11,7 +11,7 @@ class ShelfButton extends Component {
             <div className="row">
                 <div className="col xl2">
                     {/* Thumbnail of first image on shelf 39x39 size OR... */}
-                    <i className="material-icons defaulticon">photo_album</i>
+                    <img src="/pictures/stampicon.png" id="stamp"></img>
                 </div>
                 <div className="col xl8">
                     <h6 className="shelftitle">-25- Character Titles</h6>

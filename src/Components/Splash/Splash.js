@@ -5,7 +5,7 @@ const Splash = React.memo(props => {
 	return (
 		
 		<div id="splash">
-			<img src="../AlexBook.png" alt=""></img>
+			<img src="../pictures/AlexBook.png" alt=""></img>
 			<p>What's in your Library?</p>
 		</div>
 		
