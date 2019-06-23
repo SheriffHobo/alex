@@ -14,6 +14,9 @@ const itemSchema = new mongoose.Schema({
   paid: {
     type: Number,
   },
+  soldFor: {
+    type: Number,
+  },
   shelf: {                // associated shelf
     type: mongoose.Schema.Types.ObjectId,
   },
@@ -96,13 +99,13 @@ function validate(item) {
     name: Joi.string().max(127).required(),
     description: Joi.string().max(4095),
     paid: Joi.number(),
+    soldFor: Joi.number(),
     shelf: Joi.objectId(),
     categoryName: Joi.string().max(127),
     categoryId: Joi.objectId(),
     customCategory: Joi.string().max(127),
     private: Joi.boolean(),
     nsfw: Joi.boolean(),
-    image: Joi.string().max(127),
     specs: Joi.object(), // https://github.com/hapijs/joi/blob/v16.0.0-rc2/API.md#joiobjectschema-notation
     quantity: Joi.number(),
     currentlyOwn: Joi.boolean(),

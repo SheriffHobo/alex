@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 const seed = require('./seeds');
 const { User } = require('../models/user');
+const { Category } = require('../models/category');
+const { Shelf } = require('../models/shelf');
+const { Item } = require('../models/item');
 
 const dbName = process.env.DB_NAME;
 
