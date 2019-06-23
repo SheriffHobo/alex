@@ -31,6 +31,9 @@ const itemSchema = new mongoose.Schema({
     type: String,
     maxLength: 127,
   },
+  userId: {               // copy category to item as well
+    type: mongoose.Schema.Types.ObjectId,
+  },
   private: {              // true = invisible to public
     type: Boolean,
     required: true,
@@ -114,6 +117,7 @@ function validate(item) {
     masterItemId: Joi.string().max(1023),
     masterItemSource: Joi.string().max(1023),
     masterItemLink: Joi.string().max(1023),
+    userId: Joi.objectId(),
   };
 
   return Joi.validate(item, schema);

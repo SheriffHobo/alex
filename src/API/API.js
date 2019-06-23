@@ -1,4 +1,4 @@
-import { getCookie } from '../API/cookies';
+import { getCookie, tokenCheck } from '../API/cookies';
 const baseUrl = 'http://localhost:8080/api';
 
 // == DOCUMENTATION ==
@@ -127,7 +127,32 @@ export default {
 				return res.json();
 			});
 	},
-	// getMyShelves: filter => { 'http://localhost:8080/api/users/me' },
+	getShelvesByUserId: userId => {
+		if (!userId) {
+    	return Promise.resolve({ message: 'User ID missing.' });
+    };
+
+    const token = getCookie('token');
+    if (!token || token === 'undefined') {
+    	return Promise.resolve({ message: 'You are not logged in.'});
+    };
+
+		return fetch(baseUrl + '/shelves/' + userId, {
+			method: 'GET',
+			mode: 'cors',
+			headers: {
+				'Content-Type': 'application/json',
+				'x-auth-token': token,
+			},
+		})
+			.then(async res => {
+				if (res.status !== 200) {
+					throw new Error(res.status + ' ' + await res.text());
+				};
+
+				return res.json();
+			});
+	},
 
 	// PUBLIC
 	// searchShelves: filter => {},

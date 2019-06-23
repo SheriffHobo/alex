@@ -2,7 +2,7 @@ const { User } = require('../models/user');
 const { Category } = require('../models/category');
 const { Shelf } = require('../models/shelf');
 const { Item } = require('../models/item');
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
 async function seedUsers() {

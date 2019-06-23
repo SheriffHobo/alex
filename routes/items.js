@@ -6,13 +6,13 @@ const router = express.Router();
 router.get('/', auth, async (req, res) => {
   const user = await User.findById(req.user._id).select('-password');
   
-  res.send(user);
+  res.status(200).json(user);
 });
 
-router.post('/', async (req, res) => {
+router.post('/', auth, async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
-
+// ADD USERID
   item = new Item({
     name: req.body.name,
     description: req.body.description,
@@ -32,6 +32,7 @@ router.post('/', async (req, res) => {
     masterItemId: req.body.masterItemId,
     masterItemSource: req.body.masterItemSource,
     masterItemLink: req.body.masterItemLink,
+    userId: mongoose.Types.ObjectId(req.user._id),
   });
 
   const salt = await bcrypt.genSalt(10);
@@ -39,7 +40,7 @@ router.post('/', async (req, res) => {
   await user.save();
 
   const token = user.generateAuthToken();
-  res.header('x-auth-token', token).send({ firstName: user.firstName });
+  res.header('x-auth-token', token).status(200).json({ firstName: user.firstName });
 });
 
 module.exports = router;

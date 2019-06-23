@@ -20,4 +20,13 @@ function setCookies(cookies) {
 	};
 }
 
-export { getCookie, setCookies };
+function tokenCheck() {
+  const token = getCookie('token');
+  
+  return (token || token !== 'undefined')
+  // {
+  //   return { message: 'You are not logged in.'};
+  // };
+}
+
+export { getCookie, setCookies, tokenCheck };

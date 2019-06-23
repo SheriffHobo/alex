@@ -6,11 +6,13 @@ const router = express.Router();
 
 // mutual following should make users friends?
 
+// test with malformed objectIds
+
 // USER PROFILE
 router.get('/me', auth, async (req, res) => {
   const user = await User.findById(req.user._id).select('-password');
   
-  res.json(user);
+  res.status(200).json(user);
 });
 
 // SEARCH USERS

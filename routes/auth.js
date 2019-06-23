@@ -28,7 +28,6 @@ router.get('/', auth, async (req, res) => {
 	res.status(200).json({
 		token,
 		firstName,
-		message: 'Welcome back!',
 	});
 });
 
