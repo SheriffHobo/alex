@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
-import { getCookie, setCookies } from './API/cookies';
+import { setCookies } from './API/cookies';
 import Home from './Components/Home/Home';
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
@@ -30,14 +30,8 @@ function App() {
     // any other pre-login startup code goes here
 
     // need valid token to make splash go away
-    const token = getCookie('token');
-    if (!token || token === 'undefined') return;
-
-    const firstName = getCookie('firstName');
-    if (!firstName || firstName === 'undefined') return;
-
-    API.loginWithToken(token)
-      .then(result => completeLogIn({ firstName, message: result.message }))
+    API.loginWithToken()
+      .then(result => completeLogIn(result))
       .catch(err => console.error(err));
   }, []);
 

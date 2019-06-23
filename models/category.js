@@ -9,12 +9,14 @@ const categorySchema = new mongoose.Schema({
   },
   description: {
     type: String,
-    maxLength: 4095,
+    maxLength: 511,
   },
-  nsfw: {
-    type: Boolean,
-    default: false,
-  },
+  subcategories: [
+    {
+      type: String,
+      maxLength: 127,
+    },
+  ],
   image: {
     type: String,       // URL !!!just use image from first object
     maxLength: 1023,
@@ -27,13 +29,13 @@ const categorySchema = new mongoose.Schema({
 
 const Category = mongoose.model('Category', categorySchema);
 
-function validate(category) {
-  const schema = {
+// function validate(category) {
+//   const schema = {
 
-  };
+//   };
 
-  return Joi.validate(category, schema);
-}
+//   return Joi.validate(category, schema);
+// }
 
 exports.Category = Category;
-exports.validate = validate;
+// exports.validate = validate;

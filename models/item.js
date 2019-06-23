@@ -14,6 +14,9 @@ const itemSchema = new mongoose.Schema({
   paid: {
     type: Number,
   },
+  soldFor: {
+    type: Number,
+  },
   shelf: {                // associated shelf
     type: mongoose.Schema.Types.ObjectId,
   },
@@ -27,6 +30,9 @@ const itemSchema = new mongoose.Schema({
   customCategory: {       // user defined category if desired isn't in presets
     type: String,
     maxLength: 127,
+  },
+  userId: {               // copy category to item as well
+    type: mongoose.Schema.Types.ObjectId,
   },
   private: {              // true = invisible to public
     type: Boolean,
@@ -96,13 +102,13 @@ function validate(item) {
     name: Joi.string().max(127).required(),
     description: Joi.string().max(4095),
     paid: Joi.number(),
+    soldFor: Joi.number(),
     shelf: Joi.objectId(),
     categoryName: Joi.string().max(127),
     categoryId: Joi.objectId(),
     customCategory: Joi.string().max(127),
     private: Joi.boolean(),
     nsfw: Joi.boolean(),
-    image: Joi.string().max(127),
     specs: Joi.object(), // https://github.com/hapijs/joi/blob/v16.0.0-rc2/API.md#joiobjectschema-notation
     quantity: Joi.number(),
     currentlyOwn: Joi.boolean(),
@@ -111,6 +117,7 @@ function validate(item) {
     masterItemId: Joi.string().max(1023),
     masterItemSource: Joi.string().max(1023),
     masterItemLink: Joi.string().max(1023),
+    userId: Joi.objectId(),
   };
 
   return Joi.validate(item, schema);

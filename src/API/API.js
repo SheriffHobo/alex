@@ -1,3 +1,6 @@
+import { getCookie, tokenCheck } from '../API/cookies';
+const baseUrl = 'http://localhost:8080/api';
+
 // == DOCUMENTATION ==
 // credentials:
 // 	email and password
@@ -18,61 +21,138 @@ export default {
 			return Promise.resolve({ message: 'You are already logged in.'});
 		};
 	
-		return fetch('http://localhost:8080/api/auth', {
+		return fetch(baseUrl + '/auth', {
 			method: 'POST',
 			mode: 'cors',
 			headers: {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify(credentials),
-			})
-				.then(async res => {
-					if (res.status !== 200) {
-						throw new Error(res.status + ' ' + await res.text());
-					};
-					
-					return res.json();
-				})
+		})
+			.then(async res => {
+				if (res.status !== 200) {
+					throw new Error(res.status + ' ' + await res.text());
+				};
+				
+				return res.json();
+			});
 	},
-	loginWithToken: token => {
-		return fetch('http://localhost:8080/api/auth', {
+	loginWithToken: () => {
+		const token = getCookie('token');
+    if (!token || token === 'undefined') return Promise.resolve();
+
+		return fetch(baseUrl + '/auth', {
 			method: 'GET',
 			mode: 'cors',
 			headers: {
 				'Content-Type': 'application/json',
 				'x-auth-token': token,
 			},
-			})
-				.then(async res => {
-					if (res.status !== 200) {
-						throw new Error(res.status + ' ' + await res.text());
-					};
+		})
+			.then(async res => {
+				if (res.status !== 200) {
+					throw new Error(res.status + ' ' + await res.text());
+				};
 
-					return res.json();
-				})
+				return res.json();
+			});
 	},
 	signUp: user => {
 		if (document.cookie) {
 			return Promise.resolve({ message: 'You are already logged in.'});
 		};
 	
-		return fetch('http://localhost:8080/api/users', {
+		return fetch(baseUrl + '/users', {
 			method: 'POST',
 			mode: 'cors',
 			headers: {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify(user),
-			})
-				.then(async res => {
-					if (res.status !== 200) {
-						throw new Error(res.status + ' ' + await res.text());
-					};
+		})
+			.then(async res => {
+				if (res.status !== 200) {
+					throw new Error(res.status + ' ' + await res.text());
+				};
 
-					return res.json();
-				})
+				return res.json();
+			});
 	},
-	// getMyShelves: filter => { 'http://localhost:8080/api/users/me' },
+	newItem: (item, itemType) => {
+		const token = getCookie('token');
+    if (!token || token === 'undefined') {
+    	return Promise.resolve({ message: 'You are not logged in.'});
+    };
+	
+		return fetch(baseUrl + '/' + itemType, {
+			method: 'POST',
+			mode: 'cors',
+			headers: {
+				'Content-Type': 'application/json',
+				'x-auth-token': token,
+			},
+			body: JSON.stringify(item),
+		})
+			.then(async res => {
+				if (res.status !== 200) {
+					throw new Error(res.status + ' ' + await res.text());
+				};
+
+				return res.json();
+			});
+	},
+	searchByName: name => {
+		if (!name) {
+    	return Promise.resolve({ message: 'Please enter a search term.' });
+    };
+
+    const token = getCookie('token');
+    if (!token || token === 'undefined') {
+    	return Promise.resolve({ message: 'You are not logged in.'});
+    };
+
+		return fetch(baseUrl + '/users/search?name=' + name, {
+			method: 'GET',
+			mode: 'cors',
+			headers: {
+				'Content-Type': 'application/json',
+				'x-auth-token': token,
+			},
+		})
+			.then(async res => {
+				if (res.status !== 200) {
+					throw new Error(res.status + ' ' + await res.text());
+				};
+
+				return res.json();
+			});
+	},
+	getShelvesByUserId: userId => {
+		if (!userId) {
+    	return Promise.resolve({ message: 'User ID missing.' });
+    };
+
+    const token = getCookie('token');
+    if (!token || token === 'undefined') {
+    	return Promise.resolve({ message: 'You are not logged in.'});
+    };
+
+		return fetch(baseUrl + '/shelves/' + userId, {
+			method: 'GET',
+			mode: 'cors',
+			headers: {
+				'Content-Type': 'application/json',
+				'x-auth-token': token,
+			},
+		})
+			.then(async res => {
+				if (res.status !== 200) {
+					throw new Error(res.status + ' ' + await res.text());
+				};
+
+				return res.json();
+			});
+	},
 
 	// PUBLIC
 	// searchShelves: filter => {},
