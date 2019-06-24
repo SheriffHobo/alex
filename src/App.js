@@ -9,18 +9,18 @@ import Login from './Components/Login/Login';
 import SignUp from './Components/SignUp/SignUp';
 import NewShelf from './Components/NewShelf/NewShelf';
 import Search from './Components/Search/Search';
-// import Chat from './Components/Chat/Chat';
+import Chat from './Components/Chat/Chat';
 import './App.css';
 import 'materialize-css/dist/css/materialize.min.css';
 import M from "materialize-css";
 import API from './API/API';
 
 function App() {
-  const [ firstName, setFirstName ] = useState('');
-  const [ loggedIn, setLoggedIn ] = useState(false);
-  const [ showSplash, setShowSplash ] = useState(true);
+  const [firstName, setFirstName] = useState('');
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [showSplash, setShowSplash] = useState(true);
 
-  useEffect(() => {    
+  useEffect(() => {
     setTimeout(() => {
       setShowSplash(false);
     }, 1500);
@@ -39,7 +39,7 @@ function App() {
     if (!(credentials.email && credentials.password)) {
       return alert('Please enter your email and password');
     };
-    
+
     API.login(credentials)
       .then(result => completeLogIn(result))
       .catch(err => console.error(err));
@@ -88,7 +88,7 @@ function App() {
             <Route path="/me" exact component={Home} />
             <Route path="/search" exact component={Search} />
             <Route path="/newshelf" exact component={NewShelf} />
-            {/* <Route path="/chat" exact component={Chat} /> */}
+            <Route path="/chat" exact component={Chat} />
             <Route
               path="/login"
               exact
