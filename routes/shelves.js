@@ -79,7 +79,7 @@ async function queryAndSend(query, limit, findOne) {
 router.post('/', async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).json(error.details[0].message);
-// ADD USERID
+
   shelf = new Shelf({
     name: req.body.name,
 		description: req.body.description,

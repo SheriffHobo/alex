@@ -74,13 +74,7 @@ const itemSchema = new mongoose.Schema({
     maxLength: 127,
   }],
   // comments: [{}],         // MVP ignore; requires another collection
-  masterItemId: {         // ID used to find master item from 3rd party API
-    type: String,
-  },
-  masterItemSource: {     // which API to use to find master item
-    type: String,
-  },
-  masterItemLink: {       // direct link to page where master item lives
+  masterItemLink: {       // direct link to page where master item lives, serves as id
     type: String,
   },
   deleted: {              // hides item, marks for deletion
@@ -114,8 +108,6 @@ function validate(item) {
     currentlyOwn: Joi.boolean(),
     image: Joi.string().max(1023),
     tags: Joi.array().items(Joi.string().max(127)),
-    masterItemId: Joi.string().max(1023),
-    masterItemSource: Joi.string().max(1023),
     masterItemLink: Joi.string().max(1023),
     userId: Joi.objectId(),
   };
