@@ -1,0 +1,32 @@
+div.card {
+    min-width: 300px;
+    max-width: 300px;
+    min-height: 300px;
+    max-height: 300px;
+    margin: 0px auto;
+    background-color: silver;
+    border: 1px solid #49494b;
+}
+
+div.card-image {
+    max-height: 200px;
+    min-height: 200px;
+    overflow: hidden;
+}
+
+img.custom {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+    right: -9999px;
+    bottom: -9999px;
+    margin: auto;
+}
+
+div.row {
+    margin: 0px 5px 0px 5px;
+}
+
+div.card-action {
+    background-color: #49494b!important;
+}

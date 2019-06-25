@@ -24,47 +24,51 @@ body {
     overflow: auto;
   }
 
-  .shelftitle {
+  .btntitle {
     width: 215px;
-    margin: 9px 20px 0px 0px;
+    margin: 9px 22px 0px 0px;
+}
+
+div.col.xl2 {
+  align-self: center;
 }
 
   img#stamp {
-    min-height: 24px;
-    max-height: 24px;
-    min-width: 24px;
-    margin: 8px 3px 0px 5px;
+    min-height: 22px;
+    max-height: 22px;
+    min-width: 22px;
+    margin: 0px 5px 0px 5px;
   }
 
-.shelftitle {
-    width: 215px;
-    margin: 9px 20px 0px 0px;
-}
-
-.arrowicon {
+.searchicon {
   color: #bd8c7d;
-  margin: 5px 3px 0px 0px;
-  font-size: 30px;
-  float: right;
 }
 
-.searchbox {
-  position: absolute; 
-  bottom: 0;
+div.searchbox {
+  display: flex;
   background-color: #49494b;
   color: #d1bfa7;
   max-height: 40px;
   min-height: 40px;
-  max-width: 310px;
-  min-width: 310px;
-  margin: 1px 0px 1px 0px;
+  max-width: 300px;
+  min-width: 300px;
+  margin: -15px 5px -13px;
 }
 
 .placeholder {
   font-family: 'Montserrat', sans-serif!important;
 }
 
-div.input-field.search-box {
-  min-width: 290px;
-  margin: 7px 0px 0px 6px;
+input {
+  max-width: 280px;
+  min-width: 280px;
+  margin: -7px 0px 0px 6px!important;
+}
+
+div.searchbox01 {
+  display: none;
+}
+
+div.collectablelist {
+  margin: 13px 0px 0px auto;
 }
