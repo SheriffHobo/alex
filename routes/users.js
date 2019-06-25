@@ -23,8 +23,8 @@ router.get('/search', auth, async (req, res) => {
   const users = await User
     .find({
       '$or': [
-        {firstName: name},
-        {lastName: name},
+        { firstName: name },
+        { lastName: name },
       ],
     })
     .select('firstName thumbnail _id');
