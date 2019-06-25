@@ -1,41 +1,42 @@
 import React, { useState, useEffect } from 'react';
-import io from "socket.io";
+// import io from "socket.io";
+
 const Chat = React.memo(props => {
-	const [username, setUsername] = useState('');
-	const [message, setMessage] = useState('');
-	const [socket, setSocket] = useState('');
+	const [ name, setName ] = useState('');
+	const [ message, setMessage ] = useState('');
+	const [ socket, setSocket ] = useState('');
+	const [ conversation, setConversation ] = useState([]);
 
-	useEffect(() => {
-		setSocket(io.connect("http://localhost"));
-	}, []);
+	// useEffect(() => {
+	// 	setSocket(io.connect("http://localhost:4000"));
+	// }, []);
 
-	let conversation = [];
+	// socket.on("messageSend", data => {
+	// 	if (data.length) {
+	// 		const conversation = data.map(message => {
+	// 			return (
+	// 				<div className="chat-message">
+	// 					{message.name + ": " + message.message}
+	// 				</div>
+	// 			);
+	// 		});
 
-	socket.on("messageSend", data => {
-		if (data.length) {
-			conversation = data.map(message => {
-				return (
-					<div className="chat-message">
-						{message.name + ": " + message.message}
-					</div>
-				);
-			});
+	// 		setConversation(conversation);
+	// 		setMessage('');
+	// 	}
+	// });
 
-			setMessage('');
-		}
-	});
+	// const clear = () => {
+	// 	socket.emit('clear');
+	// }
 
-	const clear = () => {
-		socket.emit('clear');
-	}
-
-	socket.on('cleared', () => {
-		conversation = [];
-	});
+	// socket.on('cleared', () => {
+	// 	setConversation([]);
+	// });
 
 	return (
 		<div className="container">
-			<div className="row">
+			{/*<div className="row">
 				<div className="col-md-6 offset-md-3 col-sm-12">
 					<h1 className="text-center">
 						Alex Chat
@@ -54,8 +55,8 @@ const Chat = React.memo(props => {
 							id="username"
 							className="form-control"
 							placeholder="Enter name..."
-							value={username}
-							onChange={e => setUsername(e.target.value)}
+							value={name}
+							onChange={e => setName(e.target.value)}
 						/>
 						<br />
 						<div className="card">
@@ -64,7 +65,7 @@ const Chat = React.memo(props => {
 								className="card-block"
 								style={{ height: '50vh' }}
 							/>
-							{conversations}
+							{conversation}
 						</div>
 						<br />
 						<textarea
@@ -72,22 +73,22 @@ const Chat = React.memo(props => {
 							className="form-control"
 							placeholder="Enter message."
 							value={message}
-							onChange={e => setUsername(e.target.value)}
+							onChange={e => setName(e.target.value)}
 							onKeyDown={e => {
 								if (e.which === 13 && e.shiftKey === false) {
 									//Emit to server input
 									socket.emit("outputMsg", {
-										name: username.value,
-										message: textarea.value
+										name: name,
+										message,
 									});
 
-									event.preventDefault();
+									e.preventDefault();
 								}
 							}}
 						/>
 					</div>
 				</div>
-			</div>
+			</div>*/}
 		</div>
 	);
 });
