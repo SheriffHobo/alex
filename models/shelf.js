@@ -25,6 +25,10 @@ const shelfSchema = new mongoose.Schema({
   userId: {               // copy category to item as well
     type: mongoose.Schema.Types.ObjectId,
   },
+  firstName: {
+    type: String,
+    maxLength: 127,
+  },
   private: {              // true = invisible to public
     type: Boolean,
     default: false,
@@ -69,6 +73,7 @@ function validate(shelf) {
     nsfw: Joi.boolean(),
     image: Joi.string().max(1023),
     userId: Joi.objectId(),
+    firstName: Joi.string().max(127),
   };
 
   return Joi.validate(shelf, schema);

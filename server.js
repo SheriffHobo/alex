@@ -19,6 +19,5 @@ require('./startup/prod')(app);
 // });
 // app.use(express.static("public"));
 
-
 const port = process.env.PORT || 8080;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
