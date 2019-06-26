@@ -4,6 +4,7 @@ import {Component} from 'react';
 import M from 'materialize-css';
 import './SearchStyle.css';
 import Card from '../Card/Card';
+import UserSearchTest from '../UserSearchTest';
 
 const Search = React.memo(props => {
   const [ searchTerm, setSearchTerm ] = useState('');
@@ -42,22 +43,12 @@ const Search = React.memo(props => {
           </div>
       </div>
         {searchType === 'users' && <ul className='searchbox01'>
-            <div className="searchbox">
-              <div className="input-field search-box">
-                <input
-                  type="search"
-                  required
-                  placeholder="Enter Search Term"
-                  value={searchTerm}
-                  onChange={e => setSearchTerm(e.target.value)}
-                />
-              </div>
-            </div>
-            <div className="resultlist">
+        <UserSearchTest />
+            {/* <div className="resultlist">
                 <div className="userbuttons">
                   {cards}
                 </div>
-              </div>
+              </div> */}
           </ul>}
 
           <div className="userresult" onClick={() => setSearchType(searchType !== 'shelves' ? 'shelves' : undefined)}>
