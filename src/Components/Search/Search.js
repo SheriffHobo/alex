@@ -73,7 +73,7 @@ const Search = React.memo(props => {
             </div>
           </ul>}
 
-          <div className="userresult" onClick={() => setSearchType(searchType !== 'collectables' ? 'collectables' : undefined)}>
+          <div className="collectableresult" onClick={() => setSearchType(searchType !== 'collectables' ? 'collectables' : undefined)}>
           <div className="col xl2">
               <i className="small material-icons">account_box</i>
           </div>

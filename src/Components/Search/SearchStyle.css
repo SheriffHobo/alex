@@ -33,12 +33,12 @@ div.col.xl2 {
   align-self: center;
 }
 
-  img#stamp {
-    min-height: 22px;
-    max-height: 22px;
-    min-width: 22px;
-    margin: 0px 5px 0px 5px;
-  }
+img#stamp {
+  min-height: 22px;
+  max-height: 22px;
+  min-width: 22px;
+  margin: 0px 5px 0px 5px;
+}
 
 .searchicon {
   color: #bd8c7d;
@@ -50,9 +50,9 @@ div.searchbox {
   color: #d1bfa7;
   max-height: 40px;
   min-height: 40px;
-  max-width: 300px;
-  min-width: 300px;
-  margin: -15px 5px -13px;
+  max-width: 305px;
+  min-width: 305px;
+  margin: -15px 2px -13px;
 }
 
 .placeholder {
@@ -60,9 +60,9 @@ div.searchbox {
 }
 
 input {
-  max-width: 280px;
-  min-width: 280px;
-  margin: -7px 0px 0px 6px!important;
+  max-width: 290px;
+  min-width: 290px;
+  margin: -8px 0px 0px 4px!important;
 }
 
 div.searchbox01 {
@@ -71,4 +71,16 @@ div.searchbox01 {
 
 div.collectablelist {
   margin: 13px 0px 0px auto;
+}
+
+div.searchmain {
+  overflow: auto;
+}
+
+div.card-reveal {
+  padding: 10px!important;
+}
+
+div.card-title {
+  margin: 20px 0px 0px 0px!important;
 }

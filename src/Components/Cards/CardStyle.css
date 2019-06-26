@@ -1,32 +1,34 @@
 div.card {
-    min-width: 300px;
-    max-width: 300px;
-    min-height: 300px;
-    max-height: 300px;
-    margin: 0px auto;
+    margin: 0px 0px -15px 0px;
     background-color: silver;
-    border: 1px solid #49494b;
 }
 
-div.card-image {
-    max-height: 200px;
-    min-height: 200px;
-    overflow: hidden;
+div.card-content {
+    background-color: #49494b;
+    padding: 0px 10px 10px 10px!important;
 }
 
-img.custom {
-    position: absolute;
-    top: -9999px;
-    left: -9999px;
-    right: -9999px;
-    bottom: -9999px;
-    margin: auto;
+span.card-title {
+    font-family: 'Cormorant SC', serif;
+    color: #d1bfa7;
+    margin: 5px 0px 0px 0px!important;
 }
 
-div.row {
-    margin: 0px 5px 0px 5px;
+span.card-title.activator {
+    margin: 0!important;
 }
 
-div.card-action {
-    background-color: #49494b!important;
+img.activator {
+    margin: 0 auto;
+    max-width: 310px!important;
+    max-height: 551px!important;
+}
+
+div.cardbtns {
+    display: flex;
+    justify-content: space-between;
+}
+
+i.material-icons.right {
+    margin: 0;
 }
