@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import {Component} from 'react';
 import "./ShelfButtonStyle.css";
 import M from 'materialize-css';
-import Cards from '../Cards/Cards'
+import Card from '../Card/Card'
 
 class ShelfButton extends Component {
 
@@ -29,22 +29,10 @@ class ShelfButton extends Component {
                 </div>
 
                 <div id='dropdown2' className='dropdown-content'>
-                    <div><Cards /></div>
-                    <div><Cards /></div>
-                    <div><Cards /></div>
-                    <div><Cards /></div>
-                    <div><Cards /></div>
+
                 </div>
 
             </div>
-
-                {/* <div id='dropdown2' className='dropdown-content'>
-                    <div><Cards /></div>
-                    <div><Cards /></div>
-                    <div><Cards /></div>
-                    <div><Cards /></div>
-                    <div><Cards /></div>
-                </div> */}
 
         </div>
     );
