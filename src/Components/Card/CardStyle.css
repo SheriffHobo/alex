@@ -1,11 +1,17 @@
 div.card {
     margin: 0px 0px -15px 0px;
     background-color: silver;
+    max-width: 310px;
 }
 
 div.card-content {
     background-color: #49494b;
     padding: 0px 10px 10px 10px!important;
+}
+
+div.card-text {
+    line-height: 1em;
+    padding: 1.8em 0 0 0;
 }
 
 span.card-title {
@@ -18,7 +24,7 @@ span.card-title.activator {
     margin: 0!important;
 }
 
-img.activator {
+img.card-image {
     margin: 0 auto;
     max-width: 310px!important;
     max-height: 551px!important;
