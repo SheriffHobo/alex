@@ -28,11 +28,13 @@ const UserSearchTest = React.memo(props => {
 	return (
 		<div>
 			<input
-				placeholder="search for user"
-				value={searchTerm}
-				onChange={e => setSearchTerm(e.target.value)}
-			/>
-			<button onClick={search}>search</button>
+					placeholder="search for user"
+					value={searchTerm}
+					onChange={e => setSearchTerm(e.target.value)}
+					className="material-icons searchicon small js" 
+					onClick={search}
+				/>
+				{/* <i className="material-icons searchicon small" onClick={search}>search</i> */}
 			{
 				users.map(user => {
 					return (
@@ -59,8 +61,6 @@ const UserSearchTest = React.memo(props => {
 					);
 				})
 			}
-			<hr />
-			<h5>search for and click Test user to see some shelves</h5>
 			{
 				shelves.map(shelf => {
 					return (
