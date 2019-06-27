@@ -1,13 +1,12 @@
-body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  #main {
-    max-width: 330px;
-    height: 220px;
-    background-color: #49494b !important;
+  main.login {
+    width: 310px;
+    height: 194px;
+    max-height: 100vh;
+    position: fixed;
+    top: 5vh;
+    bottom: 5vh;
+    margin: 1px 0px 0px -155px;
+    background-color: #49494b!important;
   }
 
   form {

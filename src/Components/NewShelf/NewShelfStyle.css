@@ -1,6 +1,11 @@
   main.valign-wrapper.newshelf {
     width: 310px;
     height: 154px;
+    max-height: 100vh;
+    position: fixed;
+    top: 5vh;
+    bottom: 5vh;
+    margin: 1px 0px 0px -155px;
     background-color: #49494b!important;
 }
 
@@ -20,6 +25,7 @@
     width: 170px;
     background-color: #49494b!important;
     margin: 10px auto;
+    border: none;
   }
 
   .input-field>label {

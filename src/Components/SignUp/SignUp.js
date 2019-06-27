@@ -4,20 +4,20 @@ import "./SignUpStyle.css";
 
 const SignUp = React.memo(props => {
 	const [ redirect, setRedirect ] = useState(false);
-	const [ firstName, setFirstName ] = useState('Albert');
-	const [ lastName, setLastName ] = useState('Einstein');
-	const [ email, setEmail ] = useState('Albert@hello.world');
-	const [ confEmail, setConfEmail ] = useState('Albert@hello.world');
-	const [ password, setPassword ] = useState('123@$ABCdef');
-	const [ confPassword, setConfPassword ] = useState('123@$ABCdef');
-	const [ country, setCountry ] = useState('United States');
-	const [ province, setProvince ] = useState('New Jersey');
-	const [ city, setCity ] = useState('Princeton');
+	const [ firstName, setFirstName ] = useState('');
+	const [ lastName, setLastName ] = useState('');
+	const [ email, setEmail ] = useState('');
+	const [ confEmail, setConfEmail ] = useState('');
+	const [ password, setPassword ] = useState('');
+	const [ confPassword, setConfPassword ] = useState('');
+	const [ country, setCountry ] = useState('');
+	const [ province, setProvince ] = useState('');
+	const [ city, setCity ] = useState('');
 
 	if (redirect) return <Redirect to='/' />;
 
 	return (
-		<main className="valign-wrapper">
+		<main className="valign-wrapper signup">
 			<div className="container align-center">
 				<div className="row">
 					<center>
@@ -152,7 +152,7 @@ const SignUp = React.memo(props => {
 								<button
 									type='submit'
 									name='btn_create'
-									className='btn_login btn-small'
+									className='btn_login btn-small waves-effect waves-light'
 									onClick={e => {
 										e.preventDefault();
 

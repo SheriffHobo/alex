@@ -3,19 +3,20 @@ import './SearchStyle.css';
 import UserSearchTest from '../UserSearchTest';
 import SearchAPIs from '../SearchAPIs/SearchAPIs';
 import SearchDB from '../SearchDB/SearchDB';
+
 const Search = React.memo(props => {
-  const [ searchTerm, setSearchTerm ] = useState('');
-  const [ searchType, setSearchType ] = useState();
+// const [ searchTerm, setSearchTerm ] = useState('');
+const [ searchType, setSearchType ] = useState();
 
   return (
     <div className="searchmain">
 
+{/* User Search Field */}
       <div className="userresult" onClick={() => setSearchType(searchType !== 'users' ? 'users' : undefined)}>
           <div className="col xl2">
               <i className="small material-icons accounticon">account_box</i>
           </div>
           <div className="col xl8">
-            {/* # = Total number of returned results */}
               <h6 className="btntitle">Users (#)</h6>
           </div>
           <div className="col xl2">
@@ -26,12 +27,12 @@ const Search = React.memo(props => {
         <SearchDB collection={'users'} />
           </ul>}
 
+{/* Audio Search Field */}
       <div className="collectableresult" onClick={() => setSearchType(searchType !== 'audio' ? 'audio' : undefined)}>
         <div className="col xl2">
-            <img src="/pictures/stampicon.png" id="stamp" alt=""></img>
+          <i class="material-icons small">radio</i>
         </div>
         <div className="col xl8">
-          {/* # = Total number of returned results */}
             <h6 className="btntitle">Collectables: Audio (#)</h6>
         </div>
           <div className="col xl2">
@@ -42,12 +43,12 @@ const Search = React.memo(props => {
         <SearchAPIs source='iTunesAudio' />
         </ul>}
 
+{/* Video Seaarch Field */}
         <div className="collectableresult" onClick={() => setSearchType(searchType !== 'video' ? 'video' : undefined)}>
         <div className="col xl2">
-            <img src="/pictures/stampicon.png" id="stamp" alt=""></img>
+          <i class="material-icons small">theaters</i>
         </div>
         <div className="col xl8">
-          {/* # = Total number of returned results */}
             <h6 className="btntitle">Collectables: Video (#)</h6>
         </div>
           <div className="col xl2">

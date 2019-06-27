@@ -7,7 +7,7 @@ const Login = React.memo(props => {
   const [ password, setPassword ] = useState('4RGYLE$sw3ater');
 
   return (
-    <main id="main" className="valign-wrapper">
+    <main className="valign-wrapper login">
       <div className="container align-center">
         <div className="row">
           <center>
@@ -42,7 +42,7 @@ const Login = React.memo(props => {
                   <button
                     type='submit'
                     name='btn_login'
-                    className='btn_login btn-small'
+                    className='btn_login btn-small waves-effect waves-light'
                     onClick={e => {
                       e.preventDefault();
                       props.logIn({ email, password });
@@ -55,7 +55,7 @@ const Login = React.memo(props => {
                 <button
                   type='submit'
                   name='btn_forgot'
-                  className='btn_forgot btn-small'
+                  className='btn_forgot btn-small waves-effect waves-light'
                 >
                   <Link to="/#">Forgot Password?</Link>
                 </button>
