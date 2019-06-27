@@ -1,12 +1,11 @@
-body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  main {
-    width: 330px;
-    height: 475px;
+  main.signup {
+    width: 310px;
+    height: 500px;
+    max-height: 100vh;
+    position: fixed;
+    top: 5vh;
+    bottom: 5vh;
+    margin: 1px 0px 0px -155px;
     background-color: #49494b!important;
 }
 
@@ -29,6 +28,7 @@ body {
   .input-field {
    min-width: 250px;
    max-width: 250px;
+   text-align: center;
   }
 
   .btn_create {
