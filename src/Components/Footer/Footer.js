@@ -28,7 +28,7 @@ class Footer extends Component {
               </ul>
               <Link to="/me"><i className="noselect small material-icons">home</i></Link>
               <Link to="/#"><i className="noselect small material-icons">add_circle</i></Link>
-              <Link to="/#"><i className="noselect small material-icons">chat</i></Link>
+              {/* <Link to="/#"><i className="noselect small material-icons">chat</i></Link> */}
               <Link to="/search"><i className="noselect small material-icons">search</i></Link>
         </div>
       </div>

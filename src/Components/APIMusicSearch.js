@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 // import API from '../API/API'; // use to create a new item from master item
 
-const APISearch = React.memo(props => {
+const APIMusicSearch = React.memo(props => {
 	const [ musicSearch, setMusicSearch ] = useState('');
-	const [ movieSearch, setMovieSearch ] = useState('');
 	const [ results, setResults ] = useState([]);
 
 	const searchMusic = () => {
@@ -13,14 +12,6 @@ const APISearch = React.memo(props => {
 		const params = "&entity=album";
 		
 		callAppleApi(baseUrl + musicSearch + params);
-	};
-
-	const searchMovies = () => {
-		if (!movieSearch) return;
-		const baseUrl = "https://itunes.apple.com/search?term=";
-		const params = "&entity=movie";
-
-		callAppleApi(baseUrl + movieSearch + params);
 	};
 
 	const callAppleApi = url => {
@@ -58,25 +49,18 @@ const APISearch = React.memo(props => {
 		);
 	});
 
-	// return (
-	// 	<>
-	// 		<hr />
-	// 		<h5>search for master items, ultimately be able to add link to item</h5>
-	// 		<input
-	// 			placeholder="search for music"
-	// 			value={musicSearch}
-	// 			onChange={e => setMusicSearch(e.target.value)}
-	// 		/>
-	// 		<button onClick={searchMusic}>search music</button>
-	// 		<input
-	// 			placeholder="search for movies"
-	// 			value={movieSearch}
-	// 			onChange={e => setMovieSearch(e.target.value)}
-	// 		/>
-	// 		<button onClick={searchMovies}>search movies</button>
-	// 		{items}
-	// 	</>
-	// );
+	return (
+		<>
+			<input
+				placeholder="search for music"
+				value={musicSearch}
+				onChange={e => setMusicSearch(e.target.value)}
+			/>
+			<button onClick={searchMusic}>Search Music</button>
+			<button onClick={searchMusic}>Clear Results</button>
+			{items}
+		</>
+	);
 });
 
-export default APISearch;
+export default APIMusicSearch;

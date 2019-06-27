@@ -5,7 +5,8 @@ import M from 'materialize-css';
 import './SearchStyle.css';
 import Card from '../Card/Card';
 import UserSearchTest from '../UserSearchTest';
-
+import APIMusicSearch from '../APIMusicSearch';
+import APIVideoSearch from '../APIVideoSearch';
 const Search = React.memo(props => {
   const [ searchTerm, setSearchTerm ] = useState('');
   const [ searchType, setSearchType ] = useState();
@@ -44,19 +45,13 @@ const Search = React.memo(props => {
       </div>
         {searchType === 'users' && <ul className='searchbox01'>
         <UserSearchTest />
-            {/* <div className="resultlist">
-                <div className="userbuttons">
-                  {cards}
-                </div>
-              </div> */}
           </ul>}
 
-          <div className="userresult" onClick={() => setSearchType(searchType !== 'shelves' ? 'shelves' : undefined)}>
+          {/* <div className="userresult" onClick={() => setSearchType(searchType !== 'shelves' ? 'shelves' : undefined)}>
           <div className="col xl2">
               <i className="small material-icons">account_box</i>
           </div>
           <div className="col xl8">
-            {/* # = Total number of returned results */}
               <h6 className="btntitle">Users Shelves (#)</h6>
           </div>
           <div className="col xl2">
@@ -80,14 +75,13 @@ const Search = React.memo(props => {
                 {cards}
               </div>
             </div>
-          </ul>}
+          </ul>} */}
 
-          <div className="collectableresult" onClick={() => setSearchType(searchType !== 'collectables' ? 'collectables' : undefined)}>
+          {/* <div className="collectableresult" onClick={() => setSearchType(searchType !== 'collectables' ? 'collectables' : undefined)}>
           <div className="col xl2">
               <i className="small material-icons">account_box</i>
           </div>
           <div className="col xl8">
-            {/* # = Total number of returned results */}
               <h6 className="btntitle">Users Collectables (#)</h6>
           </div>
           <div className="col xl2">
@@ -111,7 +105,7 @@ const Search = React.memo(props => {
                 {cards}
               </div>
             </div>
-          </ul>}
+          </ul>} */}
 
       <div className="collectableresult" onClick={() => setSearchType(searchType !== 'audio' ? 'audio' : undefined)}>
         <div className="col xl2">
@@ -126,22 +120,7 @@ const Search = React.memo(props => {
           </div>
         </div>
         {searchType === 'audio' && <ul className='searchbox01'>
-          <div className="searchbox">
-            <div className="input-field search-box">
-              <input
-                type="search"
-                required
-                placeholder="Enter Search Term"
-                value={searchTerm}
-                onChange={e => setSearchTerm(e.target.value)}
-              />
-            </div>
-          </div>
-          <div className="resultlist">
-            <div className="collectablelist">
-              {cards}
-            </div>
-        </div>
+        <APIMusicSearch />
         </ul>}
 
         <div className="collectableresult" onClick={() => setSearchType(searchType !== 'video' ? 'video' : undefined)}>
@@ -157,22 +136,7 @@ const Search = React.memo(props => {
           </div>
         </div>
         {searchType === 'video' && <ul className='searchbox01'>
-          <div className="searchbox">
-            <div className="input-field search-box">
-              <input
-                type="search"
-                required
-                placeholder="Enter Search Term"
-                value={searchTerm}
-                onChange={e => setSearchTerm(e.target.value)}
-              />
-            </div>
-          </div>
-          <div className="resultlist">
-            <div className="collectablelist">
-              {cards}
-            </div>
-        </div>
+        <APIVideoSearch />
         </ul>}
 
       </div>

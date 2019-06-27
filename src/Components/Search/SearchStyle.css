@@ -59,7 +59,7 @@ div.searchbox {
   font-family: 'Montserrat', sans-serif!important;
 }
 
-input {
+input.searchpageinput {
   max-width: 290px;
   min-width: 290px;
   margin: -8px 0px 0px 4px!important;
@@ -84,7 +84,3 @@ div.card-reveal {
 div.card-title {
   margin: 20px 0px 0px 0px!important;
 }
-
-/* input>material-icons.searchicon.js {
-  
-} */
