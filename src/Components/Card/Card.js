@@ -26,9 +26,9 @@ const Card = React.memo(props => {
     );
   });
 
-  const name = props.name.length > 20
-    ? props.name.slice(0, 20) + '...'
-    : props.name;
+  const title = props.title.length > 20
+    ? props.title.slice(0, 20) + '...'
+    : props.title;
 
   return (
     <div className="row">
@@ -37,7 +37,7 @@ const Card = React.memo(props => {
           <img className="card-image materialboxed" src={props.image}></img>
         </div>
         <div className="card-content">
-          <span className="card-title activator">{name}<i className="material-icons right">more_vert</i></span>
+          <span className="card-title activator">{title}<i className="material-icons right">more_vert</i></span>
           <div className="cardbtns">
             <i className="material-icons small" alt="See this on the web">exit_to_app</i>
             <i className="material-icons small" alt="Add to one of your Shelves">add_circle</i>
@@ -46,7 +46,7 @@ const Card = React.memo(props => {
         </div>
         <div className="card-reveal">
           <div className="card-title">
-            Cthulhu
+            {title}
             <i className="material-icons small right">close</i>
           </div>
           <div className="card-text">{specs}</div>
