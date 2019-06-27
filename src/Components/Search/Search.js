@@ -109,7 +109,7 @@ const Search = React.memo(props => {
 
       <div className="collectableresult" onClick={() => setSearchType(searchType !== 'audio' ? 'audio' : undefined)}>
         <div className="col xl2">
-            <img src="/pictures/stampicon.png" id="stamp"></img>
+            <img src="/pictures/stampicon.png" id="stamp" alt=""></img>
         </div>
         <div className="col xl8">
           {/* # = Total number of returned results */}
@@ -125,7 +125,7 @@ const Search = React.memo(props => {
 
         <div className="collectableresult" onClick={() => setSearchType(searchType !== 'video' ? 'video' : undefined)}>
         <div className="col xl2">
-            <img src="/pictures/stampicon.png" id="stamp"></img>
+            <img src="/pictures/stampicon.png" id="stamp" alt=""></img>
         </div>
         <div className="col xl8">
           {/* # = Total number of returned results */}
