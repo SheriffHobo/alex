@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './SearchStyle.css';
 import UserSearchTest from '../UserSearchTest';
 import SearchAPIs from '../SearchAPIs/SearchAPIs';
-import APIVideoSearch from '../APIVideoSearch';
+import SearchDB from '../SearchDB/SearchDB';
 const Search = React.memo(props => {
   const [ searchTerm, setSearchTerm ] = useState('');
   const [ searchType, setSearchType ] = useState();
@@ -23,68 +23,8 @@ const Search = React.memo(props => {
           </div>
       </div>
         {searchType === 'users' && <ul className='searchbox01'>
-        <UserSearchTest />
+        <SearchDB collection={'users'} />
           </ul>}
-
-          {/* <div className="userresult" onClick={() => setSearchType(searchType !== 'shelves' ? 'shelves' : undefined)}>
-          <div className="col xl2">
-              <i className="small material-icons">account_box</i>
-          </div>
-          <div className="col xl8">
-              <h6 className="btntitle">Users Shelves (#)</h6>
-          </div>
-          <div className="col xl2">
-              <i className="material-icons searchicon small">search</i>
-          </div>
-        </div>
-        {searchType === 'shelves' && <ul className='searchbox01'>
-            <div className="searchbox">
-              <div className="input-field search-box">
-                <input
-                  type="search"
-                  required
-                  placeholder="Enter Search Term"
-                  value={searchTerm}
-                  onChange={e => setSearchTerm(e.target.value)}
-                />
-              </div>
-            </div>
-            <div className="resultlist">
-              <div className="userbuttons">
-                {cards}
-              </div>
-            </div>
-          </ul>} */}
-
-          {/* <div className="collectableresult" onClick={() => setSearchType(searchType !== 'collectables' ? 'collectables' : undefined)}>
-          <div className="col xl2">
-              <i className="small material-icons">account_box</i>
-          </div>
-          <div className="col xl8">
-              <h6 className="btntitle">Users Collectables (#)</h6>
-          </div>
-          <div className="col xl2">
-              <i className="material-icons searchicon small">search</i>
-          </div>
-        </div>
-        {searchType === 'collectables' && <ul className='searchbox01'>
-            <div className="searchbox">
-              <div className="input-field search-box">
-                <input
-                  type="search"
-                  required
-                  placeholder="Enter Search Term"
-                  value={searchTerm}
-                  onChange={e => setSearchTerm(e.target.value)}
-                />
-              </div>
-            </div>
-            <div className="resultlist">
-              <div className="collectablelist">
-                {cards}
-              </div>
-            </div>
-          </ul>} */}
 
       <div className="collectableresult" onClick={() => setSearchType(searchType !== 'audio' ? 'audio' : undefined)}>
         <div className="col xl2">

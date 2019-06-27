@@ -16,8 +16,8 @@ router.get('/me', auth, async (req, res) => {
 });
 
 // SEARCH USERS
-router.get('/search', auth, async (req, res) => {
-  if (!req.query.name) return res.status(400).json({ message: 'Please enter a search term' });
+router.get('/', auth, async (req, res) => {
+  if (!req.query.name) return res.status(400).json({ message: 'Sorry, Jack needs to fix this.' });
   
   const name = new RegExp(req.query.name, 'i');
   const users = await User

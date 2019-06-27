@@ -1,6 +1,7 @@
 const auth = require('../middleware/auth');
 const { Item, validate } = require('../models/item');
 const express = require('express');
+const mongoose = require('mongoose');
 const router = express.Router();
 
 router.get('/', auth, async (req, res) => {
@@ -17,32 +18,32 @@ router.get('/', auth, async (req, res) => {
 
   if (!req.user.allowNsfw) query.nsfw = false;
 
-  if (req.query.itemid) {
-    validateId(req.query.itemid, 'shelf');
-    query.itemId = mongoose.Types.ObjectId(req.query.itemid);
+  if (req.query.itemId) {
+    validateId(req.query.itemId, 'shelf');
+    query.itemId = mongoose.Types.ObjectId(req.query.itemId);
 
-    return queryAndSend(query, limit, true);
+    return queryAndSend(res, query, limit, true);
   };
 
-  if (req.query.shelfid) {
-    validateId(req.query.shelfid, 'shelf');
-    query.shelfId = mongoose.Types.ObjectId(req.query.shelfid);
+  if (req.query.shelfId) {
+    validateId(req.query.shelfId, 'shelf');
+    query.shelfId = mongoose.Types.ObjectId(req.query.shelfId);
 
-    return queryAndSend(query, limit, true);
+    return queryAndSend(res, query, limit, false);
   };
 
-  if (req.query.userid) {
-    validateId(req.query.userid, 'user');
-    query.userId = mongoose.Types.ObjectId(req.query.userid);
+  if (req.query.userId) {
+    validateId(req.query.userId, 'user');
+    query.userId = mongoose.Types.ObjectId(req.query.userId);
 
-    return queryAndSend(query, limit, true);
+    return queryAndSend(res, query, limit, false);
   };
 
-  if (req.query.categoryid) {
-    validateId(req.query.categoryid, 'category');
-    query.categoryId = mongoose.Types.ObjectId(req.query.categoryid);
+  if (req.query.categoryId) {
+    validateId(req.query.categoryId, 'category');
+    query.categoryId = mongoose.Types.ObjectId(req.query.categoryId);
 
-    return queryAndSend(query, limit, true);
+    return queryAndSend(res, query, limit, false);
   };
 
   if (req.query.search) {
@@ -51,7 +52,7 @@ router.get('/', auth, async (req, res) => {
     const search = new RegExp(req.query.search, 'i');
     query.$or.push({ name: search }, { description: search });
 
-    if (!req.query.category) return queryAndSend(query, limit, false);
+    if (!req.query.category) return queryAndSend(res, query, limit, false);
   };
 
   if (req.query.category) {
@@ -60,7 +61,7 @@ router.get('/', auth, async (req, res) => {
     const category = new RegExp(req.query.category, 'i');
     query.$or.push({ categoryName: category }, { customCategory: category });
 
-    return queryAndSend(query, limit, false);
+    return queryAndSend(res, query, limit, false);
   };
 
   return res.status(400).json({ message: 'Invalid shelf request' });
@@ -72,14 +73,14 @@ function validateId(id, type) {
   if (error) return res.status(400).json({ message: `Invalid ${type} ID.`});
 }
 
-async function queryAndSend(query, limit, findOne) {
-  if (!query.$or.length) delete query.$or;
+async function queryAndSend(res, query, limit, findOne) {
+  if (query.$or && !query.$or.length) delete query.$or;
 
-  const shelves = findOne
-    ? await Shelf.find(query).limit(limit)
-    : await Shelf.findOne(query);
+  const items = findOne
+    ? await Item.findOne(query)
+    : await Item.find(query).limit(limit);
 
-  res.status(200).json(shelves);
+  res.status(200).json(items);
 }
 
 

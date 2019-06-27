@@ -62,17 +62,18 @@ const APIMusicSearch = React.memo(props => {
 		const api = urls[props.source];
 		if (!api) return <div />;
 
-		const name = result[api.name(result)] || result[api.nameFallback(result)] || '';
-		const artist = result[api.artist(result)] || result[api.artistFallback(result)] || '';
-		const link = result[api.link(result)] || '';
-		const image = result[api.image(result)] || '';
+		const name = result[api.name(result)] || result[api.nameFallback(result)];
+		const artist = result[api.artist(result)] || result[api.artistFallback(result)];
+		const link = result[api.link(result)];
+		const image = result[api.image(result)];
 
 		return (
 			<Card
 				key={props.source + index}
-        item={result}
+        data={result}
         image={image}
         title={name + ' - ' + artist}
+        link={link}
       />
 		);
 	});
