@@ -1,14 +1,10 @@
   main.valign-wrapper.newshelf {
-    width: 330px;
-    height: 475px;
+    width: 310px;
+    height: 154px;
     background-color: #49494b!important;
 }
 
   form.valign-wrapper.newshelfform {
-    max-width: 300px;
-    min-width: 300px;
-    max-height: 550px;
-    min-height: 55px;
     background-color: silver;
     margin: 0px;
     padding:0px;
@@ -19,13 +15,8 @@
     transform: translateY(-50%) translateX(-50%);
     left:50%;
 }
-  
-  .input-field {
-   min-width: 250px;
-   max-width: 250px;
-  }
 
-  .btn_create {
+  .btn_createshelf {
     width: 170px;
     background-color: #49494b!important;
     margin: 10px auto;
@@ -51,6 +42,10 @@
     background-color: #e8e8e6!important;
     min-height: 25px;
     max-height: 25px;
+  }
+
+  input#shelftitle, input#shelfdesc {
+   margin: 0;
   }
 
   a {
