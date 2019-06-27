@@ -23,10 +23,10 @@ class NewShelf extends Component {
 
                             <div className='input-field'>
                                 <input  type='text' name='shelfdesc' id='shelfdesc' />
-                                <label for='shelftitle'>Description (50 Char Max)</label>
+                                <label for='shelfdesc'>Description (50 Char Max)</label>
                             </div>
                             
-                            <button type='submit' name='btn_createshelf' className='btn_createshelf btn-small'><Link to="/me">Create Shelf</Link></button>
+                            <button type='submit' name='btn_createshelf' className='btn_createshelf small'><Link to="/me">Create Shelf</Link></button>
                         </div>
                         </form>
                     </center>
