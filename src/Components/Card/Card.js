@@ -1,6 +1,4 @@
 import React, { useEffect } from 'react';
-import { Link } from "react-router-dom";
-import {Component} from 'react';
 import M from "materialize-css";
 import "./CardStyle.css";
 
@@ -15,8 +13,8 @@ const Card = React.memo(props => {
     return document.removeEventListener('DOMContentLoaded', todd);
   }, []);
 
-  const specs = Object.keys(props.item).map((key, index) => {
-    const value = props.item[key];
+  const specs = Object.keys(props.data).map((key, index) => {
+    const value = props.data[key];
 
     return (
       <div key={'card' + index}>
@@ -26,9 +24,27 @@ const Card = React.memo(props => {
     );
   });
 
-  const name = props.name.length > 20
-    ? props.name.slice(0, 20) + '...'
-    : props.name;
+  let title = props.title || '';
+  title = title.length > 20
+    ? title.slice(0, 20) + '...'
+    : title;
+
+  const parentTypePlural = props.parentType ? props.parentType.slice() : '';
+  const thisTypePlural = props.thisType ? props.thisType.slice() : '';
+  const childTypePlural = props.childType ? props.childType.slice() : '';
+
+  const parentType = parentTypePlural === 'shelves'
+    ? 'shelf'
+    : parentTypePlural.slice(0, -1);
+  const thisType = thisTypePlural === 'shelves'
+    ? 'shelf'
+    : thisTypePlural.slice(0, -1);
+  const childType = childTypePlural === 'shelves'
+    ? 'shelf'
+    : childTypePlural.slice(0, -1);
+
+  const parentIdKey = parentType + 'Id';
+  const thisIdKey = thisType + 'Id';
 
   return (
     <div className="row">
@@ -37,16 +53,50 @@ const Card = React.memo(props => {
           <img className="card-image materialboxed" src={props.image}></img>
         </div>
         <div className="card-content">
-          <span className="card-title activator">{name}<i className="material-icons right">more_vert</i></span>
+          <span className="card-title activator">{title}<i className="material-icons right">more_vert</i></span>
           <div className="cardbtns">
-            <i className="material-icons small" alt="See this on the web">exit_to_app</i>
+            {
+              parentTypePlural
+                ? <span
+                    onClick={() => {
+                      props.getMany(parentTypePlural, {
+                        [parentIdKey]: props.data[parentIdKey]
+                      });
+                    }}
+                  >
+                    ↑
+                  </span>
+                : <div />
+                  
+            }
+            {
+              props.link
+                ? <a href={props.link} target="_blank" rel="noopener" rel="noreferrer">
+                    <i className="material-icons small" alt="See this on the web">exit_to_app</i>
+                  </a>
+                : childTypePlural
+                ? <i
+                    className="material-icons small"
+                    alt="Open this item"
+                    onClick={() => {
+                      console.log(thisIdKey)
+                      props.getMany(childTypePlural, {
+                        [thisIdKey]: props.data._id
+                      });
+                    }}
+                  >
+                    exit_to_app
+                  </i>
+                : <div />
+                  
+            }
             <i className="material-icons small" alt="Add to one of your Shelves">add_circle</i>
             <i className="material-icons small" alt="Add to Wishlist">bookmark</i>
           </div>
         </div>
         <div className="card-reveal">
           <div className="card-title">
-            Cthulhu
+            {title}
             <i className="material-icons small right">close</i>
           </div>
           <div className="card-text">{specs}</div>
