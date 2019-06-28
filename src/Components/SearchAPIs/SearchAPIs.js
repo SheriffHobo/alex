@@ -79,16 +79,19 @@ const APIMusicSearch = React.memo(props => {
 	});
 
 	return (
-		<>
+		<div className="searchbox">
 			<input
-				placeholder="search for music"
+				className="searchpageinput"
+				placeholder="Search for Collectables"
 				value={searchTerm}
 				onChange={e => setSearchTerm(e.target.value)}
 			/>
-			<button onClick={search}>Search</button>
-			<button onClick={() => setResults([])}>Clear Results</button>
+			<div className="searchbtns">
+				<button onClick={search}>Search</button>
+				<button onClick={() => setResults([])}>Clear</button>
+			</div>
 			{items}
-		</>
+		</div>
 	);
 });
 
