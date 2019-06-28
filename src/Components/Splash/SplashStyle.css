@@ -7,7 +7,7 @@
     flex-direction: column;
 }
 
-img {
+div#splash>img {
     min-width:20vw; 
     max-width: 200px;
 }

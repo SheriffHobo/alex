@@ -53,7 +53,7 @@ const Card = React.memo(props => {
           <img className="card-image materialboxed" src={props.image}></img>
         </div>
         <div className="card-content">
-          <span className="card-title activator">{title}<i className="material-icons right">more_vert</i></span>
+          <span className="card-title activator">{title}<i className="material-icons small right">more_vert</i></span>
           <div className="cardbtns">
             {
               parentTypePlural
@@ -64,20 +64,18 @@ const Card = React.memo(props => {
                       });
                     }}
                   >
-                    ↑
                   </span>
                 : <div />
-                  
             }
             {
               props.link
                 ? <a href={props.link} target="_blank" rel="noopener" rel="noreferrer">
-                    <i className="material-icons small" alt="See this on the web">exit_to_app</i>
+                    <i className="material-icons small" alt="See this on the web">details</i>
                   </a>
                 : childTypePlural
                 ? <i
                     className="material-icons small"
-                    alt="Open this item"
+                    alt="Open this Shelf"
                     onClick={() => {
                       console.log(thisIdKey)
                       props.getMany(childTypePlural, {
@@ -85,7 +83,28 @@ const Card = React.memo(props => {
                       });
                     }}
                   >
-                    exit_to_app
+                    details
+                  </i>
+                : <div />  
+            }
+             {
+              props.link
+                ? <a href={props.link} target="_blank" rel="noopener" rel="noreferrer">
+                    <i className="material-icons small" alt="See this on the web">details</i>
+                  </a>
+                : childTypePlural
+                ? <i
+                    className="material-icons small rotate180"
+                    // style="transform: rotate(45deg)"
+                    alt="Close this Shelf"
+                    onClick={() => {
+                      console.log(thisIdKey)
+                      props.getMany(childTypePlural, {
+                        [thisIdKey]: props.data._id
+                      });
+                    }}
+                  >
+                    details
                   </i>
                 : <div />
                   

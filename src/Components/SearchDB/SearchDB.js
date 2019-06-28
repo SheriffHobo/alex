@@ -49,11 +49,13 @@ const SearchDB = React.memo(props => {
 
 	const userList = users.map((user, index) => {
 		return (
+			<div className="userserchlistresults">
 			<UserButton
 				key={'user' + index}
 				user={user}
 				getMany={getMany}
 			/>
+			</div>
 		);
 	});
 
@@ -61,14 +63,14 @@ const SearchDB = React.memo(props => {
 		return (
 			<Card
 				key={'shelf' + index}
-        data={shelf}
-        image={shelf.image}
-        title={shelf.name}
-        getMany={getMany}
-        parentType={'users'}
-        thisType={'shelves'}
-        childType={'items'}
-      />
+				data={shelf}
+				image={shelf.image}
+				title={shelf.name}
+				getMany={getMany}
+				parentType={'users'}
+				thisType={'shelves'}
+				childType={'items'}
+			/>
 		);
 	});
 
@@ -76,15 +78,15 @@ const SearchDB = React.memo(props => {
 		return (
 			<Card
 				key={'item' + index}
-        data={item}
-        image={item.image}
-        title={item.name}
-        getChildren={() => {}}
-        getMany={getMany}
-        parentType={'shelves'}
-        thisType={'items'}
-        childType={''}
-      />
+				data={item}
+				image={item.image}
+				title={item.name}
+				getChildren={() => {}}
+				getMany={getMany}
+				parentType={'shelves'}
+				thisType={'items'}
+				childType={''}
+			/>
 		);
 	});
 

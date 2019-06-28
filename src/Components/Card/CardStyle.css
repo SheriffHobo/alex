@@ -34,7 +34,3 @@ div.cardbtns {
     display: flex;
     justify-content: space-between;
 }
-
-i.material-icons.right {
-    margin: 0;
-}

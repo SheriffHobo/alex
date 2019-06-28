@@ -30,7 +30,7 @@ class Footer extends Component {
               </ul> */}
               <Link to="/me"><i className="noselect small material-icons" alt="Home" data-position="top" data-tooltip="Home">home</i></Link>
               <Link to="/newshelf"><i className="noselect small material-icons" alt="Create New Shelf" data-position="top" data-tooltip="Create New Shelf">add_circle</i></Link>
-              {/* <Link to="/#"><i className="noselect small material-icons">chat</i></Link> */}
+              <Link to="/chat"><i className="noselect small material-icons" alt="Chat" data-position="top" data-tooltip="Chat">chat</i></Link>
               <Link to="/search"><i className="noselect small material-icons" alt="Search" data-position="top" data-tooltip="Search">search</i></Link>
         </div>
       </div>
