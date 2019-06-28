@@ -24,13 +24,13 @@ const [ searchType, setSearchType ] = useState();
           </div>
       </div>
         {searchType === 'users' && <ul className='searchbox01'>
-        <SearchDB collection={'users'} />
+          <SearchDB collection={'users'} />
           </ul>}
 
 {/* Audio Search Field */}
       <div className="collectableresult" onClick={() => setSearchType(searchType !== 'audio' ? 'audio' : undefined)}>
         <div className="col xl2">
-          <i class="material-icons small">radio</i>
+          <i className="material-icons small">radio</i>
         </div>
         <div className="col xl8">
             <h6 className="btntitle">Collectables: Audio (#)</h6>

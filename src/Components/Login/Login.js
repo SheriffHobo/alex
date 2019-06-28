@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import "./LoginStyle.css"
 
 const Login = React.memo(props => {
-  const [ email, setEmail ] = useState('jack@email.com');
-  const [ password, setPassword ] = useState('4RGYLE$sw3ater');
+  const [ email, setEmail ] = useState('');
+  const [ password, setPassword ] = useState('');
 
   return (
     <main className="valign-wrapper login">

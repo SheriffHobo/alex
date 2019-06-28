@@ -1,28 +1,15 @@
   main.signup {
+    display: flex;
     width: 310px;
     height: 500px;
-    max-height: 100vh;
     position: fixed;
     top: 5vh;
-    bottom: 5vh;
     margin: 1px 0px 0px -155px;
     background-color: #49494b!important;
 }
 
-  form {
-    max-width: 300px;
-    min-width: 300px;
-    max-height: 550px;
-    min-height: 55px;
-    background-color: silver;
-    margin: 0px;
-    padding:0px;
-    float: left;
-    width:100%;
-    position:absolute;
-    top: 50%;
-    transform: translateY(-50%) translateX(-50%);
-    left:50%;
+form#signupform {
+  max-height: 490px;
 }
   
   .input-field {

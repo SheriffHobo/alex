@@ -89,13 +89,17 @@ const SearchDB = React.memo(props => {
 	});
 
 	return (
-		<div>
+		<div className="searchbox">
 			<input
-				placeholder={"search for " + props.collection}
+				className="searchpageinput"
+				placeholder={"Search for " + props.collection}
 				value={searchTerm}
 				onChange={e => setSearchTerm(e.target.value)} 
 			/>
-			<button onClick={search}>Search</button>
+			<div className="searchbtns">
+				<button onClick={search}>Search</button>
+				<button onClick="">Clear</button>
+			</div>
 			{userList}
 			{shelfList}
 			{itemList}

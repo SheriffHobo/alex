@@ -9,7 +9,9 @@ class Footer extends Component {
   componentDidMount() {
     let elems = document.querySelectorAll('.dropdown-trigger');
     M.Dropdown.init(elems, {inDuration: 300, outDuration: 225});
-}
+    let elems2 = document.querySelectorAll('.tooltipped');
+    M.Tooltip.init(elems2);
+};
 
   render() {
     return (
@@ -26,10 +28,10 @@ class Footer extends Component {
                 <li><Link to="/terms">Terms & Conditions</Link></li>
                 <li><Link to="/about">About Alexandria</Link></li>
               </ul> */}
-              <Link to="/me"><i className="noselect small material-icons">home</i></Link>
-              <Link to="/newshelf"><i className="noselect small material-icons">add_circle</i></Link>
+              <Link to="/me"><i className="noselect small material-icons" alt="Home" data-position="top" data-tooltip="Home">home</i></Link>
+              <Link to="/newshelf"><i className="noselect small material-icons" alt="Create New Shelf" data-position="top" data-tooltip="Create New Shelf">add_circle</i></Link>
               {/* <Link to="/#"><i className="noselect small material-icons">chat</i></Link> */}
-              <Link to="/search"><i className="noselect small material-icons">search</i></Link>
+              <Link to="/search"><i className="noselect small material-icons" alt="Search" data-position="top" data-tooltip="Search">search</i></Link>
         </div>
       </div>
     );
