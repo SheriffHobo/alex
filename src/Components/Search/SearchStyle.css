@@ -1,32 +1,33 @@
-body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .searchmain {
-    max-height: 100vh;
-    position: fixed;
-    top: 5vh;
-    bottom: 5vh;
-    margin-left: -155px;
+.searchmain {
+  max-height: 100vh;
+  position: fixed;
+  top: 5vh;
+  bottom: 5vh;
+  margin-left: -155px;
 }
 
-  .userresult, .collectableresult {
-    display: flex;
-    background-color: #49494b;
-    color: #d1bfa7;
-    max-height: 40px;
-    min-height: 40px;
-    max-width: 310px;
-    min-width: 310px;
-    margin: 1px 0px 1px 0px;
-    overflow: auto;
-  }
+.userresult, .collectableresult {
+  display: flex;
+  background-color: #49494b;
+  color: #d1bfa7;
+  max-height: 40px;
+  min-height: 40px;
+  width: 310px;
+  margin: 1px 0px 1px 0px;
+  overflow: auto;
+}
 
-  .btntitle {
-    width: 215px;
-    margin: 9px 22px 0px 0px;
+i.material-icons.small {
+  margin: 0px 0px 0px 10px;
+}
+
+i.hearticonnotliked {
+  margin: 4px 0px 0px 15px!important;
+}
+
+h6.btntitle, h6.shelftitle {
+  width: 215px;
+  margin: 10px 0px 0px 10px;
 }
 
 div.col.xl2 {
@@ -40,37 +41,60 @@ img#stamp {
   margin: 0px 5px 0px 5px;
 }
 
-.searchicon {
-  color: #bd8c7d;
-}
-
 div.searchbox {
-  display: flex;
   background-color: #49494b;
   color: #d1bfa7;
-  max-height: 40px;
-  min-height: 40px;
-  max-width: 305px;
-  min-width: 305px;
-  margin: -15px 2px -13px;
+  max-width: 310px;
+  min-width: 310px;
+  margin: -15px 2px 11px 0px;
 }
 
 .placeholder {
   font-family: 'Montserrat', sans-serif!important;
 }
 
-input.searchpageinput {
-  max-width: 290px;
-  min-width: 290px;
-  margin: -8px 0px 0px 4px!important;
+div.searchbox01 {
+  margin: 15px 0px 0px 0px;
 }
 
-div.searchbox01 {
-  display: none;
+div.userserchlistresults {
+  padding: 0px!important;
+}
+
+input.searchpageinput {
+  max-width: 290px!important;
+  min-width: 290px!important;
+  margin: 5px 0px 0px 10px!important;
+}
+
+div.usersearchresultbtn {
+  background-color: #49494b;
+  color: #d1bfa7;
+  max-height: 40px;
+  min-height: 40px;
+  width: 310px;
+  margin: 1px 0px 1px 0px;
+  overflow: auto;
+  border-top: 1px solid #e8e8e6;
+}
+
+.col {
+  padding: 0px!important;
+}
+
+img#stamp {
+  min-height: 22px;
+  max-height: 22px;
+  min-width: 22px;
+  margin: 8px 5px 0px 13px;
 }
 
 div.collectablelist {
-  margin: 13px 0px 0px auto;
+  margin: 1px 0px 1px auto;
+}
+
+div.row.userbtnrow {
+  margin: 1px 0px 0px 0px;
 }
 
 div.searchmain {
@@ -83,4 +107,19 @@ div.card-reveal {
 
 div.card-title {
   margin: 20px 0px 0px 0px!important;
+}
+
+div.searchbtns {
+  display: flex;
+ justify-content: space-evenly;
+}
+
+div.searchbtns>button {
+  height: 25px!important;
+  border: 0!important;
+  color: #d1bfa7;
+}
+
+.usersearchresult {
+  background-color: #49494b!important; 
 }

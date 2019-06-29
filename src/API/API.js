@@ -1,4 +1,4 @@
-import { getCookie, tokenCheck } from '../API/cookies';
+import { getCookie } from '../API/cookies';
 const baseUrl = 'http://localhost:8080/api';
 
 // == DOCUMENTATION ==
@@ -101,17 +101,24 @@ export default {
 				return res.json();
 			});
 	},
-	searchByName: name => {
-		if (!name) {
-    	return Promise.resolve({ message: 'Please enter a search term.' });
-    };
-
+	search: (collection, query) => {
     const token = getCookie('token');
     if (!token || token === 'undefined') {
     	return Promise.resolve({ message: 'You are not logged in.'});
     };
 
-		return fetch(baseUrl + '/users/search?name=' + name, {
+		if (!Object.keys(query).length || !collection) {
+    	return Promise.resolve({ message: 'Invalid search.' });
+    };
+
+    let queryString = '';
+    for (let key in query) {
+    	queryString += `&${key}=${query[key]}`;
+    }
+
+    if (queryString) queryString = '?' + queryString.slice(1);
+
+		return fetch(`${baseUrl}/${collection}${queryString}`, {
 			method: 'GET',
 			mode: 'cors',
 			headers: {
@@ -127,34 +134,4 @@ export default {
 				return res.json();
 			});
 	},
-	getShelvesByUserId: userId => {
-		if (!userId) {
-    	return Promise.resolve({ message: 'User ID missing.' });
-    };
-
-    const token = getCookie('token');
-    if (!token || token === 'undefined') {
-    	return Promise.resolve({ message: 'You are not logged in.'});
-    };
-
-		return fetch(baseUrl + '/shelves/' + userId, {
-			method: 'GET',
-			mode: 'cors',
-			headers: {
-				'Content-Type': 'application/json',
-				'x-auth-token': token,
-			},
-		})
-			.then(async res => {
-				if (res.status !== 200) {
-					throw new Error(res.status + ' ' + await res.text());
-				};
-
-				return res.json();
-			});
-	},
-
-	// PUBLIC
-	// searchShelves: filter => {},
-	// searchItems: filter => {},
 }

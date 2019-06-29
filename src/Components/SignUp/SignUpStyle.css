@@ -1,34 +1,21 @@
-body {
+  main.signup {
     display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  main {
-    width: 330px;
-    height: 475px;
+    width: 310px;
+    height: 500px;
+    position: fixed;
+    top: 5vh;
+    margin: 1px 0px 0px -155px;
     background-color: #49494b!important;
 }
 
-  form {
-    max-width: 300px;
-    min-width: 300px;
-    max-height: 550px;
-    min-height: 55px;
-    background-color: silver;
-    margin: 0px;
-    padding:0px;
-    float: left;
-    width:100%;
-    position:absolute;
-    top: 50%;
-    transform: translateY(-50%) translateX(-50%);
-    left:50%;
+form#signupform {
+  max-height: 490px;
 }
   
   .input-field {
    min-width: 250px;
    max-width: 250px;
+   text-align: center;
   }
 
   .btn_create {

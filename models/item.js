@@ -17,7 +17,7 @@ const itemSchema = new mongoose.Schema({
   soldFor: {
     type: Number,
   },
-  shelf: {                // associated shelf
+  shelfId: {                // associated shelf
     type: mongoose.Schema.Types.ObjectId,
   },
   categoryName: {         // name of custom or preset category (whichever exists, prefer preset)
@@ -97,7 +97,7 @@ function validate(item) {
     description: Joi.string().max(4095),
     paid: Joi.number(),
     soldFor: Joi.number(),
-    shelf: Joi.objectId(),
+    shelfId: Joi.objectId(),
     categoryName: Joi.string().max(127),
     categoryId: Joi.objectId(),
     customCategory: Joi.string().max(127),

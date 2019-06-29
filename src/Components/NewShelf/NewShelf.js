@@ -10,28 +10,24 @@ class NewShelf extends Component {
       return (
 
         <main className="valign-wrapper newshelf">
-            <div className="container align-center">
-                <div className="row">
-                    <center>
-                        <form className="valign-wrapper newshelfform" method="post">
-                        <div className='row'>
+            <center>
+                <form className="valign-wrapper newshelfform" method="post">
+                <div className='row'>
 
-                            <div className='input-field'>
-                                <input  type='text' name='shelftitle' id='shelftitle' />
-                                <label for='shelftitle'>Shelf Name</label>
-                            </div>
+                    <div className='input-field'>
+                        <input  type='text' name='shelftitle' id='shelftitle' />
+                        <label for='shelftitle'>Shelf Name</label>
+                    </div>
 
-                            <div className='input-field'>
-                                <input  type='text' name='shelfdesc' id='shelfdesc' />
-                                <label for='shelfdesc'>Description (50 Char Max)</label>
-                            </div>
-                            
-                            <button type='submit' name='btn_createshelf' className='btn_createshelf small'><Link to="/me">Create Shelf</Link></button>
-                        </div>
-                        </form>
-                    </center>
+                    <div className='input-field'>
+                        <input  type='text' name='shelfdesc' id='shelfdesc' />
+                        <label for='shelfdesc'>Description (50 Char Max)</label>
+                    </div>
+                    
+                    <button type='submit' name='btn_createshelf' className='btn_createshelf btn-small waves-effect waves-light'><Link to="/me">Create Shelf</Link></button>
                 </div>
-            </div>
+                </form>
+            </center>
         </main>
       );
     };
