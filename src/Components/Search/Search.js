@@ -23,9 +23,15 @@ const [ searchType, setSearchType ] = useState();
               <i className="material-icons searchicon small">search</i>
           </div>
       </div>
+<<<<<<< Updated upstream
         {searchType === 'users' && <div className='searchbox01'>
           <SearchDB collection={'users'} />
           </div>}
+=======
+        {searchType === 'users' && <span className='searchbox01'>
+          <SearchDB collection={'users'} />
+          </span>}
+>>>>>>> Stashed changes
 
 {/* Audio Search Field */}
       <div className="collectableresult" onClick={() => setSearchType(searchType !== 'audio' ? 'audio' : undefined)}>

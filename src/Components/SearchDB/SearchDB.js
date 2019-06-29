@@ -8,6 +8,7 @@ const SearchDB = React.memo(props => {
 	const [ users, setUsers ] = useState([]);
 	const [ shelves, setShelves ] = useState([]);
 	const [ items, setItems ] = useState([]);
+	const [ showWhat, setShowWhat ] = useState([]);
 
 	const search = () => {
 		if (!searchTerm) return;
@@ -16,12 +17,11 @@ const SearchDB = React.memo(props => {
 
 // IT'S NOT ONLY GET MANY
 	const getMany = (collection, query) => {
-		console.log(collection, query)
 		API
 			.search(collection, query)
 			.then(result => {
 				if (!Array.isArray(result)) result = [result];
-				console.log(result)
+
 				updateState(collection, result);
 			})
 			.catch(err => console.error(err));
@@ -30,20 +30,15 @@ const SearchDB = React.memo(props => {
 	const updateState = (collection, result) => {
 		if (collection === 'items') {
 			setItems(result);
+			setShowWhat('items');
 		}
 		else if (collection === 'shelves') {
 			setShelves(result);
-			setItems([]);
+			setShowWhat('shelves');
 		}
 		else if (collection === 'users') {
 			setUsers(result);
-			setItems([]);
-			setShelves([]);
-		}
-		else {
-			setItems([]);
-			setShelves([]);
-			setUsers([]);
+			setShowWhat('users');
 		}
 	};
 
@@ -100,11 +95,25 @@ const SearchDB = React.memo(props => {
 			/>
 			<div className="searchbtns">
 				<button onClick={search}>Search</button>
-				<button onClick="">Clear</button>
+				<button
+					onClick={() => {
+						setUsers([]);
+						setShelves([]);
+						setItems([]);
+					}}
+				>
+					Clear
+				</button>
 			</div>
-			{userList}
-			{shelfList}
-			{itemList}
+			{
+				showWhat === 'users'
+					? userList
+					: showWhat === 'shelves'
+					? shelfList
+					: showWhat === 'items'
+					? itemList
+					: <></>
+			}
 		</div>
 	);
 });
