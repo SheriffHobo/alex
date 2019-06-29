@@ -50,10 +50,10 @@ const Card = React.memo(props => {
     <div className="row">
       <div className="card">
         <div className="card-image waves-effect waves-block waves-light">
-          <img className="card-image materialboxed" src={props.image}></img>
+          <img className="card-image materialboxed" alt="" src={props.image}></img>
         </div>
         <div className="card-content">
-          <span className="card-title activator">{title}<i className="material-icons right">more_vert</i></span>
+          <span className="card-title activator"><h5>{title}</h5><i className="material-icons small right">more_vert</i></span>
           <div className="cardbtns">
             {
               parentTypePlural
@@ -64,20 +64,19 @@ const Card = React.memo(props => {
                       });
                     }}
                   >
-                    ↑
                   </span>
                 : <div />
-                  
             }
             {
               props.link
-                ? <a href={props.link} target="_blank" rel="noopener" rel="noreferrer">
-                    <i className="material-icons small" alt="See this on the web">exit_to_app</i>
+                ? <a href={props.link} target="_blank" rel="noopener noreferrer">
+                  {/* This will expand the shelf */}
+                    <i className="material-icons small" alt="See this on the web">details</i>
                   </a>
                 : childTypePlural
                 ? <i
                     className="material-icons small"
-                    alt="Open this item"
+                    alt="Open this Shelf"
                     onClick={() => {
                       console.log(thisIdKey)
                       props.getMany(childTypePlural, {
@@ -85,20 +84,41 @@ const Card = React.memo(props => {
                       });
                     }}
                   >
-                    exit_to_app
+                    details
+                  </i>
+                : <div />  
+            }
+             {
+              props.link
+                ? <a href={props.link} target="_blank" rel="noopener noreferrer">
+                  {/* This needs to hide the shelf contents */}
+                    <i className="material-icons small" alt="See this on the web">details</i>
+                  </a>
+                : childTypePlural
+                ? <i
+                    className="material-icons small rotate180"
+                    alt="Close this Shelf"
+                    onClick={() => {
+                      console.log(thisIdKey)
+                      props.getMany(childTypePlural, {
+                        [thisIdKey]: props.data._id
+                      });
+                    }}
+                  >
+                    details
                   </i>
                 : <div />
-                  
             }
-            <i className="material-icons small" alt="Add to one of your Shelves">add_circle</i>
-            <i className="material-icons small" alt="Add to Wishlist">bookmark</i>
+            {/* The add circle icon should not appear if user is viewing another users shelf */}
+            <i className="material-icons small" alt="Add to one of your Shelves">add_circle</i> 
+            {/* This button, when clicked, will add the shelf to your favs AND this should not be visible on YOUR shelves */}
+            <i className="material-icons small" alt="Add to Wishlist">favorite_border</i>
           </div>
         </div>
         <div className="card-reveal">
-          <div className="card-title">
-            {title}
-            <i className="material-icons small right">close</i>
-          </div>
+          {/* Need to add logic to close the pop up */}
+            <i className="material-icons small right card-title" alt="Close Shelf Description">close</i>
+          {/* 'specs' Should change depending on the card being created. Ex: Shelf card pop-ups should only have a small description of the shelf */}
           <div className="card-text">{specs}</div>
         </div>
       </div>

@@ -2,6 +2,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #e8e8e6;
 }
 
 /* Styling up here should be global to app, can move to index.css */
@@ -9,6 +10,10 @@ body {
   text-decoration: none;
   color: #D1BFA7;
   cursor: pointer;
+}
+
+.rotate180 {
+  transform: rotate(180deg);
 }
 
 .noselect {

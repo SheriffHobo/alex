@@ -17,16 +17,16 @@
   overflow: auto;
 }
 
-.btntitle {
-  width: 215px;
-  margin: 9px 22px 0px 0px;
-}
-
-div>i.material-icons.small {
+i.material-icons.small {
   margin: 0px 0px 0px 10px;
 }
 
-h6.btntitle {
+i.hearticonnotliked {
+  margin: 4px 0px 0px 15px!important;
+}
+
+h6.btntitle, h6.shelftitle {
+  width: 215px;
   margin: 10px 0px 0px 10px;
 }
 
@@ -41,26 +41,24 @@ img#stamp {
   margin: 0px 5px 0px 5px;
 }
 
-i.searchicon {
-  color: #bd8c7d;
-}
-
 div.searchbox {
   background-color: #49494b;
   color: #d1bfa7;
-  max-height: 60px;
-  min-height: 60px;
   max-width: 310px;
   min-width: 310px;
-  margin: -15px 2px 0px 0px;
+  margin: -15px 2px 11px 0px;
 }
 
 .placeholder {
   font-family: 'Montserrat', sans-serif!important;
 }
 
-ul.searchbox01 {
+div.searchbox01 {
   margin: 15px 0px 0px 0px;
+}
+
+div.userserchlistresults {
+  padding: 0px!important;
 }
 
 input.searchpageinput {
@@ -69,15 +67,26 @@ input.searchpageinput {
   margin: 5px 0px 0px 10px!important;
 }
 
-div.searchbox01 {
-  display: none;
-}
-
 div.usersearchresultbtn {
   background-color: #49494b;
+  color: #d1bfa7;
   max-height: 40px;
   min-height: 40px;
   width: 310px;
+  margin: 1px 0px 1px 0px;
+  overflow: auto;
+  border-top: 1px solid #e8e8e6;
+}
+
+.col {
+  padding: 0px!important;
+}
+
+img#stamp {
+  min-height: 22px;
+  max-height: 22px;
+  min-width: 22px;
+  margin: 8px 5px 0px 13px;
 }
 
 div.collectablelist {
