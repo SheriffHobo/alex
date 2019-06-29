@@ -1,94 +1,102 @@
 import React, { useState, useEffect } from 'react';
-// import io from "socket.io";
+import ioClient from 'socket.io-client';
+import { Button, Icon } from 'react-materialize'
+import axios from 'axios';
 
 const Chat = React.memo(props => {
-	const [ name, setName ] = useState('');
-	const [ message, setMessage ] = useState('');
-	const [ socket, setSocket ] = useState('');
-	const [ conversation, setConversation ] = useState([]);
+	const [name, setName] = useState('');
+	const [message, setMessage] = useState('');
+	const [conversation, setConversation] = useState([]);
 
-	// useEffect(() => {
-	// 	setSocket(io.connect("http://localhost:4000"));
-	// }, []);
+	useEffect(() => initIO(), []);
+	const socketUrl = "http://localhost:3001"
 
-	// socket.on("messageSend", data => {
-	// 	if (data.length) {
-	// 		const conversation = data.map(message => {
-	// 			return (
-	// 				<div className="chat-message">
-	// 					{message.name + ": " + message.message}
-	// 				</div>
-	// 			);
-	// 		});
 
-	// 		setConversation(conversation);
-	// 		setMessage('');
-	// 	}
-	// });
+	const initIO = () => {
+		const socket = ioClient.connect(socketUrl);
+		socket.on("messageSend", function (data) {
+			setConversation(data);
+		});
+	}
 
-	// const clear = () => {
-	// 	socket.emit('clear');
-	// }
 
-	// socket.on('cleared', () => {
-	// 	setConversation([]);
-	// });
+	const submitMessage = async (event) => {
+		const socket = ioClient.connect(socketUrl);
+		event.preventDefault();
+		await socket.emit("outputMsg", {
+			name,
+			message
+		});
+		setName('');
+		setMessage('');
+	}
+
+	const clearMessage = async () => {
+		const result = await axios.delete('/api/chats/clear');
+		console.log(result);
+	}
 
 	return (
-		<div className="container">
-			{/*<div className="row">
+		<div className="container valign-center chat">
+			<div className="row">
 				<div className="col-md-6 offset-md-3 col-sm-12">
 					<h1 className="text-center">
-						Alex Chat
-                        <button
-							id="clear"
-							className="btn btn-danger"
-							onClick={() => clear()}
-						>
-							Clear Chat History
-                        </button>
+
+
 					</h1>
 					<div id="status" />
 					<div id="chat">
 						<input
+							value={name}
 							type="text"
 							id="username"
 							className="form-control"
 							placeholder="Enter name..."
-							value={name}
+
 							onChange={e => setName(e.target.value)}
 						/>
 						<br />
-						<div className="card">
-							<div
-								id="messages"
-								className="card-block"
-								style={{ height: '50vh' }}
-							/>
-							{conversation}
+						<div className="card"
+							id="messages"
+							className="card-block"
+							style={{ height: '50vh', display: "flex" }}>
+
+							{conversation.map(msg => (
+
+								<div>
+									<h5>{msg.name}</h5>:<p>{msg.message}</p>
+								</div>
+
+							))}
 						</div>
 						<br />
 						<textarea
+							value={message}
 							id="textarea"
 							className="form-control"
 							placeholder="Enter message."
-							value={message}
-							onChange={e => setName(e.target.value)}
-							onKeyDown={e => {
-								if (e.which === 13 && e.shiftKey === false) {
-									//Emit to server input
-									socket.emit("outputMsg", {
-										name: name,
-										message,
-									});
 
-									e.preventDefault();
-								}
-							}}
+							onChange={e => setMessage(e.target.value)}
 						/>
+						<button
+							id="clear"
+							className="btn btn-danger"
+							onClick={() => {
+								setConversation([]);
+								clearMessage();
+							}}
+						>
+							Clear Chat History
+                        </button>
+						<Button type="submit" waves="light" onClick={submitMessage}>
+							Submit
+							<Icon right>
+								send
+							</Icon>
+						</Button>
 					</div>
 				</div>
-			</div>*/}
+			</div>
 		</div>
 	);
 });

@@ -8,11 +8,11 @@ const { Item } = require('../models/item');
 const dbName = process.env.DB_NAME;
 const dbPath = process.env.DB_PATH;
 
-module.exports = io => {
-  mongoose.connect(dbPath + dbName, { useNewUrlParser: true })
+
+module.exports = () => {
+  mongoose.connect(dbPath + dbName, { useNewUrlParser: true }) //JACK'S DATA BASE!!!!!!!
     .then(async () => {
       console.log(`Connected to ${dbName}...`);
-
       const users = await User.find();
       if (!users.length) seed();
     })

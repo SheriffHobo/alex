@@ -1,0 +1,18 @@
+/*
+Color Scheme:
+    Rose Gold: #bd8c7d (icons)
+    Soft Gold: #d1bfa7 (Button Text)
+    Silver: #8e8e90 (Text Box Background)
+    Onyx: #49494b (Boxes /  buttons)
+    Gainsboro: #e8e8e6 (Background)
+*/
+
+
+div.chat {
+    max-height: 100vh;
+    position: fixed;
+    top: 5vh;
+    bottom: 5vh;
+    margin-left: -155px;
+    overflow: auto;
+}
