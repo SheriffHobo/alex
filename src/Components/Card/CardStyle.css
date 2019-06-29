@@ -31,6 +31,13 @@ img.card-image {
     max-height: 551px!important;
 }
 
+div.card-image {
+    margin: 0 auto;
+    max-width: 310px!important;
+    max-height: 551px!important;
+    min-height: 150px;
+}
+
 div.cardbtns {
     display: flex;
     justify-content: space-between;

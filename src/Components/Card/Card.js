@@ -15,9 +15,10 @@ const Card = React.memo(props => {
 
   const specs = Object.keys(props.data).map((key, index) => {
     const value = props.data[key];
+    const toDisplay = ['name', 'description', 'categoryName', 'customCategory'];
 
-    return (
-      <div key={'card' + index}>
+    if (toDisplay.indexOf(key) !== -1) return (
+      <div key={'card' + Math.random()}>
         <strong>{`${key}: `}</strong>{value}
         <br /><br />
       </div>
@@ -53,17 +54,28 @@ const Card = React.memo(props => {
           <img className="card-image materialboxed" alt="" src={props.image}></img>
         </div>
         <div className="card-content">
+<<<<<<< Updated upstream
           <span className="card-title activator"><h5>{title}</h5><i className="material-icons small right">more_vert</i></span>
           <div className="cardbtns">
+=======
+          <span className="card-title activator">{title}<i className="material-icons right">more_vert</i></span>
+          <div className="cardbtns noselect">
+>>>>>>> Stashed changes
             {
               parentTypePlural
                 ? <span
+                    style={{ fontSize: '1.5em' }}
                     onClick={() => {
+                      console.log(parentTypePlural, {[parentIdKey]: props.data[parentIdKey]})
                       props.getMany(parentTypePlural, {
                         [parentIdKey]: props.data[parentIdKey]
                       });
                     }}
                   >
+<<<<<<< Updated upstream
+=======
+                    back
+>>>>>>> Stashed changes
                   </span>
                 : <div />
             }
@@ -109,10 +121,29 @@ const Card = React.memo(props => {
                   </i>
                 : <div />
             }
+<<<<<<< Updated upstream
             {/* The add circle icon should not appear if user is viewing another users shelf */}
             <i className="material-icons small" alt="Add to one of your Shelves">add_circle</i> 
             {/* This button, when clicked, will add the shelf to your favs AND this should not be visible on YOUR shelves */}
             <i className="material-icons small" alt="Add to Wishlist">favorite_border</i>
+=======
+            {
+              props.thisType === 'items' || props.thisType === 'externalItem'
+                ? <i
+                    className="material-icons small"
+                    alt="Add to one of your Shelves"
+                    onClick={() => alert()}
+                  >
+                    add_circle
+                  </i>
+                : <div />
+            }
+            {
+              false
+                ? <i className="material-icons small" alt="Add to Wishlist">bookmark</i>
+                : <div />
+            }
+>>>>>>> Stashed changes
           </div>
         </div>
         <div className="card-reveal">

@@ -10,12 +10,11 @@ const APIMusicSearch = React.memo(props => {
 		iTunesAudio: {
 			base: () => 'https://itunes.apple.com/search?term=',
 			params: () => '&entity=album',
-			name: () => 'collectionName',
-			nameFallback: () => 'trackName',
-			artist: () => 'artistName',
-			image: () => 'artworkUrl100',
+			name: result => result.collectionName,
+			nameFallback: result => result.trackName,
+			artist: result => result.artistName,
+			image: result => result.artworkUrl100,
 			link: result => {
-				console.log('hello',result)
 				return result.wrapperType === 'collection'
 					? result.collectionViewUrl
 					: result.wrapperType === 'track'
@@ -26,10 +25,10 @@ const APIMusicSearch = React.memo(props => {
 		iTunesVideo: {
 			base: () => 'https://itunes.apple.com/search?term=',
 			params: () => '&entity=movie',
-			name: () => 'trackName',
-			nameFallback: () => 'collectionName',
-			artist: () => 'artistName',
-			image: () => 'artworkUrl100',
+			name: result => result.trackName,
+			nameFallback: result => result.collectionName,
+			artist: result => result.artistName,
+			image: result => result.artworkUrl100,
 			link: result => {
 				return result.wrapperType === 'collection'
 					? result.collectionViewUrl
@@ -62,11 +61,12 @@ const APIMusicSearch = React.memo(props => {
 		const api = urls[props.source];
 		if (!api) return <div />;
 
-		const name = result[api.name(result)] || result[api.nameFallback(result)];
-		const artist = result[api.artist(result)] || result[api.artistFallback(result)];
-		const link = result[api.link(result)];
-		const image = result[api.image(result)];
+		const name = api.name(result) || api.nameFallback(result);
+		const artist = api.artist(result) || api.artistFallback(result);
+		const link = api.link(result);
+		const image = api.image(result);
 
+		console.log(api.link(result))
 		return (
 			<Card
 				key={props.source + index}
@@ -74,6 +74,7 @@ const APIMusicSearch = React.memo(props => {
         image={image}
         title={name + ' - ' + artist}
         link={link}
+        thisType={'externalItem'}
       />
 		);
 	});
