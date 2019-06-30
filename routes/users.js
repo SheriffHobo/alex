@@ -34,7 +34,8 @@ router.get('/', auth, async (req, res) => {
 
 // SIGN UP
 router.post('/', async (req, res) => {
-  const { error } = validate(req.body); 
+  const { error } = validate(req.body);
+  console.log(error)
   if (error) return res.status(400).json(error.details[0].message);
 
   let user = await User.findOne({ email: req.body.email });
@@ -55,7 +56,7 @@ router.post('/', async (req, res) => {
   await user.save();
 
   const token = user.generateAuthToken();
-  res.header('x-auth-token', token).status(200).json({ firstName: user.firstName });
+  res.status(200).json({ token, firstName: user.firstName });
 });
 
 module.exports = router;
