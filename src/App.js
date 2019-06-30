@@ -11,7 +11,7 @@ import NewShelf from './Components/NewShelf/NewShelf';
 import Search from './Components/Search/Search';
 import Chat from './Components/Chat/Chat';
 import './App.css';
-import 'materialize-css/dist/css/materialize.min.css';
+// import 'materialize-css/dist/css/materialize.min.css';
 import M from "materialize-css";
 import API from './API/API';
 
