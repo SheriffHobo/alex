@@ -9,6 +9,11 @@ router.get('/', auth, async (req, res) => {
   const requestedLimit = Math.abs(parseInt(req.query.limit));
   if (requestedLimit && requestedLimit <= limit) limit = requestedLimit;
 
+  const itemId = req.query.itemId;
+  const shelfId = req.query.shelfId;
+  const userId = req.query.userId;
+  const categoryId = req.query.categoryId;
+
   const query = {
     flagged: { $lt: 2 },
     deleted: false,
@@ -16,34 +21,42 @@ router.get('/', auth, async (req, res) => {
     $or: [],
   };
 
-  if (!req.user.allowNsfw) query.nsfw = false;
+  if (!req.user.allowNsfw) query.nsfw ;
 
-  if (req.query.itemId) {
-    validateId(req.query.itemId, 'shelf');
-    query.itemId = mongoose.Types.ObjectId(req.query.itemId);
+  if (itemId) {
+    if (!/^[a-fA-F0-9]{24}$/.test(itemId)) {
+      return res.status(400).json({ message: `Invalid item ID.`});
+    };
 
-    return queryAndSend(res, query, limit, true);
+    query.itemId = mongoose.Types.ObjectId(itemId);
+    return queryAndSend(res, query, limit);
   };
 
-  if (req.query.shelfId) {
-    validateId(req.query.shelfId, 'shelf');
-    query.shelfId = mongoose.Types.ObjectId(req.query.shelfId);
+  if (shelfId) {
+    if (!/^[a-fA-F0-9]{24}$/.test(shelfId)) {
+      return res.status(400).json({ message: `Invalid shelf ID.`});
+    };
 
-    return queryAndSend(res, query, limit, false);
+    query.shelfId = mongoose.Types.ObjectId(shelfId);
+    return queryAndSend(res, query, limit);
   };
 
-  if (req.query.userId) {
-    validateId(req.query.userId, 'user');
-    query.userId = mongoose.Types.ObjectId(req.query.userId);
+  if (userId) {
+    if (!/^[a-fA-F0-9]{24}$/.test(userId)) {
+      return res.status(400).json({ message: `Invalid user ID.`});
+    };
 
-    return queryAndSend(res, query, limit, false);
+    query.userId = mongoose.Types.ObjectId(userId);
+    return queryAndSend(res, query, limit);
   };
 
-  if (req.query.categoryId) {
-    validateId(req.query.categoryId, 'category');
-    query.categoryId = mongoose.Types.ObjectId(req.query.categoryId);
+  if (categoryId) {
+    if (!/^[a-fA-F0-9]{24}$/.test(categoryId)) {
+      return res.status(400).json({ message: `Invalid categoryId ID.`});
+    };
 
-    return queryAndSend(res, query, limit, false);
+    query.categoryId = mongoose.Types.ObjectId(categoryId);
+    return queryAndSend(res, query, limit);
   };
 
   if (req.query.search) {
@@ -52,7 +65,7 @@ router.get('/', auth, async (req, res) => {
     const search = new RegExp(req.query.search, 'i');
     query.$or.push({ name: search }, { description: search });
 
-    if (!req.query.category) return queryAndSend(res, query, limit, false);
+    if (!req.query.category) return queryAndSend(res, query, limit);
   };
 
   if (req.query.category) {
@@ -61,23 +74,19 @@ router.get('/', auth, async (req, res) => {
     const category = new RegExp(req.query.category, 'i');
     query.$or.push({ categoryName: category }, { customCategory: category });
 
-    return queryAndSend(res, query, limit, false);
+    return queryAndSend(res, query, limit);
   };
 
-  return res.status(400).json({ message: 'Invalid shelf request' });
+  return res.status(400).json({ message: 'Invalid item request' });
 });
 
-function validateId(id, type) {
-  const error = !/^[a-fA-F0-9]{24}$/.test(id);
-
-  if (error) return res.status(400).json({ message: `Invalid ${type} ID.`});
-}
-
-async function queryAndSend(res, query, limit, findOne) {
+async function queryAndSend(res, query, limit) {
   if (query.$or && !query.$or.length) delete query.$or;
 
-  const items = findOne
+  const items = limit === 1
     ? await Item.findOne(query)
+    : query._id
+    ? await Item.findById(query._id)
     : await Item.find(query).limit(limit);
 
   res.status(200).json(items);

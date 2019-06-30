@@ -134,4 +134,36 @@ export default {
 				return res.json();
 			});
 	},
+	externalAPIs: {
+		audio: {
+			base: () => 'https://itunes.apple.com/search?term=',
+			params: () => '&entity=album',
+			name: result => result.collectionName,
+			nameFallback: result => result.trackName,
+			artist: result => result.artistName,
+			image: result => result.artworkUrl100,
+			link: result => {
+				return result.wrapperType === 'collection'
+					? result.collectionViewUrl
+					: result.wrapperType === 'track'
+					? result.trackViewUrl
+					: '';
+			},
+		},
+		video: {
+			base: () => 'https://itunes.apple.com/search?term=',
+			params: () => '&entity=movie',
+			name: result => result.trackName,
+			nameFallback: result => result.collectionName,
+			artist: result => result.artistName,
+			image: result => result.artworkUrl100,
+			link: result => {
+				return result.wrapperType === 'collection'
+					? result.collectionViewUrl
+					: result.wrapperType === 'track'
+					? result.trackViewUrl
+					: '';
+			},
+		},
+	},
 }

@@ -7,7 +7,7 @@ const server = require("http").createServer(app);// add the http Server
 const chatModel = require("./models/chat");
 const mongoose = require("mongoose");
 const io = require("socket.io")(server);//socket listen to the server
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 8080;
 server.listen(port, () => console.log(`Listening on port ${port}...`));// server listen to port
 
 //--------------------------------------
@@ -23,6 +23,9 @@ io.on("connection", function (socket) {
         });
 
     socket.on("outputMsg", function (newMsg) {
+        const user = jwt.verify(newMsg.token, process.env.jwtPrivateKey);
+        newMsg.name = user.firstName;
+
         new chatModel(newMsg)
             .save()
             .then(msg => {

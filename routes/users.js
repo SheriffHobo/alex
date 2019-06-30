@@ -17,9 +17,9 @@ router.get('/me', auth, async (req, res) => {
 
 // SEARCH USERS
 router.get('/', auth, async (req, res) => {
-  if (!req.query.name) return res.status(400).json({ message: 'Sorry, Jack needs to fix this.' });
+  if (!req.query.search) return res.status(400).json({ message: 'Please enter a search term' });
   
-  const name = new RegExp(req.query.name, 'i');
+  const name = new RegExp(req.query.search, 'i');
   const users = await User
     .find({
       '$or': [
