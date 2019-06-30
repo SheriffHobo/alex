@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import ioClient from 'socket.io-client';
 import { Button, Icon } from 'react-materialize'
+import { getCookie } from '../../API/cookies';
 import axios from 'axios';
 
 const Chat = React.memo(props => {
-<<<<<<< Updated upstream
-	const [name, setName] = useState('');
 	const [message, setMessage] = useState('');
 	const [conversation, setConversation] = useState([]);
 
 	useEffect(() => initIO(), []);
-	const socketUrl = "http://localhost:3001"
+	const socketUrl = "http://localhost:8080"
 
 
 	const initIO = () => {
@@ -24,11 +23,12 @@ const Chat = React.memo(props => {
 	const submitMessage = async (event) => {
 		const socket = ioClient.connect(socketUrl);
 		event.preventDefault();
+		const token = getCookie('token');
+
 		await socket.emit("outputMsg", {
-			name,
-			message
+			message,
+			token,
 		});
-		setName('');
 		setMessage('');
 	}
 
@@ -79,15 +79,6 @@ const Chat = React.memo(props => {
 					</h1>
 					<div id="status" />
 					<div id="chat">
-						<input
-							value={name}
-							type="text"
-							id="username"
-							className="form-control"
-							placeholder="Enter name..."
-
-							onChange={e => setName(e.target.value)}
-						/>
 						<br />
 						<div className="card"
 							id="messages"
