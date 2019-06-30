@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import API from '../../API/API';
 import Card from '../Card/Card';
 import SearchField from '../SearchField/SearchField';
 import UserButton from '../UserButton/UserButton';
-import UserSearchTest from '../UserSearchTest';
 import axios from 'axios';
 import './SearchStyle.css';
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Card from '../Card/Card';
 
 const UserButton = React.memo(props => {
@@ -30,8 +30,8 @@ const UserButton = React.memo(props => {
 					<div className="col xl2">
 						{
 						user.thumbnail
-							? <img src={user.thumbnail} id="stamp" alt="user image" />
-							: <img src="/pictures/stampicon.png" id="stamp" alt="user image" />
+							? <img src={user.thumbnail} id="stamp" alt="user" />
+							: <img src="/pictures/stampicon.png" id="stamp" alt="user" />
 						}
 					</div>
 					<div className="col xl8">

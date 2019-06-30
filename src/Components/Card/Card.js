@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import M from "materialize-css";
+// import M from "materialize-css";
 import "./CardStyle.css";
 const Card = React.memo(props => {
   const todd = () => {
-    const elems = document.querySelectorAll('.materialboxed');
+    // const elems = document.querySelectorAll('.materialboxed');
     // const instances = M.Materialbox.init(elems);
   };
 
