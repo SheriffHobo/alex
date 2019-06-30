@@ -4,6 +4,7 @@ import { Button, Icon } from 'react-materialize'
 import axios from 'axios';
 
 const Chat = React.memo(props => {
+<<<<<<< Updated upstream
 	const [name, setName] = useState('');
 	const [message, setMessage] = useState('');
 	const [conversation, setConversation] = useState([]);
@@ -35,6 +36,38 @@ const Chat = React.memo(props => {
 		const result = await axios.delete('/api/chats/clear');
 		console.log(result);
 	}
+
+	// const [ name, setName ] = useState('');
+	// const [ message, setMessage ] = useState('');
+	// const [ socket, setSocket ] = useState('');
+	// const [ conversation, setConversation ] = useState([]);
+
+	// useEffect(() => {
+	// 	setSocket(io.connect("http://localhost:4000"));
+	// }, []);
+
+	// socket.on("messageSend", data => {
+	// 	if (data.length) {
+	// 		const conversation = data.map(message => {
+	// 			return (
+	// 				<div className="chat-message">
+	// 					{message.name + ": " + message.message}
+	// 				</div>
+	// 			);
+	// 		});
+
+	// 		setConversation(conversation);
+	// 		setMessage('');
+	// 	}
+	// });
+
+	// const clear = () => {
+	// 	socket.emit('clear');
+	// }
+
+	// socket.on('cleared', () => {
+	// 	setConversation([]);
+	// });
 
 	return (
 		<div className="container valign-center chat">

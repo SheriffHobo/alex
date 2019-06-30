@@ -26,7 +26,10 @@
     "socket.io-client": "^2.2.0"
   },
   "scripts": {
+    "fart": "concurrently --kill-others \"react-scripts start\" \"node server.js\"",
     "start": "concurrently --kill-others \"react-scripts start\" \"node server.js\"",
+    "shart": "concurrently --kill-others \"react-scripts start\" \"node server.js\"",
+    "todd": "concurrently --kill-others \"react-scripts start\" \"node server.js\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
