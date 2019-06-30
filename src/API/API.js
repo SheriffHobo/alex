@@ -38,10 +38,9 @@ export default {
 		})
 			.then(async res => {
 				if (res.status !== 200) {
-					console.log('error happened:')
 					throw new Error(res.status + ' ' + await res.text());
 				};
-				console.log('successfully got a response')
+
 				return res.json();
 			});
 	},

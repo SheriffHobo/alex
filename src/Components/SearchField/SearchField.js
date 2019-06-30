@@ -35,7 +35,7 @@ const Search = React.memo(props => {
 		        <div className="searchbtns">
 		          <button
 		          	style={{ width: '100%' }}
-		            onClick={() => props.search({ search: searchTerm })}
+		            onClick={() => props.search({ [props.queryKey]: searchTerm })}
 		          >
 		            Search
 		          </button>

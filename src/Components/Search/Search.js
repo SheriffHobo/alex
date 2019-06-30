@@ -59,7 +59,10 @@ const Search = React.memo(props => {
       .catch(err => console.error(err));
   }
 
-  const searchAPI = (apiType, searchTerm) => {
+  const searchAPI = query => {
+    const apiType = Object.keys(query)[0];
+    const searchTerm = query[apiType];
+    
     if (!searchTerm || !apiType) return;
     const api = API.externalAPIs[apiType];
 
@@ -123,6 +126,7 @@ const Search = React.memo(props => {
         changeSearchType={changeSearchType}
         showInput={searchType === 'users'}
         search={searchDB}
+        queryKey={'search'}
       />
       {searchType === 'users' && resultsList}
 
@@ -133,6 +137,7 @@ const Search = React.memo(props => {
         changeSearchType={changeSearchType}
         showInput={searchType === 'shelves'}
         search={searchDB}
+        queryKey={'search'}
       />
       {searchType === 'shelves' && resultsList}
 
@@ -143,6 +148,7 @@ const Search = React.memo(props => {
         changeSearchType={changeSearchType}
         showInput={searchType === 'items'}
         search={searchDB}
+        queryKey={'search'}
       />
       {searchType === 'items' && resultsList}
 
@@ -153,6 +159,7 @@ const Search = React.memo(props => {
         changeSearchType={changeSearchType}
         showInput={searchType === 'audio'}
         search={searchAPI}
+        queryKey={'audio'}
       />
       {searchType === 'audio' && resultsList}
 
@@ -163,6 +170,7 @@ const Search = React.memo(props => {
         changeSearchType={changeSearchType}
         showInput={searchType === 'video'}
         search={searchAPI}
+        queryKey={'video'}
       />
       {searchType === 'video' && resultsList}
 
