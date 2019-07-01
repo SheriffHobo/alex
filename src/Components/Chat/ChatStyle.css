@@ -19,3 +19,13 @@ Color Scheme:
     border-bottom: 1px solid #e8e8e6;
     background-color: #49494b!important;
 }
+
+div.container.align-center {
+    min-width: 300px;
+    max-width: 300px;
+}
+
+.card {
+    height: 82vh;
+    border-bottom: 2px solid #49494b;
+}
