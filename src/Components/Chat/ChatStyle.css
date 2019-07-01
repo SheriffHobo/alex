@@ -8,11 +8,14 @@ Color Scheme:
 */
 
 
-div.chat {
-    max-height: 100vh;
+.chat {
+    display: flex;
+    width: 310px;
+    height: 90vh;
     position: fixed;
     top: 5vh;
     bottom: 5vh;
-    margin-left: -155px;
-    overflow: auto;
+    border-top: 1px solid #e8e8e6;
+    border-bottom: 1px solid #e8e8e6;
+    background-color: #49494b!important;
 }
