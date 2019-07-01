@@ -82,7 +82,7 @@ async function queryAndSend(res, query, limit) {
   res.status(200).json(shelves);
 }
 
-router.post('/', async (req, res) => {
+router.post('/', auth, async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).json(error.details[0].message);
 
@@ -98,10 +98,9 @@ router.post('/', async (req, res) => {
 		userId: mongoose.Types.ObjectId(req.user._id),
   });
 
-  await user.save();
+  await shelf.save();
 
-  const token = user.generateAuthToken();
-  res.header('x-auth-token', token).status(200).json({ firstName: user.firstName });
+  res.status(200).json(shelf);
 });
 
 module.exports = router;
