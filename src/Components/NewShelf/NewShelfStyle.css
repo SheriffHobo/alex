@@ -50,7 +50,7 @@
     max-height: 25px;
   }
 
-  input#shelftitle, input#shelfdesc {
+  input.shelfinput {
    margin: 0;
   }
 
