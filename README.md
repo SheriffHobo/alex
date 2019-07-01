@@ -1,7 +1,7 @@
 Welcome to ...
 
-[#Alexandria](https://whats-in.herokuapp.com/)
-######Hosted by Heroku
+# [Alexandria](https://whats-in.herokuapp.com/)
+###### Hosted by Heroku
 
 Named after the famous library Alexandria is a place to share, collect, compare, and converse with like minded collectors.
 
@@ -13,9 +13,11 @@ Items, usernames, and passwords are save to Mongodb for rapid comparison and rec
 
 Search the Itunes library for images and information on your favorive movies or albums.
 
-Start a group chat with other ###_Gwar_ fans to compare memorabilia and concert experiences.
+Start a group chat with other 
+### *Gwar* 
+fans to compare memorabilia and concert experiences.
 
-Visit [Alexadria](https://whats-in.herokuapp.com/) and start your collection now.
+Visit [Alexandria](https://whats-in.herokuapp.com/) and start your collection now.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
