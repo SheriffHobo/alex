@@ -48,17 +48,17 @@ const Login = React.memo(props => {
                       props.logIn({ email, password });
                     }}
                   >
-                    Login
+                    <Link to="/me">Login</Link>
                   </button>
                 </Link>
 
-                <button
+                {/* <button
                   type='submit'
                   name='btn_forgot'
                   className='btn_forgot btn-small waves-effect waves-light'
                 >
                   <Link to="/#">Forgot Password?</Link>
-                </button>
+                </button> */}
 
               </div>
             </form>
