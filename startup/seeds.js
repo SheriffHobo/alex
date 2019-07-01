@@ -49,7 +49,7 @@ async function seedUsers() {
       firstName: 'Damon',
       lastName: 'Gregory',
       username: 'satansSpawn',
-      email: 'damong@emial.com',
+      email: 'damong@email.com',
       password: await bcrypt.hash('wa#%4dai3', salt),
       profileImg: '',
       thumbnail: '',

@@ -4,6 +4,8 @@ const Search = React.memo(props => {
 	const [ searchTerm, setSearchTerm ] = useState('');
 	const searchType = props.searchType[0].toUpperCase() + props.searchType.slice(1);
 
+	const handleFocus = (event) => event.target.select();
+
   return (
   	<div>
 	    <div className="userresult noselect" onClick={
@@ -29,11 +31,14 @@ const Search = React.memo(props => {
 		        <input
 		          className="searchpageinput"
 		          placeholder={"Search for " + searchType}
-		          value={searchTerm}
+				  value={searchTerm}
+				  type="text" 
+				  onFocus={handleFocus}
 		          onChange={e => setSearchTerm(e.target.value)} 
 		        />
 		        <div className="searchbtns">
 		          <button
+				  	className="waves-effect waves-light"
 		          	style={{ width: '100%' }}
 		            onClick={() => props.search({ [props.queryKey]: searchTerm })}
 		          >

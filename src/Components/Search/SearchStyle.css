@@ -65,6 +65,11 @@ input.searchpageinput {
   max-width: 290px!important;
   min-width: 290px!important;
   margin: 5px 0px 0px 10px!important;
+  border-bottom: 1px solid #49494b !important;
+  box-shadow: 0 1px 0 0 #49494b !important;
+  outline: 1px solid transparent;
+  padding: 0px!important;
+  background-color: transparent;
 }
 
 div.usersearchresultbtn {
@@ -111,13 +116,14 @@ div.card-title {
 
 div.searchbtns {
   display: flex;
- justify-content: space-evenly;
+  justify-content: space-evenly;
 }
 
 div.searchbtns>button {
   height: 25px!important;
   border: 0!important;
   color: #d1bfa7;
+  background-color: transparent;
 }
 
 .usersearchresult {
