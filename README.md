@@ -1,9 +1,11 @@
 Welcome to ...
 
 [#Alexandria](https://whats-in.herokuapp.com/)
+
+![alt text](https://github.com/SheriffHobo/alex/blob/master/public/pictures/AlexBook.png)
 ######Hosted by Heroku
 
-Named after the famous library Alexandria is a place to share, collect, compare, and converse with like minded collectors.
+Named after the historically revered library of Alexandria is a place to share, collect, compare, and converse with like minded collectors.
 
 Rather than tell people of your collections easily pull up images and show them instantly.
 
@@ -13,9 +15,7 @@ Items, usernames, and passwords are save to Mongodb for rapid comparison and rec
 
 Search the Itunes library for images and information on your favorive movies or albums.
 
-Start a group chat with other ###_Gwar_ fans to compare memorabilia and concert experiences.
-
-Visit [Alexadria](https://whats-in.herokuapp.com/) and start your collection now.
+Visit [Alexadria](https://whats-in.herokuapp.com/) and start sharing your collections now.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
