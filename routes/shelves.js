@@ -70,6 +70,17 @@ router.get('/', auth, async (req, res) => {
   return res.status(400).json({ message: 'Invalid shelf request' });
 });
 
+router.get('/me', auth, async (req, res) => {
+  let limit = 20;
+  const requestedLimit = Math.abs(parseInt(req.query.limit));
+  if (requestedLimit && requestedLimit <= limit) limit = requestedLimit;
+
+  const userId = mongoose.Types.ObjectId(req.user._id);
+  const query = { userId };
+
+  return queryAndSend(res, query, limit);
+});
+
 async function queryAndSend(res, query, limit) {
   if (query.$or && !query.$or.length) delete query.$or;
 
