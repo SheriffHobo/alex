@@ -97,11 +97,13 @@ router.post('/', auth, async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 // ADD USERID
+
+// CHECK SHELF TO BE SURE USER OWNS IT
   item = new Item({
     name: req.body.name,
     description: req.body.description,
     paid: req.body.paid,
-    shelf: req.body.shelf,
+    shelfId: mongoose.Types.ObjectId(req.body.shelfId),
     categoryName: req.body.categoryName,
     categoryId: req.body.categoryId,
     customCategory: req.body.customCategory,

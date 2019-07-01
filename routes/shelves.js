@@ -92,8 +92,8 @@ router.post('/', async (req, res) => {
 		categoryName: req.body.categoryName,
 		categoryId: req.body.categoryId,
 		customCategory: req.body.customCategory,
-		private: req.body.private,
-		nsfw: req.body.nsfw,
+		// private: req.body.private,
+		// nsfw: req.body.nsfw,
 		image: req.body.image,
 		userId: mongoose.Types.ObjectId(req.user._id),
   });
