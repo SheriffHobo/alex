@@ -13,9 +13,7 @@ Items, usernames, and passwords are save to Mongodb for rapid comparison and rec
 
 Search the Itunes library for images and information on your favorive movies or albums.
 
-Start a group chat with other 
-### *Gwar* 
-fans to compare memorabilia and concert experiences.
+Start a group chat with other *Gwar* fans to compare memorabilia and concert experiences.
 
 Visit [Alexandria](https://whats-in.herokuapp.com/) and start your collection now.
 
