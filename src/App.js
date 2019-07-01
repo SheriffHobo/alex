@@ -8,6 +8,7 @@ import Splash from './Components/Splash/Splash';
 import Login from './Components/Login/Login';
 import SignUp from './Components/SignUp/SignUp';
 import NewShelf from './Components/NewShelf/NewShelf';
+import NewItem from './Components/NewItem/NewItem';
 import Search from './Components/Search/Search';
 import Chat from './Components/Chat/Chat';
 import './App.css';
@@ -88,6 +89,7 @@ function App() {
             <Route path="/me" exact component={Home} />
             <Route path="/search" exact component={Search} />
             <Route path="/newshelf" exact component={NewShelf} />
+            <Route path="/newitem/:shelfId" exact component={NewItem} />
             <Route path="/chat" exact component={Chat} />
             <Route
               path="/login"
