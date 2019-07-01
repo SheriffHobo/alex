@@ -56,8 +56,7 @@ require('./startup/prod')(app);
 app.get("/", function (req, res) {
     res.sendFile(__dirname + "/index.html");
 });
-app.use(express.static("public"));
 
-
-
-
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static("./build"))
+};
