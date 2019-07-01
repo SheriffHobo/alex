@@ -41,43 +41,40 @@ const Chat = React.memo(props => {
 	return (
 		<div className="chat">
 			<div className="container align-center">
-				<div className="row">
-					<div className="card">
+				<div className="card">
+					{conversation.map(msg => (
 
+						<div>
+							<p>{msg.name}:{msg.message}</p>
+						</div>
 
-						{conversation.map(msg => (
-							<div>
-								<p>{msg.name}:{msg.message}</p>
-							</div>
-
-						))}
-					</div>
-					<br />
-					<textarea
-						value={message}
-						id="textarea"
-						className="form-control"
-						placeholder="Enter message."
-
-						onChange={e => setMessage(e.target.value)}
-					/>
-					<button
-						id="clear"
-						className="btn btn-danger"
-						onClick={() => {
-							setConversation([]);
-							clearMessage();
-						}}
-					>
-						Clear Chat History
-                        </button>
-					<Button type="submit" waves="light" onClick={submitMessage}>
-						Submit
-							<Icon right>
-							send
-							</Icon>
-					</Button>
+					))}
 				</div>
+				<br />
+				<textarea
+					value={message}
+					id="textarea"
+					className="form-control"
+					placeholder="Enter message."
+
+					onChange={e => setMessage(e.target.value)}
+				/>
+				<button
+					id="clear"
+					className="btn btn-danger"
+					onClick={() => {
+						setConversation([]);
+						clearMessage();
+					}}
+				>
+					Clear Chat History
+                        </button>
+				<Button type="submit" waves="light" onClick={submitMessage}>
+					Submit
+							<Icon right>
+						send
+							</Icon>
+				</Button>
 			</div>
 		</div>
 	);
