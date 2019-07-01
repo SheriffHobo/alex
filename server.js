@@ -2,12 +2,29 @@
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
 const express = require('express');
+const path = require('path');
 const app = express();
 const server = require("http").createServer(app);// add the http Server
 const chatModel = require("./models/chat");
 const mongoose = require("mongoose");
 const io = require("socket.io")(server);//socket listen to the server
 const port = process.env.PORT || 8080;
+
+require('./startup/validation')();
+require('./startup/asyncErrors')();
+require('./startup/db')();
+require('./startup/cors')(app);
+require('./startup/routes')(app);
+require('./startup/prod')(app);
+
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(process.env.STATIC_DIR))
+};
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname + "./build/index.html"));
+});
+
 server.listen(port, () => console.log(`Listening on port ${port}...`));// server listen to port
 
 //--------------------------------------
@@ -42,21 +59,3 @@ io.on("connection", function (socket) {
     });
 });
 //-------------------------------------
-
-
-
-
-require('./startup/validation')();
-require('./startup/asyncErrors')();
-require('./startup/db')();
-require('./startup/cors')(app);
-require('./startup/routes')(app);
-require('./startup/prod')(app);
-
-app.get("/", function (req, res) {
-    res.sendFile(__dirname + "/index.html");
-});
-
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static("./build"))
-};
