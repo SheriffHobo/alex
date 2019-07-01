@@ -8,7 +8,10 @@ const NewItem = React.memo(props => {
   const [ customCategory, setCustomCategory ] = useState('');
 
   const submit = () => {
-    const item = { name, description, customCategory, shelfId: props.shelfId };
+    const shelfId = props.match.params.shelfId;
+    if (!shelfId) return;
+
+    const item = { name, description, customCategory, shelfId };
 
     API.create(item, 'items')
       .then(res => {
@@ -20,7 +23,6 @@ const NewItem = React.memo(props => {
   // shelf id needs to come in as a prop
   // no shelf id, no save
   // in route check shelf against token to be sure user owns it
-console.log(props.match.params.shelfId)
   return (
     <main className="valign-wrapper newshelf">
       <center>
@@ -28,22 +30,54 @@ console.log(props.match.params.shelfId)
         <div className='row'>
 
           <div className='input-field'>
-            <input  type='text' name='shelftitle' id='shelftitle' />
-            <label for='shelftitle'>Shelf Name</label>
+            <input
+              type='text'
+              name='itemname'
+              id='itemname'
+              className='shelfinput'
+              value={name}
+              onChange={e => setName(e.target.value)}
+            />
+            <label htmlFor='itemname' className="noselect">
+              Name your item
+            </label>
           </div>
 
           <div className='input-field'>
             <input
               type='text'
-              name='shelfdesc'
-              id='shelfdesc' />
-            <label for='shelfdesc'>Description</label>
+              name='itemdesc'
+              id='itemdesc'
+              className='shelfinput'
+              value={description}
+              onChange={e => setDescription(e.target.value)}
+            />
+            <label htmlFor='itemdesc' className="noselect">
+              Describe your item
+            </label>
           </div>
 
+          <div className='input-field'>
+            <input
+              type='text'
+              name='itemcustom'
+              id='itemcustom'
+              className='shelfinput'
+              value={customCategory}
+              onChange={e => setCustomCategory(e.target.value)}
+            />
+            <label htmlFor='itemcatname' className="noselect">
+              Choose a custom category
+            </label>
+          </div>          
+
           <button
-            type='submit'
-            name='btn_createshelf'
+            name='btn_createitem'
             className='btn_createshelf btn-small waves-effect waves-light'
+            onClick={e => {
+              e.preventDefault();
+              submit();
+            }}
           >
             Create Shelf
           </button>

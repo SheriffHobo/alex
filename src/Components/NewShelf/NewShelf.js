@@ -72,7 +72,7 @@ const NewShelf = React.memo(props => {
               value={customCategory}
               onChange={e => setCustomCategory(e.target.value)}
             />
-            <label htmlFor='shelfcatname' className="noselect">
+            <label htmlFor='shelfcustom' className="noselect">
               Choose a custom category
             </label>
           </div>          
