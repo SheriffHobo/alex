@@ -1,39 +1,41 @@
-import React from 'react';
-import { Link } from "react-router-dom";
-import {Component} from 'react';
-import "./NewShelfStyle.css";
+import React, { useState } from 'react';
+// import "./NewShelf/NewShelfStyle.css";
+
+const NewShelf = React.memo(props => {
 
 
-class NewShelf extends Component {
+  return (
+		<main className="valign-wrapper newshelf">
+		  <center>
+			<form className="valign-wrapper newshelfform" method="post">
+			  <div className='row'>
 
-    render() {
-      return (
+  				<div className='input-field'>
+  				  <input  type='text' name='shelftitle' id='shelftitle' />
+  				  <label for='shelftitle'>Shelf Name</label>
+  				</div>
 
-        <main className="valign-wrapper newshelf">
-            <center>
-                <form className="valign-wrapper newshelfform" method="post">
-                <div className='row'>
+  				<div className='input-field'>
+  				  <input
+              type='text'
+              name='shelfdesc'
+              id='shelfdesc' />
+  				  <label for='shelfdesc'>Description</label>
+  				</div>
 
-                    <div className='input-field'>
-                        <input  type='text' name='shelftitle' id='shelftitle' />
-                        <label for='shelftitle'>Shelf Name</label>
-                    </div>
+  				<button
+            type='submit'
+            name='btn_createshelf'
+            className='btn_createshelf btn-small waves-effect waves-light'
+          >
+            Create Shelf
+          </button>
 
-                    <div className='input-field'>
-                        <input  type='text' name='shelfdesc' id='shelfdesc' />
-                        <label for='shelfdesc'>Description (50 Char Max)</label>
-                    </div>
-                    
-                    <button type='submit' name='btn_createshelf' className='btn_createshelf btn-small waves-effect waves-light'><Link to="/me">Create Shelf</Link></button>
-                </div>
-                </form>
-            </center>
-        </main>
-      );
-    };
-  };
+			  </div>
+			</form>
+		  </center>
+		</main>
+  );
+});
   
-  export default NewShelf;
-
-
-//   We need logic that once the create shelf button is clicked, the shelf is added to YOUR list of shelves (/me), a place holder image (the stamp icon) appears (left).
+export default NewShelf;
