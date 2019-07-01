@@ -19,11 +19,12 @@ require('./startup/prod')(app);
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(process.env.STATIC_DIR))
+    
+    app.get("*", (req, res) => {
+        res.sendFile(path.join(__dirname + "./build/index.html"));
+    });
 };
 
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname + "./build/index.html"));
-});
 
 server.listen(port, () => console.log(`Listening on port ${port}...`));// server listen to port
 
