@@ -20,7 +20,7 @@ const Header = React.memo(props => {
                                     {'Hi, ' + props.firstName + ' '}
                                     <span onClick={props.logOut} >
                                         <Link to={'/login'} className="Link">
-                                            <img src="pictures/logouticon.png" id="logouticon" className="noselect" />
+                                            <img src="pictures/logouticon.png" id="logouticon" className="noselect" alt="logout" />
                                         </Link>
                                     </span>
                                 </div>

@@ -1,6 +1,4 @@
 import React from 'react';
-import { Link } from "react-router-dom";
-import NewShelf from '../NewShelf/NewShelf';
 import "./HomeStyle.css"
 
 const Home = React.memo(props => {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { setCookies } from './API/cookies';
 import Home from './Components/Home/Home';
 import Header from './Components/Header/Header';

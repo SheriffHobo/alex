@@ -1,19 +1,6 @@
 import { getCookie } from '../API/cookies';
 const baseUrl = 'http://localhost:8080/api';
 
-// == DOCUMENTATION ==
-// credentials:
-// 	email and password
-// id:
-// 	the mongodb ObjectId
-// info:
-// 	user signup info
-// filter:
-// 	object containing fields and search terms; example:
-// 	{ name: 'treasure island', categoryName: 'movies' }
-// user:
-// 	object containing new user properties
-
 export default {
 	// USER
 	login: credentials => {
@@ -39,8 +26,8 @@ export default {
 	},
 	loginWithToken: () => {
 		const token = getCookie('token');
-    if (!token || token === 'undefined') return Promise.resolve();
 
+    if (!token || token === 'undefined') return Promise.resolve();
 		return fetch(baseUrl + '/auth', {
 			method: 'GET',
 			mode: 'cors',

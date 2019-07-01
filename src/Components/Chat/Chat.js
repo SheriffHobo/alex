@@ -80,9 +80,9 @@ const Chat = React.memo(props => {
 					<div id="status" />
 					<div id="chat">
 						<br />
-						<div className="card"
+						<div
 							id="messages"
-							className="card-block"
+							className="card card-block"
 							style={{ height: '50vh', display: "flex" }}>
 
 							{conversation.map(msg => (
