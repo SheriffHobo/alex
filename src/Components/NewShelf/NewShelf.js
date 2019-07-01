@@ -21,7 +21,7 @@ const NewShelf = React.memo(props => {
   const submit = () => {
     const shelf = { name, description, customCategory };
 
-    API.createShelf(shelf)
+    API.create(shelf, 'shelves')
       .then(res => {
         alert('congrats')
         console.log('congrats',res)

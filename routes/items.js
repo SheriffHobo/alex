@@ -95,38 +95,37 @@ async function queryAndSend(res, query, limit) {
 
 router.post('/', auth, async (req, res) => {
   const { error } = validate(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
-// ADD USERID
+  if (error) return res.status(400).json({ message: error.details[0].message});
 
-// CHECK SHELF TO BE SURE USER OWNS IT
+  const userId = req.user._id;
+  const shelfId = req.body.shelfId;
+  const shelf = await Shelf.findById(shelfId);
+  if (shelf.userId !== userId) return res.status(400).json({ message: "That's not your shelf"});
+
   item = new Item({
     name: req.body.name,
     description: req.body.description,
-    paid: req.body.paid,
-    shelfId: mongoose.Types.ObjectId(req.body.shelfId),
-    categoryName: req.body.categoryName,
-    categoryId: req.body.categoryId,
+    // paid: req.body.paid,
+    shelfId: mongoose.Types.ObjectId(shelfId),
+    // categoryName: req.body.categoryName,
+    // categoryId: req.body.categoryId,
     customCategory: req.body.customCategory,
-    private: req.body.private,
-    nsfw: req.body.nsfw,
+    // private: req.body.private,
+    // nsfw: req.body.nsfw,
     image: req.body.image,
-    specs: req.body.specs,
-    quantity: req.body.quantity,
-    currentlyOwn: req.body.currentlyOwn,
-    image: req.body.image,
-    tags: req.body.tags,
-    masterItemId: req.body.masterItemId,
-    masterItemSource: req.body.masterItemSource,
+    // specs: req.body.specs,
+    // quantity: req.body.quantity,
+    // currentlyOwn: req.body.currentlyOwn,
+    // tags: req.body.tags,
+    // masterItemId: req.body.masterItemId,
+    // masterItemSource: req.body.masterItemSource,
     masterItemLink: req.body.masterItemLink,
-    userId: mongoose.Types.ObjectId(req.user._id),
+    userId: mongoose.Types.ObjectId(userId),
   });
 
-  const salt = await bcrypt.genSalt(10);
-  user.password = await bcrypt.hash(user.password, salt);
-  await user.save();
+  await item.save();
 
-  const token = user.generateAuthToken();
-  res.header('x-auth-token', token).status(200).json({ firstName: user.firstName });
+  res.status(200).json(item);
 });
 
 module.exports = router;

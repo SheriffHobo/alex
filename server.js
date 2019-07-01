@@ -13,9 +13,12 @@ const port = process.env.PORT || 8080;
 require('./startup/validation')();
 require('./startup/asyncErrors')();
 require('./startup/db')();
-require('./startup/cors')(app);
+// require('./startup/cors')(app);
+const cors = require('cors');
 require('./startup/routes')(app);
 require('./startup/prod')(app);
+
+app.use(cors());
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(process.env.STATIC_DIR))
