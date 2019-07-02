@@ -17,7 +17,6 @@ require('./startup/validation')();
 require('./startup/asyncErrors')();
 require('./startup/db')();
 // require('./startup/cors')(app);
-const cors = require('cors');
 app.use(cors());
 require('./startup/routes')(app);
 require('./startup/prod')(app);
