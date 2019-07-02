@@ -8,11 +8,10 @@ Color Scheme:
 */
 
 
-.chat {
+div.chatmain {
     display: flex;
     width: 310px;
     height: 90vh;
-    position: fixed;
     top: 5vh;
     bottom: 5vh;
     border-top: 1px solid #e8e8e6;

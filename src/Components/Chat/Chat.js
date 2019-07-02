@@ -39,7 +39,7 @@ const Chat = React.memo(props => {
 	}
 
 	return (
-		<div className="chat">
+		<div className="chatmain">
 			<div className="container align-center">
 				<div className="row">
 					<div className="card">

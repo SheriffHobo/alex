@@ -1,6 +1,6 @@
   main.valign-wrapper.newshelf {
     width: 310px;
-    height: 154px;
+    height: 223px;
     max-height: 100vh;
     position: fixed;
     top: 5vh;
@@ -24,6 +24,7 @@
   .btn_createshelf {
     width: 170px;
     background-color: #49494b!important;
+    color: #d1bfa7!important;
     margin: 10px auto;
     border: none;
   }
@@ -38,13 +39,14 @@
     line-height: 1!important;
   }
 
-  input:focus {
-    border-bottom: 1px solid #49494b;
-    box-shadow: 0 1px 0 0 #49494b;
+  input.shelfinput:focus {
+    border-bottom: 1px solid #49494b !important;
+    box-shadow: 0 1px 0 0 #49494b !important;
     outline: 1px solid transparent;
+    padding: 0px!important;
   }
 
-  input {
+  input.shelfinput {
     background-color: #e8e8e6!important;
     min-height: 25px;
     max-height: 25px;
