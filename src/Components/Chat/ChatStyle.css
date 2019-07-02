@@ -8,19 +8,10 @@ Color Scheme:
 */
 
 
-<<<<<<< HEAD
-div.chatmain {
-    display: flex;
-    width: 310px;
-    height: 90vh;
-    top: 5vh;
-    bottom: 5vh;
-=======
 .Chat {
     display: grid;
     width: 310px;
     height: 90vh;
->>>>>>> master
     border-top: 1px solid #e8e8e6;
     border-bottom: 1px solid #e8e8e6;
     background-color: #49494b!important;
