@@ -46,18 +46,6 @@ async function seedUsers() {
       city: 'Bend',
     },
     {
-      firstName: 'Damon',
-      lastName: 'Gregory',
-      username: 'satansSpawn',
-      email: 'damong@email.com',
-      password: await bcrypt.hash('wa#%4dai3', salt),
-      profileImg: '',
-      thumbnail: '',
-      country: 'USA',
-      state: 'CA',
-      city: 'Oakland',
-    },
-    {
       firstName: 'Test',
       lastName: 'User',
       username: 'spartacus',
@@ -68,6 +56,18 @@ async function seedUsers() {
       country: 'USA',
       state: 'OK',
       city: 'Tulsa',
+    },
+    {
+      firstName: 'Damon',
+      lastName: 'Gregory',
+      username: 'satansSpawn',
+      email: 'damong@email.com',
+      password: await bcrypt.hash('wa#%4dai3', salt),
+      profileImg: '',
+      thumbnail: '',
+      country: 'USA',
+      state: 'CA',
+      city: 'Oakland',
     },
   ];
 

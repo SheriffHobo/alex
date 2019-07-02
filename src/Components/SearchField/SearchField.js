@@ -7,7 +7,7 @@ const Search = React.memo(props => {
 	const handleFocus = (event) => event.target.select();
 
   return (
-  	<div>
+  	<div className="searchpagemainbtns">
 	    <div className="userresult noselect" onClick={
 	    	() => {
 	    		if (!props.showInput) props.changeSearchType(props.searchType)

@@ -9,6 +9,9 @@ const chatModel = require("./models/chat");
 const mongoose = require("mongoose");
 const io = require("socket.io")(server);//socket listen to the server
 const port = process.env.PORT || 8080;
+const cors = require("cors");
+
+app.use(cors());
 
 require('./startup/validation')();
 require('./startup/asyncErrors')();
