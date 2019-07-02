@@ -6,12 +6,12 @@ import "./FooterStyle.css";
 
 class Footer extends Component {
 
-  componentDidMount() {
-    let elems = document.querySelectorAll('.dropdown-trigger');
-    M.Dropdown.init(elems, {inDuration: 300, outDuration: 225});
-    let elems2 = document.querySelectorAll('.tooltipped');
-    M.Tooltip.init(elems2);
-};
+//   componentDidMount() {
+//     let elems = document.querySelectorAll('.dropdown-trigger');
+//     M.Dropdown.init(elems, {inDuration: 300, outDuration: 225});
+//     let elems2 = document.querySelectorAll('.tooltipped');
+//     M.Tooltip.init(elems2);
+// };
 
   render() {
     return (
