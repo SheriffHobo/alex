@@ -22,8 +22,9 @@ Color Scheme:
     grid-row: 1;
     border:10px solid #8e8e90;
     margin:  5px;
-    height: 82vh;
-    background: #e8e8e6;
+    height: 75vh;
+    color: #e8e8e6;
+    background: #8e8e90;
     overflow: scroll;
 }
 .Chat_Top > div {
@@ -45,7 +46,7 @@ Color Scheme:
 .Chat_Btn_Group {
     display:flex;
     justify-content: space-evenly;
-    
+    background-color: transparent;
 }
 .Chat_Clear_Btn {
     display:flex;
@@ -54,5 +55,14 @@ Color Scheme:
 
 .Chat_Send_Btn {
     display:flex;
-    justify-content: flex-end
+    justify-content: flex-end;
 }
+
+.Chat_Sent_Btn:focus {
+    border-bottom: 1px solid #49494b !important;
+    box-shadow: 0 1px 0 0 #49494b !important;
+    outline: 1px solid transparent;
+    padding: 0px!important;
+    background: #49494b !important;
+  } 
+    
