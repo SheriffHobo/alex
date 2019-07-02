@@ -5,8 +5,10 @@ div.card {
 }
 
 div.card-content {
+    display: flex;
     background-color: #49494b;
     padding: 10px!important;
+    justify-content: space-between;
 }
 
 div.card-text {
@@ -50,9 +52,27 @@ margin: 0px;
 }
 
 i.itemaddcircle {
-    margin: 0px;
+    margin: 0px 0px 5px 0px!important;
 }
 
 div.hiddendiv {
     display: none;
 }
+
+#dropdown1.additembtn {
+    background-color: #49494B;
+    min-height: 0px!important;
+    left: 50px!important;
+  }
+
+  .dropdown-content {
+    min-width: 200px!important;
+    max-width: 200px!important;
+  }
+  
+  li {
+    color: #D1BFA7!important;
+    min-height: 30px!important;
+    max-height: 30px!important;
+    padding: 5px 0px 0px 5px!important;
+  }

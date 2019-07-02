@@ -1,13 +1,20 @@
 import React, { useState, useEffect } from 'react';
-// import M from "materialize-css";
+import M from "materialize-css";
 import { getCookie } from '../../API/cookies';
 import API from '../../API/API';
 import "./CardStyle.css";
+
 const Card = React.memo(props => {
+
   const [ myId, setMyId ] = useState('');
   const [ showShelfPrompt, setShowShelfPrompt ] = useState(false);
   const [ myShelves, setMyShelves ] = useState([]);
   const [ itemCache, setItemCache ] = useState({});
+
+  useEffect(() => {
+  let elems = document.querySelectorAll('.dropdown-trigger');
+  M.Dropdown.init(elems, {inDuration: 300, outDuration: 225});
+});
 
   // const todd = () => {
   //   const elems = document.querySelectorAll('.materialboxed');
@@ -141,13 +148,26 @@ const Card = React.memo(props => {
             {
               (props.addToMyShelf || (myId !== data.userId && props.singular !== 'shelf')) &&
                 <i
-                  className="material-icons small itemaddcircle"
-                  alt="Add to one of your Shelves"
+                  className="material-icons small itemaddcircle dropdown-trigger" 
+                  href='#' 
+                  data-target='dropdown1' 
+                  data-activates='dropdown1'
+                  alt="Add to one of your Shelves" 
                   onClick={() => promptForShelf(data, props.external)}
                 >
                 add_circle
               </i>
             } 
+              <ul 
+                id='dropdown1' 
+                className='dropdown-content z-depth-5 additembtn'
+                data-coverTrigger='false'
+              >
+                {/* These Two are placeholders */}
+                <li>Shelf One</li>
+                <li>Shelf Two</li>
+                {/* SHELF RESULT LIST DUMP */}
+              </ul>
             {/* This button, when clicked, will add the shelf to your favs AND this should not be visible on YOUR shelves */}
             {/* <i className="material-icons small" alt="Add to Wishlist">favorite_border</i> */}
           </div>
