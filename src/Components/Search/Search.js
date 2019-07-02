@@ -128,7 +128,9 @@ const Search = React.memo(props => {
         search={searchDB}
         queryKey={'search'}
       />
-      {searchType === 'users' && resultsList}
+      <div className="resultsDisplay">
+        {searchType === 'users' && resultsList}
+      </div>
 
       <SearchField
         searchType={'shelves'}
@@ -139,7 +141,9 @@ const Search = React.memo(props => {
         search={searchDB}
         queryKey={'search'}
       />
-      {searchType === 'shelves' && resultsList}
+      <div className="resultsDisplay">
+        {searchType === 'shelves' && resultsList}
+        </div>
 
       <SearchField
         searchType={'items'}
@@ -150,7 +154,9 @@ const Search = React.memo(props => {
         search={searchDB}
         queryKey={'search'}
       />
-      {searchType === 'items' && resultsList}
+      <div className="resultsDisplay">
+        {searchType === 'items' && resultsList}
+      </div>
 
       <SearchField
         searchType={'audio'}
@@ -161,7 +167,9 @@ const Search = React.memo(props => {
         search={searchAPI}
         queryKey={'audio'}
       />
-      {searchType === 'audio' && resultsList}
+      <div className="resultsDisplay">
+        {searchType === 'audio' && resultsList}
+      </div>
 
       <SearchField
         searchType={'video'}
@@ -172,8 +180,9 @@ const Search = React.memo(props => {
         search={searchAPI}
         queryKey={'video'}
       />
-      {searchType === 'video' && resultsList}
-
+      <div className="resultsDisplay">
+        {searchType === 'video' && resultsList}
+      </div>
     </div>
   );
 });

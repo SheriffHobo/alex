@@ -66,7 +66,7 @@ const Home = React.memo(props => {
   });
 
   return(
-    <div className="Home shelfbtnlist">
+    <div className="usershelfbtnlist">
     	{resultsList}
     </div>
   );
