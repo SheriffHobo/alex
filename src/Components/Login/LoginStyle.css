@@ -30,7 +30,15 @@
     color: #d1bfa7!important;
   }
   
-  input#email, input#password {
+input#email,
+input#password,
+input#firstname,
+input#lastname,
+input#confemail,
+input#confpassword,
+input#country,
+input#province,
+input#city {
     margin: 0px!important;
     width: 100%;
     height: 46px;

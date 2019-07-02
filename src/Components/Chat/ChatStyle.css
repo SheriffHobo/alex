@@ -8,24 +8,61 @@ Color Scheme:
 */
 
 
-.chat {
-    display: flex;
-    justify-content: center;
+.Chat {
+    display: grid;
     width: 310px;
     height: 90vh;
-    top: 5vh;
-    bottom: 5vh;
     border-top: 1px solid #e8e8e6;
     border-bottom: 1px solid #e8e8e6;
     background-color: #49494b!important;
 }
 
-div.container.align-center {
-    min-width: 300px;
-    max-width: 300px;
+.Chat_Top {
+    grid-column: 1;
+    grid-row: 1;
+    border:10px solid #8e8e90;
+    margin:  5px;
+    height: 75vh;
+    color: #e8e8e6;
+    background: #8e8e90;
+    overflow: scroll;
+}
+.Chat_Top > div {
+    display:flex;
+    margin:0;
+    padding:0;
 }
 
-.card {
-    height: 82vh;
-    border-bottom: 2px solid #49494b;
+.Chat_Top > div > p {
+    word-wrap: break-word;
+    line-height: 2.5rem;
 }
+
+.Chat_Bottom {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.Chat_Btn_Group {
+    display:flex;
+    justify-content: space-evenly;
+    background-color: transparent;
+}
+.Chat_Clear_Btn {
+    display:flex;
+    justify-content: flex-start
+}
+
+.Chat_Send_Btn {
+    display:flex;
+    justify-content: flex-end;
+}
+
+.Chat_Sent_Btn:focus {
+    border-bottom: 1px solid #49494b !important;
+    box-shadow: 0 1px 0 0 #49494b !important;
+    outline: 1px solid transparent;
+    padding: 0px!important;
+    background: #49494b !important;
+  } 
+    
