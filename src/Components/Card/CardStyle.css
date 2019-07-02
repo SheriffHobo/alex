@@ -1,24 +1,25 @@
 div.card {
-    margin: 0px 0px -15px 0px;
+    margin: 0px 0px 5px 0px;
     background-color: silver;
     max-width: 310px;
 }
 
 div.card-content {
     background-color: #49494b;
-    padding: 0px 10px 17px 10px!important;
+    padding: 10px!important;
 }
 
 div.card-text {
     line-height: 1em;
-    /* padding: 1.8em 0 0 0; */
     color: #49494b;
 }
 
 span.card-title {
+    display: inline-flex!important;
     font-family: 'Cormorant SC', serif;
     color: #d1bfa7;
     margin: 5px 0px 0px 0px!important;
+    justify-content: space-evenly;
 }
 
 span.card-title.activator {
@@ -38,7 +39,20 @@ div.card-image {
     min-height: 150px;
 }
 
-div.cardbtns {
+div.cardbtns.noselect {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    background-color: #49494b;
+}
+
+i.right {
+margin: 0px;
+}
+
+i.itemaddcircle {
+    margin: 0px;
+}
+
+div.hiddendiv {
+    display: none;
 }

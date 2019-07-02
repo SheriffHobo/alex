@@ -143,7 +143,7 @@ const Search = React.memo(props => {
       />
       <div className="resultsDisplay">
         {searchType === 'shelves' && resultsList}
-        </div>
+      </div>
 
       <SearchField
         searchType={'items'}
