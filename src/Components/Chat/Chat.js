@@ -42,22 +42,9 @@ const Chat = React.memo(props => {
 	}
 
 	return (
-<<<<<<< HEAD
-		<div className="chatmain">
-			<div className="container align-center">
-				<div className="row">
-					<div className="card">
-
-
-						{conversation.map(msg => (
-							<div>
-								<p>{msg.name}:{msg.message}</p>
-							</div>
-=======
 		<div className="Chat">
 			<div className="Chat_Top">
 				{conversation.map(msg => (
->>>>>>> master
 
 					<div>
 						<p><b>{msg.name}</b>:{' '}{msg.message}</p>
