@@ -61,7 +61,7 @@ div.hiddendiv {
 
 #dropdown1.additembtn {
     background-color: #49494B;
-    max-height: 260px;
+    min-height: 0px!important;
     left: 50px!important;
   }
 

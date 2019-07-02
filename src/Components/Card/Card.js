@@ -12,7 +12,6 @@ const Card = React.memo(props => {
   const [ itemCache, setItemCache ] = useState({});
 
   useEffect(() => {
-  // componentDidMount() {
   let elems = document.querySelectorAll('.dropdown-trigger');
   M.Dropdown.init(elems, {inDuration: 300, outDuration: 225});
 });
