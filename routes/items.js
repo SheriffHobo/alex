@@ -1,5 +1,6 @@
 const auth = require('../middleware/auth');
 const { Item, validate } = require('../models/item');
+const { Shelf } = require('../models/shelf');
 const express = require('express');
 const mongoose = require('mongoose');
 const router = express.Router();
@@ -92,6 +93,34 @@ async function queryAndSend(res, query, limit) {
   res.status(200).json(items);
 }
 
+router.post('/me', auth, async (req, res) => {
+
+  const shelfId = req.body.shelfId;
+  const data = req.body.data;
+  const userId = req.user._id;
+
+  const shelf = await Shelf.findById(shelfId);
+  if (!shelf) return res.status(400).json({ message: "Shelf doesn't exist"});
+  if (shelf.userId.toString() !== userId) {
+    return res.status(400).json({ message: "That's not your shelf"});
+  }
+  
+  if (data.external) {
+    
+  }
+  const theirItem = data.external
+    ? { name: data.name, masterItemLink: data.link, image: data.image }
+    : await Item.findById(req.body.data._id);
+  if (theirItem.userId === mongoose.Types.ObjectId(userId)) return res.status(400).json({ message: "That's already yours"});
+  
+  theirItem.userId = userId;
+  theirItem.shelfId = shelfId;
+  const myItem = new Item(theirItem);
+
+  await myItem.save();
+
+  res.status(200).json(myItem)
+});
 
 router.post('/', auth, async (req, res) => {
   const { error } = validate(req.body);
@@ -100,7 +129,7 @@ router.post('/', auth, async (req, res) => {
   const userId = req.user._id;
   const shelfId = req.body.shelfId;
   const shelf = await Shelf.findById(shelfId);
-  if (shelf.userId !== userId) return res.status(400).json({ message: "That's not your shelf"});
+  if (shelf.userId.toString() !== userId) return res.status(400).json({ message: "That's not your shelf"});
 
   item = new Item({
     name: req.body.name,
