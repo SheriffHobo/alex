@@ -3,8 +3,8 @@ import { Link, BrowserRouter, Redirect } from "react-router-dom";
 import "./LoginStyle.css"
 
 const Login = React.memo(props => {
-  const [ email, setEmail ] = useState('damong@emial.com');
-  const [ password, setPassword ] = useState('wa#%4dai3');
+  const [ email, setEmail ] = useState('');
+  const [ password, setPassword ] = useState('');
 
   if (props.loggedIn) {
     return <BrowserRouter><Redirect to='/me' /></BrowserRouter>
