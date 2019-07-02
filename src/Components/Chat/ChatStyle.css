@@ -8,7 +8,7 @@ Color Scheme:
 */
 
 
-.Chat {
+div.Chatmain {
     display: grid;
     width: 310px;
     height: 90vh;
@@ -17,42 +17,48 @@ Color Scheme:
     background-color: #49494b!important;
 }
 
-.Chat_Top {
-    grid-column: 1;
-    grid-row: 1;
-    border:10px solid #8e8e90;
+div.Chat_Top {
     margin:  5px;
-    height: 82vh;
+    min-height: inherit;
+    /* max-height: 100%; */
     background: #e8e8e6;
-    overflow: scroll;
-}
-.Chat_Top > div {
-    display:flex;
-    margin:0;
-    padding:0;
+    overflow: auto;
 }
 
-.Chat_Top > div > p {
-    word-wrap: break-word;
-    line-height: 2.5rem;
-}
-
-.Chat_Bottom {
-    grid-column: 1;
-    grid-row: 2;
-}
-
-.Chat_Btn_Group {
+div.Chat_Btn_Group {
     display:flex;
     justify-content: space-evenly;
-    
-}
-.Chat_Clear_Btn {
-    display:flex;
-    justify-content: flex-start
 }
 
-.Chat_Send_Btn {
+div.Chat_Top>div#chattextoutput>p {
+    font-size: 1rem;
+    padding: 0px;
+    margin: 0px 5px;
+    line-height: 1.5rem;
+    word-wrap: break-word;
+}
+
+div.Chat_Bottom>textarea#chattextarea {
+    height: 2rem!important;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+div.Chat_Bottom {
+    max-height: 75px;
+}
+
+div>button.Chat_Send_Btn {
+    justify-content: center;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    height: 25px;
     display:flex;
-    justify-content: flex-end
+    border: none;
+    color: #d1bfa7;
+}
+
+div>button.Chat_Send_Btn:focus {
+    background-color: transparent;
 }

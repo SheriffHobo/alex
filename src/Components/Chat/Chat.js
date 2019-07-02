@@ -36,34 +36,33 @@ const Chat = React.memo(props => {
 		setMessage('');
 	}
 
-	const clearMessage = async () => {
-		const result = await axios.delete('/api/chats/clear');
-		console.log(result);
-	}
+	// const clearMessage = async () => {
+	// 	const result = await axios.delete('/api/chats/clear');
+	// 	console.log(result);
+	// }
 
 	return (
-		<div className="Chat">
+		<div className="Chatmain">
 			<div className="Chat_Top">
 				{conversation.map(msg => (
 
-					<div>
+					<div id="chattextoutput">
 						<p><b>{msg.name}</b>:{' '}{msg.message}</p>
 					</div>
 
 				))}
 			</div>
-			<br />
+			{/* <br /> */}
 			<div className="Chat_Bottom">
 				<textarea
 					value={message}
-					id="textarea"
-					className="Chat_Textarea"
+					id="chattextarea"
 					placeholder="Enter message."
 
 					onChange={e => setMessage(e.target.value)}
 				/>
 				<div className="Chat_Btn_Group">
-					<button
+					{/* <button
 						className="Chat_Clear_Btn"
 						onClick={() => {
 							setConversation([]);
@@ -71,12 +70,9 @@ const Chat = React.memo(props => {
 						}}
 					>
 						Clear Chat History
-                        </button>
-					<button className="Chat_Send_Btn" type="submit" waves="light" onClick={submitMessage}>
+                        </button> */}
+					<button className="Chat_Send_Btn small waves-effect waves-light" type="submit" onClick={submitMessage}>
 						Submit
-							<Icon right>
-							send
-							</Icon>
 					</button>
 				</div>
 			</div>
