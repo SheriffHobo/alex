@@ -16,9 +16,12 @@ app.use(cors());
 require('./startup/validation')();
 require('./startup/asyncErrors')();
 require('./startup/db')();
-require('./startup/cors')(app);
+// require('./startup/cors')(app);
+const cors = require('cors');
+app.use(cors());
 require('./startup/routes')(app);
 require('./startup/prod')(app);
+
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(process.env.STATIC_DIR))

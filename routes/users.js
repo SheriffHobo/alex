@@ -4,10 +4,6 @@ const { User, validate } = require('../models/user');
 const express = require('express');
 const router = express.Router();
 
-// mutual following should make users friends?
-
-// test with malformed objectIds
-
 // USER PROFILE
 router.get('/me', auth, async (req, res) => {
   const user = await User.findById(req.user._id).select('-password');
@@ -18,7 +14,7 @@ router.get('/me', auth, async (req, res) => {
 // SEARCH USERS
 router.get('/', auth, async (req, res) => {
   if (!req.query.search) return res.status(400).json({ message: 'Please enter a search term' });
-  
+
   const name = new RegExp(req.query.search, 'i');
   const users = await User
     .find({
@@ -35,7 +31,6 @@ router.get('/', auth, async (req, res) => {
 // SIGN UP
 router.post('/', async (req, res) => {
   const { error } = validate(req.body);
-  console.log(error)
   if (error) return res.status(400).json(error.details[0].message);
 
   let user = await User.findOne({ email: req.body.email });

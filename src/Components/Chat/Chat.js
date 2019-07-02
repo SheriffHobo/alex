@@ -9,7 +9,10 @@ const Chat = React.memo(props => {
 	const [message, setMessage] = useState('');
 	const [conversation, setConversation] = useState([]);
 
-	useEffect(() => initIO(), []);
+	useEffect(() => {
+		initIO();
+
+	}, []);
 	const socketUrl = "http://localhost:8080"
 
 
@@ -39,6 +42,7 @@ const Chat = React.memo(props => {
 	}
 
 	return (
+<<<<<<< HEAD
 		<div className="chatmain">
 			<div className="container align-center">
 				<div className="row">
@@ -49,21 +53,31 @@ const Chat = React.memo(props => {
 							<div>
 								<p>{msg.name}:{msg.message}</p>
 							</div>
+=======
+		<div className="Chat">
+			<div className="Chat_Top">
+				{conversation.map(msg => (
+>>>>>>> master
 
-						))}
+					<div>
+						<p><b>{msg.name}</b>:{' '}{msg.message}</p>
 					</div>
-					<br />
-					<textarea
-						value={message}
-						id="textarea"
-						className="form-control"
-						placeholder="Enter message."
 
-						onChange={e => setMessage(e.target.value)}
-					/>
+				))}
+			</div>
+			<br />
+			<div className="Chat_Bottom">
+				<textarea
+					value={message}
+					id="textarea"
+					className="Chat_Textarea"
+					placeholder="Enter message."
+
+					onChange={e => setMessage(e.target.value)}
+				/>
+				<div className="Chat_Btn_Group">
 					<button
-						id="clear"
-						className="btn btn-danger"
+						className="Chat_Clear_Btn"
 						onClick={() => {
 							setConversation([]);
 							clearMessage();
@@ -71,12 +85,12 @@ const Chat = React.memo(props => {
 					>
 						Clear Chat History
                         </button>
-					<Button type="submit" waves="light" onClick={submitMessage}>
+					<button className="Chat_Send_Btn" type="submit" waves="light" onClick={submitMessage}>
 						Submit
 							<Icon right>
 							send
 							</Icon>
-					</Button>
+					</button>
 				</div>
 			</div>
 		</div>
