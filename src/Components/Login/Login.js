@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, BrowserRouter, Redirect } from "react-router-dom";
 import "./LoginStyle.css"
 
 const Login = React.memo(props => {
   const [ email, setEmail ] = useState('');
   const [ password, setPassword ] = useState('');
+
+  if (props.loggedIn) {
+    return <BrowserRouter><Redirect to='/me' /></BrowserRouter>
+  }
 
   return (
     <main className="valign-wrapper login">

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 import API from '../../API/API';
 import Card from '../Card/Card';
 import "./HomeStyle.css"
@@ -46,16 +47,21 @@ const Home = React.memo(props => {
 	const resultsList = shelves.map(result => {
     const selected = (selectedShelf === result._id);
     return (
-      <Card
-        key={result.key}
-        selected={selected}
-        data={result || {}}
-        singular={'shelf'}
-        getChildren={getChildren}
-        items={items}
-        selectedShelf={selectedShelf}
-        childCollection={'items'}
-      />
+    	<>
+	      <Card
+	        key={result.key}
+	        selected={selected}
+	        data={result || {}}
+	        singular={'shelf'}
+	        getChildren={getChildren}
+	        items={items}
+	        selectedShelf={selectedShelf}
+	        childCollection={'items'}
+	      />
+	      <Link to={'/newitem/' + result._id}>
+	      	<h5>Add an item to this shelf</h5>
+	    	</Link>
+	    </>
     );
   });
 

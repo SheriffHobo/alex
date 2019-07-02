@@ -18,11 +18,11 @@ const Search = React.memo(props => {
   const [ selectedShelf, setSelectedShelf ] = useState('');
   
   const stateLookup = {
-    users: { value: users, set: setUsers, singular: 'user', childName: 'shelves', },
-    shelves: { value: shelves, set: setShelves, singular: 'shelf', childName: 'items', },
-    items: { value: items, set: setItems, singular: 'item' },
-    audio: { value: audio, set: setAudio, singular: 'audio' },
-    video: { value: video, set: setVideo, singular: 'audio' },
+    users: { value: users, set: setUsers, singular: 'user', childName: 'shelves', external: false },
+    shelves: { value: shelves, set: setShelves, singular: 'shelf', childName: 'items', external: false },
+    items: { value: items, set: setItems, singular: 'item', external: false },
+    audio: { value: audio, set: setAudio, singular: 'audio', external: true },
+    video: { value: video, set: setVideo, singular: 'video', external: true },
   };
 
   const lookedUp = stateLookup[searchType] || {};
@@ -81,7 +81,6 @@ const Search = React.memo(props => {
           });
         });
 
-        // setResultType(apiType);
         stateLookup[apiType].set(results);
       })
       .catch(err => console.error(err));
@@ -112,6 +111,7 @@ const Search = React.memo(props => {
         items={items}
         selectedShelf={selectedShelf}
         childCollection={lookedUp.childName}
+        external={lookedUp.external}
       />
     );
   });

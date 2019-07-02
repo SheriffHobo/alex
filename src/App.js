@@ -55,6 +55,7 @@ function App() {
   const logOut = () => {
     document.cookie = "token=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;";
     document.cookie = "firstName=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;"
+    document.cookie = "_id=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;"
     document.location.reload(false);
   };
 
@@ -65,6 +66,7 @@ function App() {
       const cookies = {
         token: result.token,
         firstName: result.firstName,
+        _id: result._id,
       };
 
       setCookies(cookies);
@@ -75,8 +77,9 @@ function App() {
   }
 
   const leaveSplash = loggedIn && !showSplash;
+
   // REDIRECT WOULD GO HERE if leaveSplash, redirect to /me
-  // except App wouldn't render
+  // except it doesn't work dammit
 
   return (
     <BrowserRouter>
@@ -94,12 +97,12 @@ function App() {
             <Route
               path="/login"
               exact
-              render={() => <Login logIn={logIn} />}
+              render={() => <Login logIn={logIn} loggedIn={loggedIn} />}
             />
             <Route
               path="/signup"
               exact
-              render={() => <SignUp signUp={signUp} />}
+              render={() => <SignUp signUp={signUp} loggedIn={loggedIn} />}
             />
             <Route
               component={

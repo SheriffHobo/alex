@@ -17,17 +17,22 @@ router.post('/', async (req, res) => {
   if (!validPass) return res.status(400).json({ message: 'Invalid email or password.' });
 
 	const token = user.generateAuthToken();
-  res.status(200).json({ token, firstName: user.firstName });
+	const firstName = user.firstName;
+	const _id = user._id;
+
+  res.status(200).json({ token, firstName, _id });
 });
 
 // LOGIN W TOKEN (prevents the splash page from disappearing if invalid token)
 router.get('/', auth, async (req, res) => {
 	const token = req.headers['x-auth-token'];
 	const firstName = req.user.firstName;
+	const _id = req.user._id;
 
 	res.status(200).json({
 		token,
 		firstName,
+		_id,
 	});
 });
 
