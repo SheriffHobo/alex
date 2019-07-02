@@ -103,7 +103,8 @@ const Card = React.memo(props => {
           <img className="card-image materialboxed" alt="" src={data.image}></img>
         </div>
         <div className="card-content">
-          <span className="card-title activator"><h5>{title}</h5><i className="material-icons small right">more_vert</i></span>
+          <span className="card-title"><h5>{title}</h5></span><i className="material-icons small right activator">more_vert</i>
+        </div>
           <div className="cardbtns noselect">
             {
               props.link
@@ -121,7 +122,7 @@ const Card = React.memo(props => {
                   >
                     details
                   </i>
-                : <div />  
+                : <div className="hiddendiv"></div>
             }
             {
               props[props.childCollection]
@@ -134,13 +135,13 @@ const Card = React.memo(props => {
                   >
                     details
                   </i>
-                : <div />
+                : <div className="hiddendiv"></div>
             }
             {/* The add circle icon should not appear if user is viewing another users shelf */}
             {
               (props.addToMyShelf || (myId !== data.userId && props.singular !== 'shelf')) &&
                 <i
-                  className="material-icons small"
+                  className="material-icons small itemaddcircle"
                   alt="Add to one of your Shelves"
                   onClick={() => promptForShelf(data, props.external)}
                 >
@@ -150,15 +151,17 @@ const Card = React.memo(props => {
             {/* This button, when clicked, will add the shelf to your favs AND this should not be visible on YOUR shelves */}
             {/* <i className="material-icons small" alt="Add to Wishlist">favorite_border</i> */}
           </div>
-        </div>
+
+        {/* </div> */}
         <div className="card-reveal">
-          {/* Need to add logic to close the pop up */}
             <i className="material-icons small right card-title" alt="Close Shelf Description">close</i>
           {/* 'specs' Should change depending on the card being created. Ex: Shelf card pop-ups should only have a small description of the shelf */}
           <div className="card-text">{specs}</div>
         </div>
       </div>
+      <div>
       {children}
+      </div>
     </>
   );
 });
