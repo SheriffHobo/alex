@@ -1,15 +1,24 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 // import M from "materialize-css";
+import { getCookie } from '../../API/cookies';
+import API from '../../API/API';
 import "./CardStyle.css";
 const Card = React.memo(props => {
-  const todd = () => {
-    // const elems = document.querySelectorAll('.materialboxed');
-    // const instances = M.Materialbox.init(elems);
-  };
+  const [ myId, setMyId ] = useState('');
+  const [ showShelfPrompt, setShowShelfPrompt ] = useState(false);
+  const [ myShelves, setMyShelves ] = useState([]);
+  const [ itemCache, setItemCache ] = useState({});
+
+  // const todd = () => {
+  //   const elems = document.querySelectorAll('.materialboxed');
+  //   const instances = M.Materialbox.init(elems);
+  // };
 
   useEffect(() => {
-    document.addEventListener('DOMContentLoaded', todd);
-    return document.removeEventListener('DOMContentLoaded', todd);
+    // document.addEventListener('DOMContentLoaded', todd);
+    setMyId(getCookie('_id'));
+
+    // return document.removeEventListener('DOMContentLoaded', todd);
   }, []);
 
   const data = props.data;
@@ -24,6 +33,26 @@ const Card = React.memo(props => {
     );
   });
 
+  const addToMyShelf = (data, shelfId) => {
+    API
+      .addToMyShelf(data, shelfId)
+      .then(result => alert('Item added to your shelf!'))
+      .catch(err => console.error(err));
+  };
+
+  const promptForShelf = (data, external) => {
+    data.external = external;
+
+    API
+      .getMyShelves()
+      .then(result => {
+        setMyShelves(result);
+        setItemCache(data);
+        setShowShelfPrompt(true);
+      })
+      .catch(err => console.error(err));
+  }
+
   let title = data.name || '';
   title = title.length > 20
     ? title.slice(0, 20) + '...'
@@ -31,14 +60,41 @@ const Card = React.memo(props => {
 
   let children = <div />
   if (props.selected) children = props.items.map(child => {
+    const okToAdd = myId === child.userId ? null : addToMyShelf;
     return (
       <Card
         key={child.key}
         data={child}
         singular={'item'}
+        addToMyShelf={okToAdd}
       />
     );
   });
+
+  if (showShelfPrompt) {
+    const shelves = myShelves.map(shelf => {
+      return (
+        <h5
+          key={Math.random()}
+          className="noselect"
+          style={{ cursor: 'pointer' }}
+          onClick={() => {
+            addToMyShelf(itemCache, shelf._id);
+            setShowShelfPrompt(false);
+          }}
+        >
+          {shelf.name}
+        </h5>
+      );
+    });
+
+    return (
+      <div>
+        choose a shelf to add {itemCache.name}:
+        {shelves}
+      </div>
+    );
+  }
 
   return (
     <>
@@ -81,7 +137,16 @@ const Card = React.memo(props => {
                 : <div />
             }
             {/* The add circle icon should not appear if user is viewing another users shelf */}
-            <i className="material-icons small" alt="Add to one of your Shelves">add_circle</i> 
+            {
+              (props.addToMyShelf || (myId !== data.userId && props.singular !== 'shelf')) &&
+                <i
+                  className="material-icons small"
+                  alt="Add to one of your Shelves"
+                  onClick={() => promptForShelf(data, props.external)}
+                >
+                add_circle
+              </i>
+            } 
             {/* This button, when clicked, will add the shelf to your favs AND this should not be visible on YOUR shelves */}
             <i className="material-icons small" alt="Add to Wishlist">favorite_border</i>
           </div>

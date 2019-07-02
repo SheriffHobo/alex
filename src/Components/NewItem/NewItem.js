@@ -6,12 +6,13 @@ const NewItem = React.memo(props => {
   const [ name, setName ] = useState('');
   const [ description, setDescription ] = useState('');
   const [ customCategory, setCustomCategory ] = useState('');
+  const [ image, setImage ] = useState('');
 
   const submit = () => {
     const shelfId = props.match.params.shelfId;
     if (!shelfId) return;
 
-    const item = { name, description, customCategory, shelfId };
+    const item = { name, description, customCategory, shelfId, image };
 
     API.create(item, 'items')
       .then(res => {
@@ -20,9 +21,7 @@ const NewItem = React.memo(props => {
       })
       .catch(err => console.error(err))
   }
-  // shelf id needs to come in as a prop
-  // no shelf id, no save
-  // in route check shelf against token to be sure user owns it
+
   return (
     <main className="valign-wrapper newshelf">
       <center>
@@ -69,7 +68,21 @@ const NewItem = React.memo(props => {
             <label htmlFor='itemcatname' className="noselect">
               Choose a custom category
             </label>
-          </div>          
+          </div>
+
+          <div className='input-field'>
+            <input
+              type='text'
+              name='itemimage'
+              id='itemimage'
+              className='shelfinput'
+              value={image}
+              onChange={e => setImage(e.target.value)}
+            />
+            <label htmlFor='itemcatname' className="noselect">
+              Enter an image path
+            </label>
+          </div>   
 
           <button
             name='btn_createitem'
@@ -79,7 +92,7 @@ const NewItem = React.memo(props => {
               submit();
             }}
           >
-            Create Shelf
+            Create Item
           </button>
 
         </div>

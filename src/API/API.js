@@ -199,4 +199,27 @@ export default {
 				return res.json();
 			});
 	},
+	addToMyShelf: (data, shelfId) => {
+		const token = getCookie('token');
+    if (!token || token === 'undefined') {
+    	return Promise.resolve({ message: 'You are not logged in.'});
+    };
+
+    return fetch(`${baseUrl}/items/me`, {
+			method: 'POST',
+			mode: 'cors',
+			headers: {
+				'Content-Type': 'application/json',
+				'x-auth-token': token,
+			},
+			body: JSON.stringify({ data, shelfId }),
+		})
+			.then(async res => {
+				if (res.status !== 200) {
+					throw new Error(res.status + ' ' + await res.text());
+				};
+
+				return res.json();
+			});
+	}
 }
