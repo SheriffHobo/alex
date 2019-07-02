@@ -37,9 +37,9 @@ const UserButton = React.memo(props => {
 					<div className="col xl8">
 						<h6 className="shelftitle">{user.firstName}</h6>
 					</div>
-					<div className="col xl2">
+					{/* <div className="col xl2">
 						<i className="material-icons small hearticonnotliked">favorite_border</i>
-					</div>
+					</div> */}
 				</div>
 	  	</div>
 			{shelves}
