@@ -148,7 +148,7 @@ const Card = React.memo(props => {
               </i>
             } 
             {/* This button, when clicked, will add the shelf to your favs AND this should not be visible on YOUR shelves */}
-            <i className="material-icons small" alt="Add to Wishlist">favorite_border</i>
+            {/* <i className="material-icons small" alt="Add to Wishlist">favorite_border</i> */}
           </div>
         </div>
         <div className="card-reveal">
