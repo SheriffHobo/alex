@@ -84,7 +84,7 @@ const Card = React.memo(props => {
         <h5
           key={Math.random()}
           className="noselect"
-          style={{ cursor: 'pointer' }}
+          style={{ cursor: 'pointer', backgroundColor: 'silver', zIndex: '99999' }}
           onClick={() => {
             addToMyShelf(itemCache, shelf._id);
             setShowShelfPrompt(false);
