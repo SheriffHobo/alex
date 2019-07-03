@@ -13,7 +13,7 @@ const Chat = React.memo(props => {
 		initIO();
 
 	}, []);
-	const socketUrl = "http://localhost:8080"
+	const socketUrl = "/"
 
 
 	const initIO = () => {
