@@ -7,6 +7,9 @@ const NewItem = React.memo(props => {
   const [ description, setDescription ] = useState('');
   const [ customCategory, setCustomCategory ] = useState('');
   const [ image, setImage ] = useState('');
+  const [ itemcount, setCount ] = useState('');
+  const [ itemmanufacture, setManufacture ] = useState('');
+  const [ year, setYear ] = useState('');
 
   const submit = () => {
     const shelfId = props.match.params.shelfId;
@@ -23,11 +26,12 @@ const NewItem = React.memo(props => {
   }
 
   return (
-    <main className="valign-wrapper newshelf">
+    <main className="valign-wrapper addnewitem">
       <center>
       <form className="valign-wrapper newshelfform" method="post">
         <div className='row'>
 
+          {/* NAME */}
           <div className='input-field'>
             <input
               type='text'
@@ -38,10 +42,11 @@ const NewItem = React.memo(props => {
               onChange={e => setName(e.target.value)}
             />
             <label htmlFor='itemname' className="noselect">
-              Name your item
+              Name your Collectable
             </label>
           </div>
 
+          {/* DESCRIPTION */}
           <div className='input-field'>
             <input
               type='text'
@@ -52,10 +57,56 @@ const NewItem = React.memo(props => {
               onChange={e => setDescription(e.target.value)}
             />
             <label htmlFor='itemdesc' className="noselect">
-              Describe your item
+              Describe your Collectable
             </label>
           </div>
 
+          {/* MANUFACTURE */}
+          <div className='input-field'>
+            <input
+              type='text'
+              name='itemmanufacture'
+              id='itemmanufacture'
+              className='shelfinput'
+              value={itemmanufacture}
+              onChange={e => setManufacture(e.target.value)}
+            />
+            <label htmlFor='itemmanufacture' className="noselect">
+              Who made this?
+            </label>
+          </div>
+
+          {/* YEAR */}
+          <div className='input-field'>
+            <input
+              type='text'
+              name='itemyear'
+              id='itemyear'
+              className='shelfinput'
+              value={year}
+              onChange={e => setYear(e.target.value)}
+            />
+            <label htmlFor='itemyear' className="noselect">
+              What year was this made?
+            </label>
+          </div>
+
+          {/* COUNT */}
+          <div className='input-field'>
+            <input
+              type='text'
+              name='itemcount'
+              id='itemcount'
+              className='shelfinput'
+              value={itemcount}
+              onChange={e => setCount(e.target.value)}
+            />
+            <label htmlFor='itemcount' className="noselect">
+              How many?
+            </label>
+          </div>
+
+          {/* CATAGORY */}
           <div className='input-field'>
             <input
               type='text'
@@ -66,10 +117,11 @@ const NewItem = React.memo(props => {
               onChange={e => setCustomCategory(e.target.value)}
             />
             <label htmlFor='itemcatname' className="noselect">
-              Choose a custom category
+              Give it a Catagory
             </label>
           </div>
 
+          {/* IMAGE */}
           <div className='input-field'>
             <input
               type='text'
@@ -80,10 +132,11 @@ const NewItem = React.memo(props => {
               onChange={e => setImage(e.target.value)}
             />
             <label htmlFor='itemcatname' className="noselect">
-              Enter an image path
+              Upload an image
             </label>
           </div>   
 
+          {/* ADD BUTTON */}
           <button
             name='btn_createitem'
             className='btn_createshelf btn-small waves-effect waves-light'
@@ -92,7 +145,7 @@ const NewItem = React.memo(props => {
               submit();
             }}
           >
-            Create Item
+            Add Collectable
           </button>
 
         </div>

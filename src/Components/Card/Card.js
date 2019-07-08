@@ -117,7 +117,7 @@ const Card = React.memo(props => {
               props.link
                 ? <a href={props.link} target="_blank" rel="noopener noreferrer">
                   {/* This will expand the shelf */}
-                    <i className="material-icons small" alt="See this on the web">details</i>
+                    <i className="material-icons small" alt="Expand Shelf">details</i>
                   </a>
                 : props.childCollection
                 ? <i
@@ -144,6 +144,10 @@ const Card = React.memo(props => {
                   </i>
                 : <div className="hiddendiv"></div>
             }
+
+            {/* This icon will allow the adding of a new item to the shelf manual or to the search component */}
+            {/* <i class="small material-icons">add_circle_outline</i> */}
+            
             {/* The add circle icon should not appear if user is viewing another users shelf */}
             {
               (props.addToMyShelf || (myId !== data.userId && props.singular !== 'shelf')) &&

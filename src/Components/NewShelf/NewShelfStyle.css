@@ -9,6 +9,28 @@
     background-color: #49494b!important;
 }
 
+main.valign-wrapper.newitem {
+  width: 310px;
+  height: 270px;
+  max-height: 100vh;
+  position: fixed;
+  top: 5vh;
+  bottom: 5vh;
+  margin: 1px 0px 0px -155px;
+  background-color: #49494b!important;
+}
+
+main.valign-wrapper.addnewitem {
+  width: 310px;
+  height: 370px;
+  max-height: 100vh;
+  position: fixed;
+  top: 5vh;
+  bottom: 5vh;
+  margin: 1px 0px 0px -155px;
+  background-color: #49494b!important;
+}
+
   form.valign-wrapper.newshelfform {
     background-color: silver;
     margin: 0px;

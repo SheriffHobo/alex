@@ -7,10 +7,10 @@ export default {
 	login: credentials => {
 		if (document.cookie) {
 			document.cookie = "token=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;";
-	    document.cookie = "firstName=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;"
-	    document.cookie = "_id=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;"
-	    document.location.reload(false);
-			return Promise.resolve();
+			document.cookie = "firstName=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;"
+			document.cookie = "_id=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/;"
+			document.location.reload(false);
+		return Promise.resolve();
 		};
 	
 		return fetch(baseUrl + '/auth', {
