@@ -81,3 +81,16 @@ main.valign-wrapper.addnewitem {
   a {
     color: #d1bfa7!important;
   }
+
+  .addpicbtn {
+    background-color: #49494b!important;
+    max-height: 25px;
+    max-width: 25px;
+  }
+
+  .addpicicon {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
