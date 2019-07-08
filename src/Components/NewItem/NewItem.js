@@ -10,6 +10,9 @@ const NewItem = React.memo(props => {
   const [ itemcount, setCount ] = useState('');
   const [ itemmanufacture, setManufacture ] = useState('');
   const [ year, setYear ] = useState('');
+  const [ color, setColor ] = useState('');
+  const [ size, setSize ] = useState('');
+  const [ cost, setCost ] = useState('');
 
   const submit = () => {
     const shelfId = props.match.params.shelfId;
@@ -102,7 +105,7 @@ const NewItem = React.memo(props => {
               onChange={e => setCount(e.target.value)}
             />
             <label htmlFor='itemcount' className="noselect">
-              How many?
+              How many do you own?
             </label>
           </div>
 
@@ -118,6 +121,51 @@ const NewItem = React.memo(props => {
             />
             <label htmlFor='itemcatname' className="noselect">
               Give it a Catagory
+            </label>
+          </div>
+
+          {/* COLOR */}
+          <div className='input-field'>
+            <input
+              type='text'
+              name='itemcolor'
+              id='itemcolor'
+              className='shelfinput'
+              value={color}
+              onChange={e => setColor(e.target.value)}
+            />
+            <label htmlFor='itemcolor' className="noselect">
+              What color?
+            </label>
+          </div>
+
+          {/* SIZE */}
+          <div className='input-field'>
+            <input
+              type='text'
+              name='itemsize'
+              id='itemsize'
+              className='shelfinput'
+              value={size}
+              onChange={e => setSize(e.target.value)}
+            />
+            <label htmlFor='itemsize' className="noselect">
+              What size?
+            </label>
+          </div>
+
+           {/* COST */}
+           <div className='input-field'>
+            <input
+              type='text'
+              name='itemcost'
+              id='itemcost'
+              className='shelfinput'
+              value={cost}
+              onChange={e => setCost(e.target.value)}
+            />
+            <label htmlFor='itemcost' className="noselect">
+              How much did this cost you?
             </label>
           </div>
 
