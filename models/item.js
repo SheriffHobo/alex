@@ -59,9 +59,29 @@ const itemSchema = new mongoose.Schema({
     required: true,
     default: true,
   },
-  image: {                // url
+  image: {        
     type: String,
     maxLength: 1023,
+    // default: '',
+  },
+  itemmanufacture: { 
+    type: String,
+    maxLength: 100,
+    // default: '',
+  },
+  color: {            
+    type: String,
+    maxLength: 100,
+    // default: '',
+  },
+  size: {           
+    type: String,
+    maxLength: 100,
+    // default: '',
+  },
+  year: {                // We should add this is a calendar drop down thing
+    type: String,
+    maxLength: 20,
     // default: '',
   },
   thumbnail: {

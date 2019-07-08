@@ -7,12 +7,12 @@ const NewItem = React.memo(props => {
   const [ description, setDescription ] = useState('');
   const [ customCategory, setCustomCategory ] = useState('');
   const [ image, setImage ] = useState('');
-  const [ itemcount, setCount ] = useState('');
+  const [ quantity, setCount ] = useState('');
   const [ itemmanufacture, setManufacture ] = useState('');
   const [ year, setYear ] = useState('');
   const [ color, setColor ] = useState('');
   const [ size, setSize ] = useState('');
-  const [ cost, setCost ] = useState('');
+  const [ paid, setCost ] = useState('');
 
   const submit = () => {
     const shelfId = props.match.params.shelfId;
@@ -94,14 +94,14 @@ const NewItem = React.memo(props => {
             </label>
           </div>
 
-          {/* COUNT */}
+          {/* QUANTITY */}
           <div className='input-field'>
             <input
               type='text'
               name='itemcount'
               id='itemcount'
               className='shelfinput'
-              value={itemcount}
+              value={quantity}
               onChange={e => setCount(e.target.value)}
             />
             <label htmlFor='itemcount' className="noselect">
@@ -154,18 +154,18 @@ const NewItem = React.memo(props => {
             </label>
           </div>
 
-           {/* COST */}
+           {/* PAID */}
            <div className='input-field'>
             <input
               type='text'
               name='itemcost'
               id='itemcost'
               className='shelfinput'
-              value={cost}
+              value={paid}
               onChange={e => setCost(e.target.value)}
             />
             <label htmlFor='itemcost' className="noselect">
-              How much did this cost you?
+              How much did you pay for this?
             </label>
           </div>
 
