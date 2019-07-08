@@ -170,19 +170,15 @@ const NewItem = React.memo(props => {
           </div>
 
           {/* IMAGE */}
-          <div className='input-field'>
-            <input
-              type='text'
-              name='itemimage'
-              id='itemimage'
-              className='shelfinput'
-              value={image}
-              onChange={e => setImage(e.target.value)}
-            />
-            <label htmlFor='itemcatname' className="noselect">
-              Upload an image
-            </label>
-          </div>   
+          <div class="file-field input-field">
+            <div class="waves-effect waves-light btn addpicbtn">
+              <span><i class="material-icons addpicicon">add_a_photo</i></span>
+              <input type="file" />
+            </div>
+            <div class="file-path-wrapper">
+                <input class="file-path validate" placeholder="Add a picture" type="text" />
+            </div>
+          </div>
 
           {/* ADD BUTTON */}
           <button
