@@ -1,52 +1,44 @@
 {
-  "name": "alex",
-  "version": "0.1.0",
-  "private": true,
-  "proxy": "http://localhost:8080",
-  "dependencies": {
-    "axios": "^0.19.0",
-    "bcrypt": "^3.0.6",
-    "concurrently": "^4.1.0",
-    "cors": "^2.8.5",
-    "dotenv": "^8.0.0",
-    "express": "^4.17.1",
-    "express-async-errors": "^3.1.1",
-    "firebase": "^6.2.4",
-    "helmet": "^3.18.0",
-    "joi": "^14.3.1",
-    "joi-objectid": "^2.0.0",
-    "jsonwebtoken": "^8.5.1",
-    "materialize-css": "^1.0.0",
-    "mongoose": "^5.5.14",
-    "passport": "^0.4.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-materialize": "^3.3.1",
-    "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1",
-    "socket.io": "^2.2.0",
-    "socket.io-client": "^2.2.0"
-  },
-  "scripts": {
-    "start": "node server.js",
-    "todd": "concurrently --kill-others \"react-scripts start\" \"node server.js\"",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+	"name": "alex",
+	"version": "0.1.0",
+	"private": true,
+	"proxy": "http://localhost:8080/",
+	"dependencies": {
+		"axios": "^0.19.0",
+		"bcrypt": "^3.0.6",
+		"concurrently": "^4.1.0",
+		"cors": "^2.8.5",
+		"dotenv": "^8.0.0",
+		"express": "^4.17.1",
+		"express-async-errors": "^3.1.1",
+		"firebase": "^6.2.4",
+		"helmet": "^3.18.0",
+		"joi": "^14.3.1",
+		"joi-objectid": "^2.0.0",
+		"jsonwebtoken": "^8.5.1",
+		"materialize-css": "^1.0.0",
+		"mongoose": "^5.5.14",
+		"passport": "^0.4.0",
+		"react": "^16.8.6",
+		"react-dom": "^16.8.6",
+		"react-materialize": "^3.3.1",
+		"react-router-dom": "^5.0.1",
+		"react-scripts": "3.0.1",
+		"socket.io": "^2.2.0",
+		"socket.io-client": "^2.2.0"
+	},
+	"scripts": {
+		"start": "node server.js",
+		"todd": "concurrently --kill-others \"react-scripts start\" \"node server.js\"",
+		"build": "react-scripts build",
+		"test": "react-scripts test",
+		"eject": "react-scripts eject"
+	},
+	"eslintConfig": {
+		"extends": "react-app"
+	},
+	"browserslist": {
+		"production": [ ">0.2%", "not dead", "not op_mini all" ],
+		"development": [ "last 1 chrome version", "last 1 firefox version", "last 1 safari version" ]
+	}
 }
