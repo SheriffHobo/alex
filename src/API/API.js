@@ -36,7 +36,7 @@ export default {
         "x-auth-token": token
       }
     })
-    	.then(res => res.json());
+    	.then(res => ({ firstName: getCookie('firstName')}));
   },
   signUp: user => {
     if (document.cookie) {

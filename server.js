@@ -42,7 +42,7 @@ io.on("connection", function(socket) {
     });
 
   socket.on("outputMsg", function(newMsg) {
-    const user = jwt.verify(newMsg.token, "password");
+    const user = jwt.verify(newMsg.token, process.env.jwtPrivateKey);
     newMsg.name = user.firstName;
 
     new chatModel(newMsg)

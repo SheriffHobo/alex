@@ -8,7 +8,7 @@ const router = express.Router();
 // LOGIN
 router.post('/', async (req, res) => {
   const { error } = validateLogin(req.body);
-  if (error) return res.status(400).json(error.details[0].message);
+  if (error) return res.status(400).json({ error: error.details[0].message});
 
   let user = await User.findOne({ email: req.body.email });
   if (!user) return res.status(400).json({ message: 'Invalid email or password.' });
@@ -17,6 +17,7 @@ router.post('/', async (req, res) => {
   if (!validPass) return res.status(400).json({ message: 'Invalid email or password.' });
 
 	const token = user.generateAuthToken();
+	console.log('gen', token)
 	const firstName = user.firstName;
 	const _id = user._id;
 
