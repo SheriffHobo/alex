@@ -31,7 +31,7 @@ router.get('/', auth, async (req, res) => {
 // SIGN UP
 router.post('/', async (req, res) => {
   const { error } = validate(req.body);
-  if (error) return res.status(400).json(error.details[0].message);
+  if (error) return res.status(400).json({ error: error.details[0].message });
 
   let user = await User.findOne({ email: req.body.email });
   if (user) return res.status(400).json({ message: 'User already registered.' });

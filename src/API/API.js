@@ -21,13 +21,8 @@ export default {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(credentials)
-    }).then(async res => {
-      if (res.status !== 200) {
-        throw new Error(res.status + " " + (await res.text()));
-      }
-
-      return res.json();
-    });
+    })
+    	.then(res => res.json());
   },
   loginWithToken: () => {
     const token = getCookie("token");
@@ -40,13 +35,8 @@ export default {
         "Content-Type": "application/json",
         "x-auth-token": token
       }
-    }).then(async res => {
-      if (res.status !== 200) {
-        throw new Error(res.status + " " + (await res.text()));
-      }
-
-      return res.json();
-    });
+    })
+    	.then(res => res.json());
   },
   signUp: user => {
     if (document.cookie) {
@@ -60,13 +50,8 @@ export default {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(user)
-    }).then(async res => {
-      if (res.status !== 200) {
-        throw new Error(res.status + " " + (await res.text()));
-      }
-
-      return res.json();
-    });
+    })
+    	.then(res => res.json());
   },
   newItem: (item, itemType) => {
     const token = getCookie("token");
@@ -82,13 +67,8 @@ export default {
         "x-auth-token": token
       },
       body: JSON.stringify(item)
-    }).then(async res => {
-      if (res.status !== 200) {
-        throw new Error(res.status + " " + (await res.text()));
-      }
-
-      return res.json();
-    });
+    })
+    	.then(res => res.json());
   },
   search: (collection, query) => {
     const token = getCookie("token");
@@ -114,13 +94,8 @@ export default {
         "Content-Type": "application/json",
         "x-auth-token": token
       }
-    }).then(async res => {
-      if (res.status !== 200) {
-        throw new Error(res.status + " " + (await res.text()));
-      }
-
-      return res.json();
-    });
+    })
+    	.then(res => res.json());
   },
   externalAPIs: {
     audio: {
@@ -168,14 +143,8 @@ export default {
         "x-auth-token": token
       },
       body: JSON.stringify(obj)
-    }).then(async res => {
-      console.log(res);
-      if (res.status !== 200) {
-        throw new Error(res.status + " " + (await res.text()));
-      }
-
-      return res.json();
-    });
+    })
+    	.then(res => res.json());
   },
   getMyShelves: () => {
     const token = getCookie("token");
@@ -190,13 +159,8 @@ export default {
         "Content-Type": "application/json",
         "x-auth-token": token
       }
-    }).then(async res => {
-      if (res.status !== 200) {
-        throw new Error(res.status + " " + (await res.text()));
-      }
-
-      return res.json();
-    });
+    })
+    	.then(res => res.json());
   },
   addToMyShelf: (data, shelfId) => {
     const token = getCookie("token");
@@ -212,12 +176,7 @@ export default {
         "x-auth-token": token
       },
       body: JSON.stringify({ data, shelfId })
-    }).then(async res => {
-      if (res.status !== 200) {
-        throw new Error(res.status + " " + (await res.text()));
-      }
-
-      return res.json();
-    });
+    })
+    	.then(res => res.json());
   }
 };

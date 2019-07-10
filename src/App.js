@@ -60,6 +60,7 @@ function App() {
   };
 
   function completeLogIn(result) {
+    console.log('hi there')
     if (result.message) alert(result.message);
 
     if (result.token && result.firstName) {
@@ -68,7 +69,7 @@ function App() {
         firstName: result.firstName,
         _id: result._id,
       };
-
+      console.log(cookies)
       setCookies(cookies);
     };
 
@@ -79,7 +80,6 @@ function App() {
   const leaveSplash = loggedIn && !showSplash;
 
   // REDIRECT WOULD GO HERE if leaveSplash, redirect to /me
-  // except it doesn't work dammit
 
   return (
     <BrowserRouter>
