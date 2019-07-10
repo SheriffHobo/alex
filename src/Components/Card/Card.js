@@ -129,7 +129,7 @@ const Card = React.memo((props) => {
 					)}
 					{props[props.childCollection] ? (
 						<i
-							className="material-icons small rotate180"
+							className="material-icons small"
 							alt="Close this Shelf"
 							onClick={() => {
 								props.getChildren(props.childCollection, null);
