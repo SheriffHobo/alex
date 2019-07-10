@@ -40,7 +40,6 @@ function App() {
 		}
 
 		const result = await API.login(credentials);
-		if (!result) return;
 		completeLogIn(result);
 	};
 
@@ -56,6 +55,7 @@ function App() {
 	};
 
 	function completeLogIn(result) {
+    if (!result) return;
 		if (result.message) alert(result.message);
 
 		if (result.token && result.firstName) {
