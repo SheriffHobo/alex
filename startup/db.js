@@ -9,8 +9,8 @@ const dbPath = process.env.MONGODB_URI || process.env.DB_PATH;
 
 module.exports = () => {
   mongoose
-    .connect(
-      "mongodb://admin2:abc123@ds261616.mlab.com:61616/heroku_l4pd93qm",
+    .connect(dbPath,
+      // "mongodb://admin2:abc123@ds261616.mlab.com:61616/heroku_l4pd93qm",
       { useNewUrlParser: true, useCreateIndex: true }
     ) //JACK'S DATA BASE!!!!!!!
     .then(async () => {

@@ -62,8 +62,6 @@ router.get("/", auth, async (req, res) => {
   }
 
   if (req.query.search) {
-    // VALIDATE
-
     const search = new RegExp(req.query.search, "i");
     query.$or.push({ name: search }, { description: search });
 
@@ -71,8 +69,6 @@ router.get("/", auth, async (req, res) => {
   }
 
   if (req.query.category) {
-    // VALIDATE
-
     const category = new RegExp(req.query.category, "i");
     query.$or.push({ categoryName: category }, { customCategory: category });
 
