@@ -57,6 +57,7 @@ function App() {
 	function completeLogIn(result) {
     if (!result) return;
 		if (result.message) alert(result.message);
+    if (result.error) console.error('API ERROR', result.error);
 
 		if (result.token && result.firstName) {
 			const cookies = {

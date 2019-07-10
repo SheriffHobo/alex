@@ -89,6 +89,7 @@ async function queryAndSend(res, query, limit) {
 
 router.post('/', auth, async (req, res) => {
   const { error } = validate(req.body);
+  if (error) console.log('fuck', error)
   if (error) return res.status(400).json({ error: error.details[0].message });
 
 	shelf = new Shelf({
