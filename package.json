@@ -2,7 +2,6 @@
 	"name": "alex",
 	"version": "0.1.0",
 	"private": true,
-	"proxy": "https://whats-in.herokuapp.com",
 	"dependencies": {
 		"axios": "^0.19.0",
 		"bcrypt": "^3.0.6",
