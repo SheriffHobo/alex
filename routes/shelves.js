@@ -49,8 +49,6 @@ router.get('/', auth, async (req, res) => {
 	}
 
 	if (req.query.search) {
-		// VALIDATE
-
 		const search = new RegExp(req.query.search, 'i');
 		query.$or.push({ name: search }, { description: search });
 
@@ -58,8 +56,6 @@ router.get('/', auth, async (req, res) => {
 	}
 
 	if (req.query.category) {
-		// VALIDATE
-
 		const category = new RegExp(req.query.category, 'i');
 		query.$or.push({ categoryName: category }, { customCategory: category });
 
@@ -92,8 +88,8 @@ async function queryAndSend(res, query, limit) {
 }
 
 router.post('/', auth, async (req, res) => {
-	const { error } = validate(req.body);
-	if (error) return res.status(400).json(error.details[0].message);
+  const { error } = validate(req.body);
+  if (error) return res.status(400).json({ error: error.details[0].message });
 
 	shelf = new Shelf({
 		name: req.body.name,

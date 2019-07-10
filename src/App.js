@@ -75,7 +75,6 @@ function App() {
 	const leaveSplash = loggedIn && !showSplash;
 
 	// REDIRECT WOULD GO HERE if leaveSplash, redirect to /me
-	// except it doesn't work dammit
 
 	return (
 		<BrowserRouter>
