@@ -1,6 +1,6 @@
 import { getCookie } from '../API/cookies';
-// const baseUrl = 'http://localhost:8080/api';
-const baseUrl = '/api';
+const baseUrl = 'http://localhost:8080/api';
+// const baseUrl = '/api';
 
 export default {
   // USER

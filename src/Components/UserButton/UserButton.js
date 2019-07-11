@@ -52,7 +52,7 @@ const UserButton = React.memo((props) => {
 					</div>
 					<div className="col xl2">
 						<i className="fas fa-rss-square" onClick={handleFollowing} />
-						{/* <i class="fas fa-check-square" /> */}
+						{/* <i className="fas fa-check-square" /> */}
 					</div>
 				</div>
 			</div>

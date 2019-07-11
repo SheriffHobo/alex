@@ -15,9 +15,9 @@ const Card = React.memo((props) => {
 		M.Dropdown.init(elems, { inDuration: 300, outDuration: 225 });
 	});
 
-	useEffect(() => {
-	  const elems = document.querySelectorAll('.materialboxed');
-	  M.Materialbox.init(elems);
+	useEffect (() => {
+		let elems = document.querySelectorAll('.materialboxed');
+	  	M.Materialbox.init(elems);
 	});
 
 	useEffect(() => {
@@ -96,10 +96,8 @@ const Card = React.memo((props) => {
 
 	return (
 		<Fragment>
-			<div className="card horizontal">
-				<div className="card-image waves-effect waves-block waves-light">
-					<img className="card-image materialboxed" alt="" src={data.image} />
-				</div>
+			<div className="card horizontal material-placeholder">
+					<img className="materialboxed" alt="" src={data.image} />
 				<div class="card-stacked">
 				<div className="card-content">
 					<span className="card-title">
@@ -143,7 +141,7 @@ const Card = React.memo((props) => {
 					)}
 
 					{/* This icon will allow the adding of a new item to the shelf manual or to the search component */}
-					{/* <i class="small material-icons">add_circle_outline</i> */}
+					{/* <i className="small material-icons">add_circle_outline</i> */}
 
 					{/* The add circle icon should not appear if user is viewing another users shelf */}
 					{(props.addToMyShelf || (myId !== data.userId && props.singular !== 'shelf')) && (
