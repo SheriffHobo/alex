@@ -14,7 +14,7 @@ const NewItem = React.memo(props => {
   const [year, setYear] = useState("");
   const [color, setColor] = useState("");
   const [size, setSize] = useState("");
-  const [cost, setCost] = useState("");
+  const [paid, setCost] = useState('');
   const [isSubmit, setIsSubmit] = useState(false);
 
   const submit = async () => {
@@ -32,7 +32,7 @@ const NewItem = React.memo(props => {
       year,
       color,
       size,
-      cost
+      paid
     };
 
     const result = await API.create(item, "items");
@@ -198,14 +198,14 @@ const NewItem = React.memo(props => {
               </label>
             </div>
 
-            {/* COST */}
+            {/* PAID */}
             <div className="input-field">
               <input
                 type="number"
                 name="itemcost"
                 id="itemcost"
                 className="shelfinput"
-                value={cost}
+                value={paid}
                 onChange={e => setCost(e.target.value)}
               />
               <label htmlFor="itemcost" className="noselect">

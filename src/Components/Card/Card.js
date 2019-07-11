@@ -15,10 +15,10 @@ const Card = React.memo((props) => {
 		M.Dropdown.init(elems, { inDuration: 300, outDuration: 225 });
 	});
 
-	// const todd = () => {
-	//   const elems = document.querySelectorAll('.materialboxed');
-	//   const instances = M.Materialbox.init(elems);
-	// };
+	useEffect(() => {
+	  const elems = document.querySelectorAll('.materialboxed');
+	  M.Materialbox.init(elems);
+	});
 
 	useEffect(() => {
 		// document.addEventListener('DOMContentLoaded', todd);
@@ -96,10 +96,11 @@ const Card = React.memo((props) => {
 
 	return (
 		<Fragment>
-			<div className="card">
+			<div className="card horizontal">
 				<div className="card-image waves-effect waves-block waves-light">
 					<img className="card-image materialboxed" alt="" src={data.image} />
 				</div>
+				<div class="card-stacked">
 				<div className="card-content">
 					<span className="card-title">
 						<h5>{title}</h5>
@@ -129,7 +130,7 @@ const Card = React.memo((props) => {
 					)}
 					{props[props.childCollection] ? (
 						<i
-							className="material-icons small rotate180"
+							className="material-icons small"
 							alt="Close this Shelf"
 							onClick={() => {
 								props.getChildren(props.childCollection, null);
@@ -175,6 +176,7 @@ const Card = React.memo((props) => {
 					{/* 'specs' Should change depending on the card being created. Ex: Shelf card pop-ups should only have a small description of the shelf */}
 					<div className="card-text">{specs}</div>
 				</div>
+			</div>
 			</div>
 			<div>{children}</div>
 		</Fragment>

@@ -28,17 +28,12 @@ span.card-title.activator {
     margin: 0!important;
 }
 
-img.card-image {
-    margin: 0 auto;
-    max-width: 310px!important;
-    max-height: 551px!important;
+div.card-image {
 }
 
-div.card-image {
-    margin: 0 auto;
-    max-width: 310px!important;
-    max-height: 551px!important;
-    min-height: 150px;
+img.card-image {
+    object-fit: scale-down;
+    max-height: 150px;
 }
 
 div.cardbtns.noselect {
