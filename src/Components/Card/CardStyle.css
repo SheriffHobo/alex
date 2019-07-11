@@ -28,15 +28,15 @@ span.card-title.activator {
     margin: 0!important;
 }
 
-div.card-image {
-    display: flex;
-    align-items: center;
-    background-color: #49494B;
-}
-
-img.card-image {
-    object-fit: scale-down;
-    max-height: 150px;
+div.card-image.active {
+    position: fixed !important;
+    z-index: 1000 !important;
+    height: 0 !important;
+    width: 0 !important;
+    margin: 0 !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
 }
 
 div.cardbtns.noselect {

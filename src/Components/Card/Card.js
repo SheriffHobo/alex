@@ -15,14 +15,10 @@ const Card = React.memo((props) => {
 		M.Dropdown.init(elems, { inDuration: 300, outDuration: 225 });
 	});
 
-	// useEffect(() => {
-	//   let elems = document.querySelectorAll('.materialboxed');
-	//   M.Materialbox.init(elems);
-	// });
-
-	var mb = document.querySelectorAll('.materialboxed');
-      M.Materialbox.init(mb,{
-      });
+	useEffect (() => {
+		let elems = document.querySelectorAll('.materialboxed');
+	  	M.Materialbox.init(elems);
+	});
 
 	useEffect(() => {
 		// document.addEventListener('DOMContentLoaded', todd);
@@ -100,10 +96,8 @@ const Card = React.memo((props) => {
 
 	return (
 		<Fragment>
-			<div className="card horizontal">
-				<div className="card-image waves-effect waves-block waves-light">
-					<img className="card-image materialboxed" alt="" src={data.image} />
-				</div>
+			<div className="card horizontal material-placeholder">
+					<img className="materialboxed" alt="" src={data.image} />
 				<div class="card-stacked">
 				<div className="card-content">
 					<span className="card-title">
