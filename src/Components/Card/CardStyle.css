@@ -29,6 +29,9 @@ span.card-title.activator {
 }
 
 div.card-image {
+    display: flex;
+    align-items: center;
+    background-color: #49494B;
 }
 
 img.card-image {
